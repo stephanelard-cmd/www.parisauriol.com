@@ -1,0 +1,155 @@
+name: Vérifier Lighthouse SEO et HTTPS
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/audit-google-seo-lighthouse.yml"
+      - "data/lighthouse-seo-final-trigger.txt"
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer le dépôt
+        uses: actions/checkout@v4
+
+      - name: Préparer Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Démarrer une copie locale exacte du site
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m http.server 8080 --bind 127.0.0.1 >/tmp/parisauriol-http.log 2>&1 &
+          echo $! >/tmp/parisauriol-http.pid
+          for attempt in $(seq 1 20); do
+            if curl -fsS http://127.0.0.1:8080/ >/dev/null; then
+              echo "Serveur local prêt."
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/parisauriol-http.log
+          exit 1
+
+      - name: Auditer Lighthouse SEO mobile et ordinateur
+        shell: bash
+        run: |
+          set -euo pipefail
+          CHROME=$(command -v google-chrome-stable || command -v google-chrome || command -v chromium || command -v chromium-browser || true)
+          if [ -z "$CHROME" ]; then
+            echo "Chrome/Chromium introuvable."
+            exit 1
+          fi
+          echo "Chrome: $CHROME"
+          "$CHROME" --version
+
+          run_audit() {
+            local port="$1"
+            local mode="$2"
+            local output="$3"
+            rm -rf "/tmp/chrome-${port}"
+            "$CHROME" \
+              --headless=new \
+              --no-sandbox \
+              --disable-dev-shm-usage \
+              --disable-gpu \
+              --remote-debugging-address=127.0.0.1 \
+              --remote-debugging-port="$port" \
+              --user-data-dir="/tmp/chrome-${port}" \
+              about:blank >/tmp/chrome-${port}.log 2>&1 &
+            local chrome_pid=$!
+            for attempt in $(seq 1 30); do
+              if curl -fsS "http://127.0.0.1:${port}/json/version" >/dev/null; then
+                break
+              fi
+              sleep 1
+            done
+            if ! curl -fsS "http://127.0.0.1:${port}/json/version" >/dev/null; then
+              cat /tmp/chrome-${port}.log
+              kill "$chrome_pid" 2>/dev/null || true
+              exit 1
+            fi
+
+            if [ "$mode" = "mobile" ]; then
+              npx --yes lighthouse@13.4.1 http://127.0.0.1:8080/ \
+                --only-categories=seo \
+                --form-factor=mobile \
+                --screen-emulation.mobile=true \
+                --port="$port" \
+                --output=json \
+                --output-path="$output" \
+                --quiet
+            else
+              npx --yes lighthouse@13.4.1 http://127.0.0.1:8080/ \
+                --only-categories=seo \
+                --preset=desktop \
+                --port="$port" \
+                --output=json \
+                --output-path="$output" \
+                --quiet
+            fi
+            kill "$chrome_pid" 2>/dev/null || true
+            wait "$chrome_pid" 2>/dev/null || true
+          }
+
+          run_audit 9222 mobile lighthouse-seo-mobile.json
+          run_audit 9223 desktop lighthouse-seo-desktop.json
+
+          node <<'NODE'
+          const fs = require('fs');
+          const summary = {};
+          for (const [file, label] of [
+            ['lighthouse-seo-mobile.json', 'mobile'],
+            ['lighthouse-seo-desktop.json', 'ordinateur'],
+          ]) {
+            const report = JSON.parse(fs.readFileSync(file, 'utf8'));
+            const score = Math.round(report.categories.seo.score * 100);
+            summary[label] = score;
+            console.log(`Lighthouse SEO ${label}: ${score}/100`);
+            const failures = report.categories.seo.auditRefs
+              .map(ref => report.audits[ref.id])
+              .filter(audit => audit.score !== null && audit.score < 1);
+            for (const audit of failures) {
+              console.log(`- ${audit.id}: ${audit.title} ${audit.displayValue || ''}`);
+            }
+            if (score < 100) process.exitCode = 1;
+          }
+          fs.writeFileSync('lighthouse-seo-summary.json', JSON.stringify(summary, null, 2) + '\n');
+          NODE
+
+      - name: Vérifier le certificat HTTPS réellement présenté
+        if: always()
+        shell: bash
+        run: |
+          set +e
+          certificate=$(timeout 20 bash -c \
+            'echo | openssl s_client -connect parisauriol.com:443 -servername parisauriol.com 2>/dev/null | openssl x509 -noout -subject -issuer -dates -ext subjectAltName' \
+            2>/dev/null)
+          echo "$certificate"
+          if echo "$certificate" | grep -Eq 'DNS:parisauriol\.com([,[:space:]]|$)'; then
+            echo '{"custom_https_certificate":true}' > tls-summary.json
+            echo "Certificat HTTPS personnalisé valide."
+          else
+            echo '{"custom_https_certificate":false}' > tls-summary.json
+            echo "Certificat HTTPS personnalisé encore absent."
+          fi
+          exit 0
+
+      - name: Conserver les rapports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: parisauriol-lighthouse-seo-https
+          path: |
+            lighthouse-seo-*.json
+            tls-summary.json
+          if-no-files-found: warn
+          retention-days: 14
