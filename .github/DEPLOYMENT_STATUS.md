@@ -1,27 +1,25 @@
 # État de publication de parisauriol.com
 
-Diagnostic exécuté le **28 août 2026 à 13:20 UTC** depuis un runner GitHub Actions.
+Diagnostic actualisé le **28 août 2026 à 13:35 UTC** depuis GitHub Actions.
 
 ## GitHub Pages
 
 - GitHub Pages : activé.
-- Construction et déploiement depuis `main` : réussis.
-- Domaine personnalisé déclaré par GitHub : `http://parisauriol.com/`.
+- Construction et publication depuis `main` : réussies.
+- Le site public est désormais servi par l’infrastructure GitHub Pages.
 
-## DNS observés
+## DNS validés
 
-- `parisauriol.com` → `213.186.33.5`
-- `www.parisauriol.com` → `213.186.33.5`
-- `stephanelard-cmd.github.io` → `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
+- `parisauriol.com` → `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
+- `www.parisauriol.com` → `stephanelard-cmd.github.io.`
+- La variante `www` se résout vers les mêmes adresses GitHub Pages.
 
 ## Réponses réseau observées
 
-- `http://parisauriol.com/` : redirection OVH vers `http://www.parisauriol.com`.
-- `http://www.parisauriol.com/` : page servie par OVH/OpenResty, pas le site GitHub Pages.
-- `https://parisauriol.com/` : connexion impossible sur le port 443.
-- `https://www.parisauriol.com/` : connexion impossible sur le port 443.
-- L’adresse GitHub Pages du dépôt redirige correctement vers le domaine personnalisé.
+- `http://parisauriol.com/` : code 200, serveur GitHub.com, page d’accueil du site.
+- `http://www.parisauriol.com/` : redirection 301 vers `http://parisauriol.com/`.
+- `https://parisauriol.com/` : le certificat personnalisé n’est pas encore émis ; GitHub présente provisoirement son certificat générique `*.github.io`.
 
 ## Conclusion
 
-Le site est publié chez GitHub, mais la zone DNS OVH pointe encore vers l’adresse de redirection/parking OVH `213.186.33.5`. Les enregistrements DNS doivent être remplacés par ceux de GitHub Pages avant l’activation du certificat HTTPS.
+La configuration OVH est correcte et propagée. Une nouvelle publication Pages est déclenchée par ce commit afin que GitHub finalise la validation du domaine et l’émission du certificat TLS pour `parisauriol.com` et `www.parisauriol.com`.
