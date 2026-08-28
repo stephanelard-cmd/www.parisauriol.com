@@ -71,11 +71,31 @@ jobs:
               assert page.locator('#language-select').input_value() == 'de'
               page.screenshot(path='browser-report/photos-de.png', full_page=True)
 
-              page.goto('https://parisauriol.com/?lang=es', wait_until='domcontentloaded', timeout=90000)
-              page.wait_for_selector('#language-select', timeout=30000)
-              page.wait_for_function("document.querySelector('h1').textContent.includes('apartamento parisino')")
-              hero_background = page.locator('.hero').evaluate("el => getComputedStyle(el).backgroundImage")
-              assert 'salon-fenetre.jpg' in hero_background
+              hero_background = ''
+              frame_background = ''
+              for attempt in range(30):
+                  page.goto(f'https://parisauriol.com/?lang=es&check={attempt}', wait_until='domcontentloaded', timeout=90000)
+                  page.wait_for_selector('#language-select', timeout=30000)
+                  page.wait_for_function("document.querySelector('h1').textContent.includes('apartamento parisino')")
+                  hero_background = page.locator('.hero').evaluate("el => getComputedStyle(el).backgroundImage")
+                  frame_background = page.locator('.photo-frame').evaluate("el => getComputedStyle(el).backgroundImage")
+                  if (
+                      '/assets/photos/salon-fenetre.jpg' in hero_background
+                      and '/assets/photos/cuisine-equipee.jpg' in frame_background
+                      and '/assets/assets/' not in hero_background
+                      and '/assets/assets/' not in frame_background
+                  ):
+                      break
+                  page.wait_for_timeout(3000)
+              else:
+                  raise AssertionError(
+                      f'Chemins des photos d’accueil incorrects : hero={hero_background}, frame={frame_background}'
+                  )
+
+              hero_response = page.request.get('https://parisauriol.com/assets/photos/salon-fenetre.jpg')
+              frame_response = page.request.get('https://parisauriol.com/assets/photos/cuisine-equipee.jpg')
+              assert hero_response.ok
+              assert frame_response.ok
               assert page.locator('#language-select').input_value() == 'es'
               page.screenshot(path='browser-report/home-es.png', full_page=True)
 
@@ -86,6 +106,7 @@ jobs:
                   'german_heading': 'Fotos der Unterkunft',
                   'spanish_home_heading': page.locator('h1').inner_text().strip(),
                   'hero_background': hero_background,
+                  'frame_background': frame_background,
                   'status': 'success',
               }
               browser.close()
