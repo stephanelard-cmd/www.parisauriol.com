@@ -1,0 +1,82 @@
+name: Déployer parisauriol.com
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: parisauriol-pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer le dépôt
+        uses: actions/checkout@v4
+
+      - name: Vérifier le site
+        run: |
+          python -m py_compile scripts/sync_calendars.py
+          test -f index.html
+          test -f logement.html
+          test -f photos.html
+          test -f disponibilites.html
+          test -f quartier.html
+          test -f decouvrir.html
+          test -f agenda.html
+          test -f sejour.html
+          test -f mentions-legales.html
+          test -f confidentialite.html
+          test -f 404.html
+          test -f assets/style.css
+          test -f assets/app.js
+          test -f data/calendar.json
+          test -f sitemap.xml
+          test -f robots.txt
+          test "$(tr -d '\r\n' < CNAME)" = "parisauriol.com"
+          grep -q "Paris Auriol Austerlitz Arena" index.html
+          grep -q "https://parisauriol.com/" sitemap.xml
+          ! grep -R --line-number --fixed-strings 'calendar/ical/' . --exclude-dir=.git --exclude='*.yml'
+          ! grep -R --line-number --fixed-strings 'ical.booking.com' . --exclude-dir=.git --exclude='*.yml'
+
+      - name: Préparer les fichiers publics
+        run: |
+          rm -rf _site
+          mkdir -p _site
+          rsync -a --delete \
+            --exclude='.git/' \
+            --exclude='.github/' \
+            --exclude='_site/' \
+            --exclude='scripts/' \
+            --exclude='README.md' \
+            ./ _site/
+          test -f _site/index.html
+          test ! -d _site/scripts
+
+      - name: Configurer GitHub Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - name: Préparer l’artefact Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Publier
+        id: deployment
+        uses: actions/deploy-pages@v4
