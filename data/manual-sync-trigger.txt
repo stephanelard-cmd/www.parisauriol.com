@@ -1,0 +1,1 @@
+Déclenchement manuel initial après configuration des secrets iCal — 2026-08-28.
