@@ -10,6 +10,7 @@ on:
 
 permissions:
   contents: read
+  pages: read
 
 jobs:
   audit:
@@ -23,15 +24,51 @@ jobs:
         with:
           node-version: "22"
 
+      - name: Lire la configuration GitHub Pages
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set +e
+          response=$(curl -sS -w '\nHTTP_STATUS=%{http_code}\n' \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer ${GH_TOKEN}" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            "https://api.github.com/repos/${GITHUB_REPOSITORY}/pages")
+          echo "$response" | sed -E 's/("token"[[:space:]]*:[[:space:]]*")[^"]+"/\1***"/g'
+
       - name: Diagnostiquer DNS et certificat TLS
         shell: bash
         run: |
           set +e
-          echo "=== Résolution IPv4 / IPv6 ==="
-          getent ahosts parisauriol.com | sort -u || true
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq dnsutils >/dev/null
+
+          echo "=== DNS parisauriol.com ==="
+          echo "A :"
+          dig +short A parisauriol.com
+          echo "AAAA :"
+          dig +short AAAA parisauriol.com
+          echo "CAA :"
+          dig +short CAA parisauriol.com
+          echo "NS :"
+          dig +short NS parisauriol.com
           echo
-          echo "=== Certificat présenté pour parisauriol.com ==="
-          timeout 20 bash -c 'echo | openssl s_client -connect parisauriol.com:443 -servername parisauriol.com 2>/dev/null | openssl x509 -noout -subject -issuer -dates -fingerprint -sha256 -ext subjectAltName' || true
+          echo "=== DNS www.parisauriol.com ==="
+          echo "CNAME :"
+          dig +short CNAME www.parisauriol.com
+          echo "A :"
+          dig +short A www.parisauriol.com
+          echo "AAAA :"
+          dig +short AAAA www.parisauriol.com
+
+          echo
+          echo "=== Certificat présenté par chaque adresse GitHub Pages ==="
+          for ip in $(dig +short A parisauriol.com); do
+            echo "--- ${ip} ---"
+            timeout 15 bash -c "echo | openssl s_client -connect ${ip}:443 -servername parisauriol.com 2>/dev/null | openssl x509 -noout -subject -issuer -dates -ext subjectAltName" || true
+          done
+
           echo
           echo "=== Vérification du nom d’hôte ==="
           timeout 20 bash -c 'echo | openssl s_client -connect parisauriol.com:443 -servername parisauriol.com -verify_hostname parisauriol.com -verify_return_error 2>&1 | tail -30' || true
