@@ -1,0 +1,50 @@
+name: Synchroniser Airbnb et Booking.com
+
+on:
+  schedule:
+    - cron: "7,22,37,52 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: parisauriol-calendar
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer le dépôt
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Préparer Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Vérifier le script
+        run: python -m py_compile scripts/sync_calendars.py
+
+      - name: Synchroniser les deux calendriers
+        env:
+          AIRBNB_ICAL_URL: ${{ secrets.AIRBNB_ICAL_URL }}
+          BOOKING_ICAL_URL: ${{ secrets.BOOKING_ICAL_URL }}
+          OUTPUT: data/calendar.json
+        run: python scripts/sync_calendars.py
+
+      - name: Enregistrer les nouvelles disponibilités
+        run: |
+          git add data/calendar.json
+          if git diff --cached --quiet; then
+            echo "Aucune modification à publier."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Mettre à jour les disponibilités Airbnb et Booking"
+          git pull --rebase origin main
+          git push origin HEAD:main
