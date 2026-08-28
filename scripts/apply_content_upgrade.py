@@ -12,13 +12,14 @@ MANIFEST = ROOT / "assets" / "photos" / "manifest.json"
 HTML_FILES = sorted(ROOT.glob("*.html"))
 MAIN_IMAGE = "assets/photos/salon-fenetre.jpg"
 MAIN_IMAGE_ABSOLUTE = f"https://parisauriol.com/{MAIN_IMAGE}"
-SECOND_IMAGE = "assets/photos/cuisine-equipee.jpg"
+MAIN_IMAGE_CSS = "/assets/photos/salon-fenetre.jpg"
+SECOND_IMAGE_CSS = "/assets/photos/cuisine-equipee.jpg"
 LANGUAGES = ("fr", "en", "de", "es")
 
 
 def add_query(url: str, language: str) -> str:
     parts = urlsplit(url)
-    query = dict()
+    query: dict[str, str] = {}
     if parts.query:
         for entry in parts.query.split("&"):
             if "=" in entry:
@@ -45,7 +46,10 @@ def add_hreflang(text: str) -> str:
     if not match:
         return text
     canonical = match.group(1)
-    links = [f'<link rel="alternate" hreflang="{language}" href="{add_query(canonical, language)}">' for language in LANGUAGES]
+    links = [
+        f'<link rel="alternate" hreflang="{language}" href="{add_query(canonical, language)}">'
+        for language in LANGUAGES
+    ]
     links.append(f'<link rel="alternate" hreflang="x-default" href="{canonical}">')
     return text.replace(match.group(0), match.group(0) + "\n  " + "\n  ".join(links), 1)
 
@@ -59,7 +63,9 @@ def update_social_image(text: str) -> str:
     if 'property="og:image:width"' not in text:
         text = text.replace(
             f'<meta property="og:image" content="{MAIN_IMAGE_ABSOLUTE}">',
-            f'<meta property="og:image" content="{MAIN_IMAGE_ABSOLUTE}">\n  <meta property="og:image:width" content="1280">\n  <meta property="og:image:height" content="576">',
+            f'<meta property="og:image" content="{MAIN_IMAGE_ABSOLUTE}">\n  '
+            '<meta property="og:image:width" content="1280">\n  '
+            '<meta property="og:image:height" content="576">',
             1,
         )
     return text
@@ -77,19 +83,26 @@ def picture_markup(photo: dict[str, object], css_class: str) -> str:
         f'data-caption-{language}="{html.escape(str(captions[language]), quote=True)}"'
         for language in LANGUAGES
     )
-    sizes = "(max-width: 480px) 100vw, (max-width: 760px) 50vw, 66vw" if position == 1 else "(max-width: 480px) 100vw, (max-width: 760px) 50vw, 33vw"
+    sizes = (
+        "(max-width: 480px) 100vw, (max-width: 760px) 50vw, 66vw"
+        if position == 1
+        else "(max-width: 480px) 100vw, (max-width: 760px) 50vw, 33vw"
+    )
     loading = "eager" if position == 1 else "lazy"
     return (
         f'<a class="gallery-item {css_class}" href="{html.escape(str(original), quote=True)}" '
         f'data-lightbox {caption_attrs}>'
-        f'<picture><source type="image/webp" srcset="{variants["480"]} 480w, {variants["768"]} 768w, {variants["1024"]} 1024w" sizes="{sizes}">'
-        f'<img src="{original}" alt="{html.escape(caption_fr, quote=True)}" width="{width}" height="{height}" loading="{loading}" decoding="async"></picture>'
+        f'<picture><source type="image/webp" '
+        f'srcset="{variants["480"]} 480w, {variants["768"]} 768w, {variants["1024"]} 1024w" '
+        f'sizes="{sizes}">'
+        f'<img src="{original}" alt="{html.escape(caption_fr, quote=True)}" '
+        f'width="{width}" height="{height}" loading="{loading}" decoding="async"></picture>'
         f'<span class="gallery-caption">{html.escape(caption_fr)}</span></a>'
     )
 
 
 def build_gallery(manifest: dict[str, object]) -> str:
-    items = []
+    items: list[str] = []
     for photo in manifest["photos"]:
         position = int(photo["position"])
         ratio = int(photo["width"]) / int(photo["height"])
@@ -102,7 +115,11 @@ def build_gallery(manifest: dict[str, object]) -> str:
         else:
             css_class = ""
         items.append(picture_markup(photo, css_class))
-    return '<div class="gallery real-gallery" aria-label="Photographies originales du logement">\n      ' + "\n      ".join(items) + "\n    </div>"
+    return (
+        '<div class="gallery real-gallery" aria-label="Photographies originales du logement">\n      '
+        + "\n      ".join(items)
+        + "\n    </div>"
+    )
 
 
 def update_photos_page(text: str, manifest: dict[str, object]) -> str:
@@ -114,9 +131,11 @@ def update_photos_page(text: str, manifest: dict[str, object]) -> str:
     end = text.find('<div class="actions center">', start)
     if start == -1 or end == -1:
         raise RuntimeError("Zone de galerie introuvable dans photos.html")
-    notice = '<div class="notice notice-info"><b>Photographies réelles du logement.</b> Cliquez sur une image pour l’agrandir.</div>\n    '
-    text = text[:start] + notice + build_gallery(manifest) + "\n    " + text[end:]
-    return text
+    notice = (
+        '<div class="notice notice-info"><b>Photographies réelles du logement.</b> '
+        'Cliquez sur une image pour l’agrandir.</div>\n    '
+    )
+    return text[:start] + notice + build_gallery(manifest) + "\n    " + text[end:]
 
 
 def update_json_ld(text: str, manifest: dict[str, object]) -> str:
@@ -128,7 +147,9 @@ def update_json_ld(text: str, manifest: dict[str, object]) -> str:
         payload = json.loads(match.group(2))
     except json.JSONDecodeError:
         return text
-    payload["image"] = [f"https://parisauriol.com/{photo['original']}" for photo in manifest["photos"]]
+    payload["image"] = [
+        f"https://parisauriol.com/{photo['original']}" for photo in manifest["photos"]
+    ]
     payload["inLanguage"] = "fr"
     payload["availableLanguage"] = ["fr", "en", "de", "es"]
     compact = json.dumps(payload, ensure_ascii=False, separators=(",", ":"))
@@ -136,8 +157,18 @@ def update_json_ld(text: str, manifest: dict[str, object]) -> str:
 
 
 def update_index_page(text: str, manifest: dict[str, object]) -> str:
-    text = re.sub(r"--hero-image:url\('[^']+'\)", f"--hero-image:url('{MAIN_IMAGE}')", text, count=1)
-    text = re.sub(r"--frame-image:url\('[^']+'\)", f"--frame-image:url('{SECOND_IMAGE}')", text, count=1)
+    text = re.sub(
+        r"--hero-image:url\('[^']+'\)",
+        f"--hero-image:url('{MAIN_IMAGE_CSS}')",
+        text,
+        count=1,
+    )
+    text = re.sub(
+        r"--frame-image:url\('[^']+'\)",
+        f"--frame-image:url('{SECOND_IMAGE_CSS}')",
+        text,
+        count=1,
+    )
     text = text.replace(
         "Paris — image d’ambiance. Les photos originales du logement seront ajoutées à la galerie.",
         "Vue réelle du logement Paris Auriol Austerlitz Arena.",
@@ -145,7 +176,8 @@ def update_index_page(text: str, manifest: dict[str, object]) -> str:
     if f'rel="preload" as="image" href="{MAIN_IMAGE}"' not in text:
         text = text.replace(
             '<link rel="stylesheet" href="assets/style.css">',
-            f'<link rel="preload" as="image" href="{MAIN_IMAGE}">\n  <link rel="stylesheet" href="assets/style.css">',
+            f'<link rel="preload" as="image" href="{MAIN_IMAGE}">\n  '
+            '<link rel="stylesheet" href="assets/style.css">',
             1,
         )
     return update_json_ld(text, manifest)
@@ -155,7 +187,7 @@ def main() -> int:
     manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
     if manifest.get("count") != 8:
         raise RuntimeError("Le manifeste doit contenir exactement huit photographies.")
-    changed = []
+    changed: list[str] = []
     for path in HTML_FILES:
         original = path.read_text(encoding="utf-8")
         text = add_stylesheet(original)
