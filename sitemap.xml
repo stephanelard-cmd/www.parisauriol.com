@@ -1,13 +1,879 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://parisauriol.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://parisauriol.com/logement.html</loc><changefreq>monthly</changefreq></url>
-  <url><loc>https://parisauriol.com/photos.html</loc><changefreq>monthly</changefreq></url>
-  <url><loc>https://parisauriol.com/disponibilites.html</loc><changefreq>weekly</changefreq></url>
-  <url><loc>https://parisauriol.com/quartier.html</loc><changefreq>monthly</changefreq></url>
-  <url><loc>https://parisauriol.com/decouvrir.html</loc><changefreq>monthly</changefreq></url>
-  <url><loc>https://parisauriol.com/agenda.html</loc><changefreq>weekly</changefreq></url>
-  <url><loc>https://parisauriol.com/sejour.html</loc><changefreq>monthly</changefreq></url>
-  <url><loc>https://parisauriol.com/mentions-legales.html</loc><changefreq>monthly</changefreq></url>
-  <url><loc>https://parisauriol.com/confidentialite.html</loc><changefreq>monthly</changefreq></url>
+<?xml version='1.0' encoding='utf-8'?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://parisauriol.com/</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://parisauriol.com/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://parisauriol.com/en/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://parisauriol.com/de/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://parisauriol.com/es/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://parisauriol.com/" />
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/salon-fenetre.jpg</image:loc>
+      <image:caption>Salon lumineux avec canapé et grande fenêtre</image:caption>
+      <image:title>Paris Auriol — Salon lumineux avec canapé et grande fenêtre</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/immeuble-boulevard.jpg</image:loc>
+      <image:caption>Immeuble du 18 boulevard Vincent Auriol</image:caption>
+      <image:title>Paris Auriol — Immeuble du 18 boulevard Vincent Auriol</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/espace-repas.jpg</image:loc>
+      <image:caption>Espace repas intégré au séjour</image:caption>
+      <image:title>Paris Auriol — Espace repas intégré au séjour</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/chambre-lit.jpg</image:loc>
+      <image:caption>Chambre avec grand lit et fenêtre</image:caption>
+      <image:title>Paris Auriol — Chambre avec grand lit et fenêtre</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/cuisine-equipee.jpg</image:loc>
+      <image:caption>Cuisine équipée et coin repas</image:caption>
+      <image:title>Paris Auriol — Cuisine équipée et coin repas</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/salon-miroir.jpg</image:loc>
+      <image:caption>Salon, canapé et grand miroir</image:caption>
+      <image:title>Paris Auriol — Salon, canapé et grand miroir</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/salle-de-bains.jpg</image:loc>
+      <image:caption>Salle de bains avec douche, lavabo et toilettes</image:caption>
+      <image:title>Paris Auriol — Salle de bains avec douche, lavabo et toilettes</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/vue-seine-bercy.jpg</image:loc>
+      <image:caption>Vue urbaine vers la Seine et Bercy</image:caption>
+      <image:title>Paris Auriol — Vue urbaine vers la Seine et Bercy</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://parisauriol.com/en/</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://parisauriol.com/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://parisauriol.com/en/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://parisauriol.com/de/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://parisauriol.com/es/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://parisauriol.com/" />
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/salon-fenetre.jpg</image:loc>
+      <image:caption>Bright living room with sofa and large window</image:caption>
+      <image:title>Paris Auriol — Bright living room with sofa and large window</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/immeuble-boulevard.jpg</image:loc>
+      <image:caption>Building at 18 Boulevard Vincent Auriol</image:caption>
+      <image:title>Paris Auriol — Building at 18 Boulevard Vincent Auriol</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/espace-repas.jpg</image:loc>
+      <image:caption>Dining area adjoining the living room</image:caption>
+      <image:title>Paris Auriol — Dining area adjoining the living room</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/chambre-lit.jpg</image:loc>
+      <image:caption>Bedroom with a large bed and window</image:caption>
+      <image:title>Paris Auriol — Bedroom with a large bed and window</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/cuisine-equipee.jpg</image:loc>
+      <image:caption>Fully equipped kitchen and dining corner</image:caption>
+      <image:title>Paris Auriol — Fully equipped kitchen and dining corner</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/salon-miroir.jpg</image:loc>
+      <image:caption>Living room with sofa and large mirror</image:caption>
+      <image:title>Paris Auriol — Living room with sofa and large mirror</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/salle-de-bains.jpg</image:loc>
+      <image:caption>Bathroom with shower, washbasin and toilet</image:caption>
+      <image:title>Paris Auriol — Bathroom with shower, washbasin and toilet</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/vue-seine-bercy.jpg</image:loc>
+      <image:caption>City view towards the Seine and Bercy</image:caption>
+      <image:title>Paris Auriol — City view towards the Seine and Bercy</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://parisauriol.com/de/</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://parisauriol.com/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://parisauriol.com/en/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://parisauriol.com/de/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://parisauriol.com/es/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://parisauriol.com/" />
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/salon-fenetre.jpg</image:loc>
+      <image:caption>Helles Wohnzimmer mit Sofa und großem Fenster</image:caption>
+      <image:title>Paris Auriol — Helles Wohnzimmer mit Sofa und großem Fenster</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/immeuble-boulevard.jpg</image:loc>
+      <image:caption>Gebäude am Boulevard Vincent Auriol 18</image:caption>
+      <image:title>Paris Auriol — Gebäude am Boulevard Vincent Auriol 18</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/espace-repas.jpg</image:loc>
+      <image:caption>Essbereich neben dem Wohnzimmer</image:caption>
+      <image:title>Paris Auriol — Essbereich neben dem Wohnzimmer</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/chambre-lit.jpg</image:loc>
+      <image:caption>Schlafzimmer mit großem Bett und Fenster</image:caption>
+      <image:title>Paris Auriol — Schlafzimmer mit großem Bett und Fenster</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/cuisine-equipee.jpg</image:loc>
+      <image:caption>Ausgestattete Küche mit Essplatz</image:caption>
+      <image:title>Paris Auriol — Ausgestattete Küche mit Essplatz</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/salon-miroir.jpg</image:loc>
+      <image:caption>Wohnzimmer mit Sofa und großem Spiegel</image:caption>
+      <image:title>Paris Auriol — Wohnzimmer mit Sofa und großem Spiegel</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/salle-de-bains.jpg</image:loc>
+      <image:caption>Bad mit Dusche, Waschbecken und WC</image:caption>
+      <image:title>Paris Auriol — Bad mit Dusche, Waschbecken und WC</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/vue-seine-bercy.jpg</image:loc>
+      <image:caption>Stadtblick in Richtung Seine und Bercy</image:caption>
+      <image:title>Paris Auriol — Stadtblick in Richtung Seine und Bercy</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://parisauriol.com/es/</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://parisauriol.com/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://parisauriol.com/en/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://parisauriol.com/de/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://parisauriol.com/es/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://parisauriol.com/" />
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/salon-fenetre.jpg</image:loc>
+      <image:caption>Salón luminoso con sofá y gran ventana</image:caption>
+      <image:title>Paris Auriol — Salón luminoso con sofá y gran ventana</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/immeuble-boulevard.jpg</image:loc>
+      <image:caption>Edificio del 18 Boulevard Vincent Auriol</image:caption>
+      <image:title>Paris Auriol — Edificio del 18 Boulevard Vincent Auriol</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/espace-repas.jpg</image:loc>
+      <image:caption>Zona de comedor junto al salón</image:caption>
+      <image:title>Paris Auriol — Zona de comedor junto al salón</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/chambre-lit.jpg</image:loc>
+      <image:caption>Dormitorio con cama grande y ventana</image:caption>
+      <image:title>Paris Auriol — Dormitorio con cama grande y ventana</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/cuisine-equipee.jpg</image:loc>
+      <image:caption>Cocina equipada y rincón comedor</image:caption>
+      <image:title>Paris Auriol — Cocina equipada y rincón comedor</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/salon-miroir.jpg</image:loc>
+      <image:caption>Salón con sofá y espejo grande</image:caption>
+      <image:title>Paris Auriol — Salón con sofá y espejo grande</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/salle-de-bains.jpg</image:loc>
+      <image:caption>Baño con ducha, lavabo e inodoro</image:caption>
+      <image:title>Paris Auriol — Baño con ducha, lavabo e inodoro</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/vue-seine-bercy.jpg</image:loc>
+      <image:caption>Vista urbana hacia el Sena y Bercy</image:caption>
+      <image:title>Paris Auriol — Vista urbana hacia el Sena y Bercy</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://parisauriol.com/logement.html</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://parisauriol.com/logement.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://parisauriol.com/en/logement.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://parisauriol.com/de/logement.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://parisauriol.com/es/logement.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://parisauriol.com/logement.html" />
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/salon-fenetre.jpg</image:loc>
+      <image:caption>Salon lumineux avec canapé et grande fenêtre</image:caption>
+      <image:title>Paris Auriol — Salon lumineux avec canapé et grande fenêtre</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/immeuble-boulevard.jpg</image:loc>
+      <image:caption>Immeuble du 18 boulevard Vincent Auriol</image:caption>
+      <image:title>Paris Auriol — Immeuble du 18 boulevard Vincent Auriol</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/espace-repas.jpg</image:loc>
+      <image:caption>Espace repas intégré au séjour</image:caption>
+      <image:title>Paris Auriol — Espace repas intégré au séjour</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/chambre-lit.jpg</image:loc>
+      <image:caption>Chambre avec grand lit et fenêtre</image:caption>
+      <image:title>Paris Auriol — Chambre avec grand lit et fenêtre</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/cuisine-equipee.jpg</image:loc>
+      <image:caption>Cuisine équipée et coin repas</image:caption>
+      <image:title>Paris Auriol — Cuisine équipée et coin repas</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/salon-miroir.jpg</image:loc>
+      <image:caption>Salon, canapé et grand miroir</image:caption>
+      <image:title>Paris Auriol — Salon, canapé et grand miroir</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/salle-de-bains.jpg</image:loc>
+      <image:caption>Salle de bains avec douche, lavabo et toilettes</image:caption>
+      <image:title>Paris Auriol — Salle de bains avec douche, lavabo et toilettes</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/vue-seine-bercy.jpg</image:loc>
+      <image:caption>Vue urbaine vers la Seine et Bercy</image:caption>
+      <image:title>Paris Auriol — Vue urbaine vers la Seine et Bercy</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://parisauriol.com/en/logement.html</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://parisauriol.com/logement.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://parisauriol.com/en/logement.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://parisauriol.com/de/logement.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://parisauriol.com/es/logement.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://parisauriol.com/logement.html" />
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/salon-fenetre.jpg</image:loc>
+      <image:caption>Bright living room with sofa and large window</image:caption>
+      <image:title>Paris Auriol — Bright living room with sofa and large window</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/immeuble-boulevard.jpg</image:loc>
+      <image:caption>Building at 18 Boulevard Vincent Auriol</image:caption>
+      <image:title>Paris Auriol — Building at 18 Boulevard Vincent Auriol</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/espace-repas.jpg</image:loc>
+      <image:caption>Dining area adjoining the living room</image:caption>
+      <image:title>Paris Auriol — Dining area adjoining the living room</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/chambre-lit.jpg</image:loc>
+      <image:caption>Bedroom with a large bed and window</image:caption>
+      <image:title>Paris Auriol — Bedroom with a large bed and window</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/cuisine-equipee.jpg</image:loc>
+      <image:caption>Fully equipped kitchen and dining corner</image:caption>
+      <image:title>Paris Auriol — Fully equipped kitchen and dining corner</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/salon-miroir.jpg</image:loc>
+      <image:caption>Living room with sofa and large mirror</image:caption>
+      <image:title>Paris Auriol — Living room with sofa and large mirror</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/salle-de-bains.jpg</image:loc>
+      <image:caption>Bathroom with shower, washbasin and toilet</image:caption>
+      <image:title>Paris Auriol — Bathroom with shower, washbasin and toilet</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/vue-seine-bercy.jpg</image:loc>
+      <image:caption>City view towards the Seine and Bercy</image:caption>
+      <image:title>Paris Auriol — City view towards the Seine and Bercy</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://parisauriol.com/de/logement.html</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://parisauriol.com/logement.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://parisauriol.com/en/logement.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://parisauriol.com/de/logement.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://parisauriol.com/es/logement.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://parisauriol.com/logement.html" />
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/salon-fenetre.jpg</image:loc>
+      <image:caption>Helles Wohnzimmer mit Sofa und großem Fenster</image:caption>
+      <image:title>Paris Auriol — Helles Wohnzimmer mit Sofa und großem Fenster</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/immeuble-boulevard.jpg</image:loc>
+      <image:caption>Gebäude am Boulevard Vincent Auriol 18</image:caption>
+      <image:title>Paris Auriol — Gebäude am Boulevard Vincent Auriol 18</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/espace-repas.jpg</image:loc>
+      <image:caption>Essbereich neben dem Wohnzimmer</image:caption>
+      <image:title>Paris Auriol — Essbereich neben dem Wohnzimmer</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/chambre-lit.jpg</image:loc>
+      <image:caption>Schlafzimmer mit großem Bett und Fenster</image:caption>
+      <image:title>Paris Auriol — Schlafzimmer mit großem Bett und Fenster</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/cuisine-equipee.jpg</image:loc>
+      <image:caption>Ausgestattete Küche mit Essplatz</image:caption>
+      <image:title>Paris Auriol — Ausgestattete Küche mit Essplatz</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/salon-miroir.jpg</image:loc>
+      <image:caption>Wohnzimmer mit Sofa und großem Spiegel</image:caption>
+      <image:title>Paris Auriol — Wohnzimmer mit Sofa und großem Spiegel</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/salle-de-bains.jpg</image:loc>
+      <image:caption>Bad mit Dusche, Waschbecken und WC</image:caption>
+      <image:title>Paris Auriol — Bad mit Dusche, Waschbecken und WC</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/vue-seine-bercy.jpg</image:loc>
+      <image:caption>Stadtblick in Richtung Seine und Bercy</image:caption>
+      <image:title>Paris Auriol — Stadtblick in Richtung Seine und Bercy</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://parisauriol.com/es/logement.html</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://parisauriol.com/logement.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://parisauriol.com/en/logement.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://parisauriol.com/de/logement.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://parisauriol.com/es/logement.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://parisauriol.com/logement.html" />
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/salon-fenetre.jpg</image:loc>
+      <image:caption>Salón luminoso con sofá y gran ventana</image:caption>
+      <image:title>Paris Auriol — Salón luminoso con sofá y gran ventana</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/immeuble-boulevard.jpg</image:loc>
+      <image:caption>Edificio del 18 Boulevard Vincent Auriol</image:caption>
+      <image:title>Paris Auriol — Edificio del 18 Boulevard Vincent Auriol</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/espace-repas.jpg</image:loc>
+      <image:caption>Zona de comedor junto al salón</image:caption>
+      <image:title>Paris Auriol — Zona de comedor junto al salón</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/chambre-lit.jpg</image:loc>
+      <image:caption>Dormitorio con cama grande y ventana</image:caption>
+      <image:title>Paris Auriol — Dormitorio con cama grande y ventana</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/cuisine-equipee.jpg</image:loc>
+      <image:caption>Cocina equipada y rincón comedor</image:caption>
+      <image:title>Paris Auriol — Cocina equipada y rincón comedor</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/salon-miroir.jpg</image:loc>
+      <image:caption>Salón con sofá y espejo grande</image:caption>
+      <image:title>Paris Auriol — Salón con sofá y espejo grande</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/salle-de-bains.jpg</image:loc>
+      <image:caption>Baño con ducha, lavabo e inodoro</image:caption>
+      <image:title>Paris Auriol — Baño con ducha, lavabo e inodoro</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/vue-seine-bercy.jpg</image:loc>
+      <image:caption>Vista urbana hacia el Sena y Bercy</image:caption>
+      <image:title>Paris Auriol — Vista urbana hacia el Sena y Bercy</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://parisauriol.com/photos.html</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://parisauriol.com/photos.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://parisauriol.com/en/photos.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://parisauriol.com/de/photos.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://parisauriol.com/es/photos.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://parisauriol.com/photos.html" />
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/salon-fenetre.jpg</image:loc>
+      <image:caption>Salon lumineux avec canapé et grande fenêtre</image:caption>
+      <image:title>Paris Auriol — Salon lumineux avec canapé et grande fenêtre</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/immeuble-boulevard.jpg</image:loc>
+      <image:caption>Immeuble du 18 boulevard Vincent Auriol</image:caption>
+      <image:title>Paris Auriol — Immeuble du 18 boulevard Vincent Auriol</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/espace-repas.jpg</image:loc>
+      <image:caption>Espace repas intégré au séjour</image:caption>
+      <image:title>Paris Auriol — Espace repas intégré au séjour</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/chambre-lit.jpg</image:loc>
+      <image:caption>Chambre avec grand lit et fenêtre</image:caption>
+      <image:title>Paris Auriol — Chambre avec grand lit et fenêtre</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/cuisine-equipee.jpg</image:loc>
+      <image:caption>Cuisine équipée et coin repas</image:caption>
+      <image:title>Paris Auriol — Cuisine équipée et coin repas</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/salon-miroir.jpg</image:loc>
+      <image:caption>Salon, canapé et grand miroir</image:caption>
+      <image:title>Paris Auriol — Salon, canapé et grand miroir</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/salle-de-bains.jpg</image:loc>
+      <image:caption>Salle de bains avec douche, lavabo et toilettes</image:caption>
+      <image:title>Paris Auriol — Salle de bains avec douche, lavabo et toilettes</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/vue-seine-bercy.jpg</image:loc>
+      <image:caption>Vue urbaine vers la Seine et Bercy</image:caption>
+      <image:title>Paris Auriol — Vue urbaine vers la Seine et Bercy</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://parisauriol.com/en/photos.html</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://parisauriol.com/photos.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://parisauriol.com/en/photos.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://parisauriol.com/de/photos.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://parisauriol.com/es/photos.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://parisauriol.com/photos.html" />
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/salon-fenetre.jpg</image:loc>
+      <image:caption>Bright living room with sofa and large window</image:caption>
+      <image:title>Paris Auriol — Bright living room with sofa and large window</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/immeuble-boulevard.jpg</image:loc>
+      <image:caption>Building at 18 Boulevard Vincent Auriol</image:caption>
+      <image:title>Paris Auriol — Building at 18 Boulevard Vincent Auriol</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/espace-repas.jpg</image:loc>
+      <image:caption>Dining area adjoining the living room</image:caption>
+      <image:title>Paris Auriol — Dining area adjoining the living room</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/chambre-lit.jpg</image:loc>
+      <image:caption>Bedroom with a large bed and window</image:caption>
+      <image:title>Paris Auriol — Bedroom with a large bed and window</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/cuisine-equipee.jpg</image:loc>
+      <image:caption>Fully equipped kitchen and dining corner</image:caption>
+      <image:title>Paris Auriol — Fully equipped kitchen and dining corner</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/salon-miroir.jpg</image:loc>
+      <image:caption>Living room with sofa and large mirror</image:caption>
+      <image:title>Paris Auriol — Living room with sofa and large mirror</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/salle-de-bains.jpg</image:loc>
+      <image:caption>Bathroom with shower, washbasin and toilet</image:caption>
+      <image:title>Paris Auriol — Bathroom with shower, washbasin and toilet</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/vue-seine-bercy.jpg</image:loc>
+      <image:caption>City view towards the Seine and Bercy</image:caption>
+      <image:title>Paris Auriol — City view towards the Seine and Bercy</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://parisauriol.com/de/photos.html</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://parisauriol.com/photos.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://parisauriol.com/en/photos.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://parisauriol.com/de/photos.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://parisauriol.com/es/photos.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://parisauriol.com/photos.html" />
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/salon-fenetre.jpg</image:loc>
+      <image:caption>Helles Wohnzimmer mit Sofa und großem Fenster</image:caption>
+      <image:title>Paris Auriol — Helles Wohnzimmer mit Sofa und großem Fenster</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/immeuble-boulevard.jpg</image:loc>
+      <image:caption>Gebäude am Boulevard Vincent Auriol 18</image:caption>
+      <image:title>Paris Auriol — Gebäude am Boulevard Vincent Auriol 18</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/espace-repas.jpg</image:loc>
+      <image:caption>Essbereich neben dem Wohnzimmer</image:caption>
+      <image:title>Paris Auriol — Essbereich neben dem Wohnzimmer</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/chambre-lit.jpg</image:loc>
+      <image:caption>Schlafzimmer mit großem Bett und Fenster</image:caption>
+      <image:title>Paris Auriol — Schlafzimmer mit großem Bett und Fenster</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/cuisine-equipee.jpg</image:loc>
+      <image:caption>Ausgestattete Küche mit Essplatz</image:caption>
+      <image:title>Paris Auriol — Ausgestattete Küche mit Essplatz</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/salon-miroir.jpg</image:loc>
+      <image:caption>Wohnzimmer mit Sofa und großem Spiegel</image:caption>
+      <image:title>Paris Auriol — Wohnzimmer mit Sofa und großem Spiegel</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/salle-de-bains.jpg</image:loc>
+      <image:caption>Bad mit Dusche, Waschbecken und WC</image:caption>
+      <image:title>Paris Auriol — Bad mit Dusche, Waschbecken und WC</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/vue-seine-bercy.jpg</image:loc>
+      <image:caption>Stadtblick in Richtung Seine und Bercy</image:caption>
+      <image:title>Paris Auriol — Stadtblick in Richtung Seine und Bercy</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://parisauriol.com/es/photos.html</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://parisauriol.com/photos.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://parisauriol.com/en/photos.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://parisauriol.com/de/photos.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://parisauriol.com/es/photos.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://parisauriol.com/photos.html" />
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/salon-fenetre.jpg</image:loc>
+      <image:caption>Salón luminoso con sofá y gran ventana</image:caption>
+      <image:title>Paris Auriol — Salón luminoso con sofá y gran ventana</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/immeuble-boulevard.jpg</image:loc>
+      <image:caption>Edificio del 18 Boulevard Vincent Auriol</image:caption>
+      <image:title>Paris Auriol — Edificio del 18 Boulevard Vincent Auriol</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/espace-repas.jpg</image:loc>
+      <image:caption>Zona de comedor junto al salón</image:caption>
+      <image:title>Paris Auriol — Zona de comedor junto al salón</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/chambre-lit.jpg</image:loc>
+      <image:caption>Dormitorio con cama grande y ventana</image:caption>
+      <image:title>Paris Auriol — Dormitorio con cama grande y ventana</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/cuisine-equipee.jpg</image:loc>
+      <image:caption>Cocina equipada y rincón comedor</image:caption>
+      <image:title>Paris Auriol — Cocina equipada y rincón comedor</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/salon-miroir.jpg</image:loc>
+      <image:caption>Salón con sofá y espejo grande</image:caption>
+      <image:title>Paris Auriol — Salón con sofá y espejo grande</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/salle-de-bains.jpg</image:loc>
+      <image:caption>Baño con ducha, lavabo e inodoro</image:caption>
+      <image:title>Paris Auriol — Baño con ducha, lavabo e inodoro</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://parisauriol.com/assets/photos/vue-seine-bercy.jpg</image:loc>
+      <image:caption>Vista urbana hacia el Sena y Bercy</image:caption>
+      <image:title>Paris Auriol — Vista urbana hacia el Sena y Bercy</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://parisauriol.com/disponibilites.html</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://parisauriol.com/disponibilites.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://parisauriol.com/en/disponibilites.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://parisauriol.com/de/disponibilites.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://parisauriol.com/es/disponibilites.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://parisauriol.com/disponibilites.html" />
+  </url>
+  <url>
+    <loc>https://parisauriol.com/en/disponibilites.html</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://parisauriol.com/disponibilites.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://parisauriol.com/en/disponibilites.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://parisauriol.com/de/disponibilites.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://parisauriol.com/es/disponibilites.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://parisauriol.com/disponibilites.html" />
+  </url>
+  <url>
+    <loc>https://parisauriol.com/de/disponibilites.html</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://parisauriol.com/disponibilites.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://parisauriol.com/en/disponibilites.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://parisauriol.com/de/disponibilites.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://parisauriol.com/es/disponibilites.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://parisauriol.com/disponibilites.html" />
+  </url>
+  <url>
+    <loc>https://parisauriol.com/es/disponibilites.html</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://parisauriol.com/disponibilites.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://parisauriol.com/en/disponibilites.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://parisauriol.com/de/disponibilites.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://parisauriol.com/es/disponibilites.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://parisauriol.com/disponibilites.html" />
+  </url>
+  <url>
+    <loc>https://parisauriol.com/quartier.html</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://parisauriol.com/quartier.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://parisauriol.com/en/quartier.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://parisauriol.com/de/quartier.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://parisauriol.com/es/quartier.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://parisauriol.com/quartier.html" />
+  </url>
+  <url>
+    <loc>https://parisauriol.com/en/quartier.html</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://parisauriol.com/quartier.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://parisauriol.com/en/quartier.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://parisauriol.com/de/quartier.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://parisauriol.com/es/quartier.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://parisauriol.com/quartier.html" />
+  </url>
+  <url>
+    <loc>https://parisauriol.com/de/quartier.html</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://parisauriol.com/quartier.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://parisauriol.com/en/quartier.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://parisauriol.com/de/quartier.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://parisauriol.com/es/quartier.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://parisauriol.com/quartier.html" />
+  </url>
+  <url>
+    <loc>https://parisauriol.com/es/quartier.html</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://parisauriol.com/quartier.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://parisauriol.com/en/quartier.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://parisauriol.com/de/quartier.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://parisauriol.com/es/quartier.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://parisauriol.com/quartier.html" />
+  </url>
+  <url>
+    <loc>https://parisauriol.com/decouvrir.html</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://parisauriol.com/decouvrir.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://parisauriol.com/en/decouvrir.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://parisauriol.com/de/decouvrir.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://parisauriol.com/es/decouvrir.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://parisauriol.com/decouvrir.html" />
+  </url>
+  <url>
+    <loc>https://parisauriol.com/en/decouvrir.html</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://parisauriol.com/decouvrir.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://parisauriol.com/en/decouvrir.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://parisauriol.com/de/decouvrir.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://parisauriol.com/es/decouvrir.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://parisauriol.com/decouvrir.html" />
+  </url>
+  <url>
+    <loc>https://parisauriol.com/de/decouvrir.html</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://parisauriol.com/decouvrir.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://parisauriol.com/en/decouvrir.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://parisauriol.com/de/decouvrir.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://parisauriol.com/es/decouvrir.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://parisauriol.com/decouvrir.html" />
+  </url>
+  <url>
+    <loc>https://parisauriol.com/es/decouvrir.html</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://parisauriol.com/decouvrir.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://parisauriol.com/en/decouvrir.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://parisauriol.com/de/decouvrir.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://parisauriol.com/es/decouvrir.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://parisauriol.com/decouvrir.html" />
+  </url>
+  <url>
+    <loc>https://parisauriol.com/agenda.html</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://parisauriol.com/agenda.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://parisauriol.com/en/agenda.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://parisauriol.com/de/agenda.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://parisauriol.com/es/agenda.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://parisauriol.com/agenda.html" />
+  </url>
+  <url>
+    <loc>https://parisauriol.com/en/agenda.html</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://parisauriol.com/agenda.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://parisauriol.com/en/agenda.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://parisauriol.com/de/agenda.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://parisauriol.com/es/agenda.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://parisauriol.com/agenda.html" />
+  </url>
+  <url>
+    <loc>https://parisauriol.com/de/agenda.html</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://parisauriol.com/agenda.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://parisauriol.com/en/agenda.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://parisauriol.com/de/agenda.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://parisauriol.com/es/agenda.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://parisauriol.com/agenda.html" />
+  </url>
+  <url>
+    <loc>https://parisauriol.com/es/agenda.html</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://parisauriol.com/agenda.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://parisauriol.com/en/agenda.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://parisauriol.com/de/agenda.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://parisauriol.com/es/agenda.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://parisauriol.com/agenda.html" />
+  </url>
+  <url>
+    <loc>https://parisauriol.com/sejour.html</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://parisauriol.com/sejour.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://parisauriol.com/en/sejour.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://parisauriol.com/de/sejour.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://parisauriol.com/es/sejour.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://parisauriol.com/sejour.html" />
+  </url>
+  <url>
+    <loc>https://parisauriol.com/en/sejour.html</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://parisauriol.com/sejour.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://parisauriol.com/en/sejour.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://parisauriol.com/de/sejour.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://parisauriol.com/es/sejour.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://parisauriol.com/sejour.html" />
+  </url>
+  <url>
+    <loc>https://parisauriol.com/de/sejour.html</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://parisauriol.com/sejour.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://parisauriol.com/en/sejour.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://parisauriol.com/de/sejour.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://parisauriol.com/es/sejour.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://parisauriol.com/sejour.html" />
+  </url>
+  <url>
+    <loc>https://parisauriol.com/es/sejour.html</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://parisauriol.com/sejour.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://parisauriol.com/en/sejour.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://parisauriol.com/de/sejour.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://parisauriol.com/es/sejour.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://parisauriol.com/sejour.html" />
+  </url>
+  <url>
+    <loc>https://parisauriol.com/faq.html</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://parisauriol.com/faq.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://parisauriol.com/en/faq.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://parisauriol.com/de/faq.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://parisauriol.com/es/faq.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://parisauriol.com/faq.html" />
+  </url>
+  <url>
+    <loc>https://parisauriol.com/en/faq.html</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://parisauriol.com/faq.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://parisauriol.com/en/faq.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://parisauriol.com/de/faq.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://parisauriol.com/es/faq.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://parisauriol.com/faq.html" />
+  </url>
+  <url>
+    <loc>https://parisauriol.com/de/faq.html</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://parisauriol.com/faq.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://parisauriol.com/en/faq.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://parisauriol.com/de/faq.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://parisauriol.com/es/faq.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://parisauriol.com/faq.html" />
+  </url>
+  <url>
+    <loc>https://parisauriol.com/es/faq.html</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://parisauriol.com/faq.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://parisauriol.com/en/faq.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://parisauriol.com/de/faq.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://parisauriol.com/es/faq.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://parisauriol.com/faq.html" />
+  </url>
 </urlset>

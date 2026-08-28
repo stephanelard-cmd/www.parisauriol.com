@@ -1,3 +1,11 @@
 User-agent: *
 Allow: /
+Disallow: /scripts/
+Disallow: /package/
+Disallow: /data/seo-translation-report.json
+Disallow: /data/seo-manifest.json
+Disallow: /data/manual-sync-trigger.txt
+Disallow: /data/google-seo-trigger.txt
+Disallow: /README.md
+
 Sitemap: https://parisauriol.com/sitemap.xml

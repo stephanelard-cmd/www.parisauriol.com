@@ -496,7 +496,10 @@ def update_head(soup: BeautifulSoup, page: str, language: str, photos: list[dict
     add_head_link(soup, "alternate", localized_url(page, "fr"), hreflang="x-default")
     for code, language_config in LANGUAGES.items():
         if code != language:
-            set_meta(soup, "property", "og:locale:alternate", language_config["locale"])
+            alternate_locale = soup.new_tag("meta")
+            alternate_locale["property"] = "og:locale:alternate"
+            alternate_locale["content"] = language_config["locale"]
+            soup.head.append(alternate_locale)
 
     style_link = soup.head.find("link", href=lambda value: value and value.endswith("assets/style.css"))
     seo_link = soup.new_tag("link", rel="stylesheet", href="/assets/seo.css")
@@ -640,6 +643,9 @@ def rewrite_urls(soup: BeautifulSoup, language: str) -> None:
             tag["style"] = re.sub(r"url\((['\"]?)(?:\.\.?/)?assets/", r"url(\1/assets/", tag["style"])
 
     for link in soup.find_all(href=True):
+        relations = set(link.get("rel", []))
+        if link.name == "link" and relations.intersection({"canonical", "alternate"}):
+            continue
         href = link.get("href", "")
         if not href or href.startswith(("#", "mailto:", "tel:", "javascript:")):
             continue
@@ -670,8 +676,8 @@ def vacation_rental_node(language: str, photos: list[dict[str, Any]]) -> dict[st
         "url": localized_url("index.html", language),
         "description": PAGES["index.html"]["description"][language],
         "image": image_urls,
-        "latitude": 48.83720,
-        "longitude": 2.37220,
+        "latitude": "48.83720",
+        "longitude": "2.37220",
         "address": {
             "@type": "PostalAddress",
             "streetAddress": "18 boulevard Vincent Auriol",
@@ -806,16 +812,19 @@ def process_page(
 ) -> str:
     soup = BeautifulSoup(source_html, "html.parser")
     clean_soup(soup)
+    translate_soup(soup, language, catalogue, missing)
     if page == "faq.html":
         faq_fragment = build_faq_main(language)
         if soup.main:
             soup.main.replace_with(faq_fragment.main)
         else:
             soup.body.append(faq_fragment.main)
-    else:
-        translate_soup(soup, language, catalogue, missing)
 
     soup.html["lang"] = language
+    for link in soup.select("[data-airbnb]"):
+        link["href"] = "https://www.airbnb.fr/rooms/926532409861049580"
+    for link in soup.select("[data-booking]"):
+        link["href"] = "https://www.booking.com/hotel/fr/paris-auriol.fr.html"
     set_current_navigation(soup, page)
     add_faq_footer_link(soup, language)
     if page == "index.html":
@@ -879,7 +888,10 @@ def write_robots() -> None:
 Allow: /
 Disallow: /scripts/
 Disallow: /package/
-Disallow: /data/
+Disallow: /data/seo-translation-report.json
+Disallow: /data/seo-manifest.json
+Disallow: /data/manual-sync-trigger.txt
+Disallow: /data/google-seo-trigger.txt
 Disallow: /README.md
 
 Sitemap: https://parisauriol.com/sitemap.xml
