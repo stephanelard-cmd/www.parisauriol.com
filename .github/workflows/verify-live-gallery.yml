@@ -1,0 +1,104 @@
+name: Vérifier la galerie et les langues en ligne
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/verify-live-gallery.yml"
+      - "data/verify-gallery-trigger.txt"
+
+permissions:
+  contents: read
+
+jobs:
+  browser-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer le dépôt
+        uses: actions/checkout@v4
+
+      - name: Préparer Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Installer Playwright
+        run: |
+          python -m pip install --disable-pip-version-check playwright
+          python -m playwright install --with-deps chromium
+
+      - name: Tester le site public dans Chromium
+        run: |
+          mkdir -p browser-report
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from playwright.sync_api import sync_playwright
+
+          report = {}
+          with sync_playwright() as p:
+              browser = p.chromium.launch(headless=True)
+              context = browser.new_context(
+                  locale='en-GB',
+                  timezone_id='Europe/Paris',
+                  viewport={'width': 1440, 'height': 1000},
+                  ignore_https_errors=True,
+              )
+              page = context.new_page()
+
+              page.goto('https://parisauriol.com/photos.html?lang=en', wait_until='domcontentloaded', timeout=90000)
+              page.wait_for_selector('#language-select', timeout=30000)
+              page.wait_for_function("document.querySelectorAll('[data-lightbox]').length === 8")
+              page.wait_for_function("[...document.images].filter(i => i.closest('[data-lightbox]')).every(i => i.complete && i.naturalWidth > 0)", timeout=60000)
+              assert page.locator('h1').inner_text().strip() == 'Apartment photos'
+              assert page.locator('#language-select').input_value() == 'en'
+              assert page.locator('[data-lightbox]').count() == 8
+              assert page.locator('.placeholder-gallery').count() == 0
+              dimensions = page.locator('[data-lightbox] img').evaluate_all("imgs => imgs.map(i => [i.naturalWidth, i.naturalHeight])")
+              assert all(width > 0 and height > 0 for width, height in dimensions)
+              page.screenshot(path='browser-report/photos-en.png', full_page=True)
+
+              page.locator('[data-lightbox]').first.click()
+              page.wait_for_selector('dialog.photo-lightbox[open]')
+              caption_en = page.locator('.photo-lightbox figcaption').inner_text()
+              assert 'Bright living room with sofa and large window' in caption_en
+              page.screenshot(path='browser-report/lightbox-en.png')
+              page.locator('.lightbox-close').click()
+
+              page.select_option('#language-select', 'de')
+              page.wait_for_function("document.querySelector('h1').textContent.trim() === 'Fotos der Unterkunft'")
+              assert page.locator('#language-select').input_value() == 'de'
+              page.screenshot(path='browser-report/photos-de.png', full_page=True)
+
+              page.goto('https://parisauriol.com/?lang=es', wait_until='domcontentloaded', timeout=90000)
+              page.wait_for_selector('#language-select', timeout=30000)
+              page.wait_for_function("document.querySelector('h1').textContent.includes('apartamento parisino')")
+              hero_background = page.locator('.hero').evaluate("el => getComputedStyle(el).backgroundImage")
+              assert 'salon-fenetre.jpg' in hero_background
+              assert page.locator('#language-select').input_value() == 'es'
+              page.screenshot(path='browser-report/home-es.png', full_page=True)
+
+              report = {
+                  'photos_loaded': len(dimensions),
+                  'dimensions': dimensions,
+                  'english_lightbox_caption': caption_en,
+                  'german_heading': 'Fotos der Unterkunft',
+                  'spanish_home_heading': page.locator('h1').inner_text().strip(),
+                  'hero_background': hero_background,
+                  'status': 'success',
+              }
+              browser.close()
+
+          Path('browser-report/report.json').write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+          print(json.dumps(report, ensure_ascii=False, indent=2))
+          PY
+
+      - name: Conserver les captures de contrôle
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: parisauriol-gallery-language-check
+          path: browser-report
+          if-no-files-found: warn
+          retention-days: 7
