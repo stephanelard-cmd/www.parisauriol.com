@@ -1,0 +1,77 @@
+name: Appliquer la galerie et le multilingue
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/apply_content_upgrade.py"
+      - "assets/photos/manifest.json"
+      - "assets/translations.json"
+      - "assets/enhancements.css"
+      - "assets/app.js"
+      - ".github/workflows/apply-site-upgrade.yml"
+      - "data/site-upgrade-trigger.txt"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: parisauriol-site-upgrade
+  cancel-in-progress: true
+
+jobs:
+  upgrade:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer le dépôt
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Préparer Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Insérer les photographies et les liens de langue
+        run: python scripts/apply_content_upgrade.py
+
+      - name: Contrôler JavaScript, JSON et HTML
+        run: |
+          node --check assets/app.js
+          python -m json.tool assets/translations.json >/dev/null
+          python -m json.tool assets/photos/manifest.json >/dev/null
+          python - <<'PY'
+          from pathlib import Path
+          pages = list(Path('.').glob('*.html'))
+          assert len(pages) >= 10
+          for page in pages:
+              text = page.read_text(encoding='utf-8')
+              assert 'assets/style.css' in text, page
+              assert 'assets/enhancements.css' in text, page
+              assert 'assets/app.js' in text, page
+              assert 'hreflang="en"' in text, page
+              assert 'hreflang="de"' in text, page
+              assert 'hreflang="es"' in text, page
+          photos = Path('photos.html').read_text(encoding='utf-8')
+          assert photos.count('data-lightbox') == 8
+          assert 'placeholder-gallery' not in photos
+          index = Path('index.html').read_text(encoding='utf-8')
+          assert "assets/photos/salon-fenetre.jpg" in index
+          assert "images.unsplash.com" not in index
+          print(f'{len(pages)} pages validées, 8 photographies dans la galerie.')
+          PY
+
+      - name: Enregistrer les pages mises à niveau
+        run: |
+          git add '*.html'
+          if git diff --cached --quiet; then
+            echo "Les pages sont déjà à jour."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Afficher les photos réelles et activer les langues"
+          git pull --rebase origin main
+          git push origin HEAD:main
