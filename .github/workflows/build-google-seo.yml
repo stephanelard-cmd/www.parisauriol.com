@@ -48,21 +48,21 @@ jobs:
           # Traduire l’enveloppe de la FAQ avant de remplacer son contenu principal.
           translate_line = '    translate_soup(soup, language, catalogue, missing)'
           faq_line = '    if page == "faq.html":'
-          if faq_line in lines:
-              faq_index = lines.index(faq_line)
-              if faq_index == 0 or lines[faq_index - 1] != translate_line:
-                  else_index = lines.index('    else:', faq_index)
-                  old_translate_index = lines.index('        translate_soup(soup, language, catalogue, missing)', else_index)
-                  replacement = [
-                      translate_line,
-                      faq_line,
-                      '        faq_fragment = build_faq_main(language)',
-                      '        if soup.main:',
-                      '            soup.main.replace_with(faq_fragment.main)',
-                      '        else:',
-                      '            soup.body.append(faq_fragment.main)',
-                  ]
-                  lines[faq_index:old_translate_index + 1] = replacement
+          process_start = lines.index('def process_page(')
+          faq_index = lines.index(faq_line, process_start)
+          if faq_index == 0 or lines[faq_index - 1] != translate_line:
+              else_index = lines.index('    else:', faq_index)
+              old_translate_index = lines.index('        translate_soup(soup, language, catalogue, missing)', else_index)
+              replacement = [
+                  translate_line,
+                  faq_line,
+                  '        faq_fragment = build_faq_main(language)',
+                  '        if soup.main:',
+                  '            soup.main.replace_with(faq_fragment.main)',
+                  '        else:',
+                  '            soup.body.append(faq_fragment.main)',
+              ]
+              lines[faq_index:old_translate_index + 1] = replacement
 
           # Créer une balise og:locale:alternate distincte par langue.
           faulty_locale = '            set_meta(soup, "property", "og:locale:alternate", language_config["locale"])'
