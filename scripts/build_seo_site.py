@@ -821,6 +821,9 @@ def process_page(
             soup.body.append(faq_fragment.main)
 
     soup.html["lang"] = language
+    brand_link = soup.select_one("header a.brand")
+    if brand_link and brand_link.has_attr("aria-label"):
+        del brand_link["aria-label"]
     for link in soup.select("[data-airbnb]"):
         link["href"] = "https://www.airbnb.fr/rooms/926532409861049580"
     for link in soup.select("[data-booking]"):

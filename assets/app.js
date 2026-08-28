@@ -14,7 +14,11 @@ let catalogue = {
     de: {label: 'Deutsch', short: 'DE', locale: 'de-DE'},
     es: {label: 'Español', short: 'ES', locale: 'es-ES'},
   },
-  messages: {},
+  messages: {
+    'Langue': {en: 'Language', de: 'Sprache', es: 'Idioma'},
+    'Ouvrir le menu': {en: 'Open menu', de: 'Menü öffnen', es: 'Abrir el menú'},
+    'Fermer le menu': {en: 'Close menu', de: 'Menü schließen', es: 'Cerrar el menú'},
+  },
 };
 let currentLanguage = FALLBACK_LANGUAGE;
 let calendarPayload = null;
@@ -336,11 +340,14 @@ async function init() {
   document.documentElement.lang = currentLanguage;
   $$('[data-airbnb]').forEach(link => { link.href = AIRBNB; });
   $$('[data-booking]').forEach(link => { link.href = BOOKING; });
-  try {
-    const response = await fetch('/assets/translations.json', {cache: 'force-cache'});
-    if (response.ok) catalogue = await response.json();
-  } catch (error) {
-    console.warn('Traductions dynamiques indisponibles.', error);
+  const needsDynamicTranslations = Boolean($('#calendar') || $('#events') || $('[data-lightbox]'));
+  if (needsDynamicTranslations) {
+    try {
+      const response = await fetch('/assets/translations.json', {cache: 'force-cache'});
+      if (response.ok) catalogue = await response.json();
+    } catch (error) {
+      console.warn('Traductions dynamiques indisponibles.', error);
+    }
   }
   injectLanguagePicker();
   setupMenu();

@@ -13,8 +13,8 @@
   "vacation_rental_images": 8,
   "lighthouse": {
     "mobile": {
-      "performance": 98,
-      "accessibility": 95,
+      "performance": 100,
+      "accessibility": 100,
       "best_practices": 100,
       "seo": 100,
       "first_contentful_paint_seconds": 0.9,
@@ -35,5 +35,5 @@
   },
   "custom_https_certificate": false,
   "errors": [],
-  "note": "Le site, son maillage et son référencement technique sont valides. Le certificat personnalisé parisauriol.com doit encore être émis et l’option Enforce HTTPS activée dans GitHub Pages."
+  "note": "Le site, son maillage, son référencement et son accessibilité technique sont validés. Le certificat personnalisé parisauriol.com doit encore être émis et l’option Enforce HTTPS activée dans GitHub Pages."
 }
