@@ -1,12 +1,13 @@
 # État de publication de parisauriol.com
 
-Diagnostic actualisé le **28 août 2026 à 13:35 UTC** depuis GitHub Actions.
+Diagnostic actualisé le **28 août 2026 à 13:38 UTC** depuis GitHub Actions.
 
 ## GitHub Pages
 
 - GitHub Pages : activé.
 - Construction et publication depuis `main` : réussies.
-- Le site public est désormais servi par l’infrastructure GitHub Pages.
+- Nouvelle publication après propagation DNS : réussie.
+- Le site public est servi par l’infrastructure GitHub Pages.
 
 ## DNS validés
 
@@ -18,8 +19,9 @@ Diagnostic actualisé le **28 août 2026 à 13:35 UTC** depuis GitHub Actions.
 
 - `http://parisauriol.com/` : code 200, serveur GitHub.com, page d’accueil du site.
 - `http://www.parisauriol.com/` : redirection 301 vers `http://parisauriol.com/`.
-- `https://parisauriol.com/` : le certificat personnalisé n’est pas encore émis ; GitHub présente provisoirement son certificat générique `*.github.io`.
+- `https://parisauriol.com/` : certificat personnalisé encore en cours d’émission ; GitHub présente provisoirement son certificat générique `*.github.io`.
+- `https://www.parisauriol.com/` : même état provisoire.
 
 ## Conclusion
 
-La configuration OVH est correcte et propagée. Une nouvelle publication Pages est déclenchée par ce commit afin que GitHub finalise la validation du domaine et l’émission du certificat TLS pour `parisauriol.com` et `www.parisauriol.com`.
+La configuration OVH est correcte, propagée et fonctionnelle. La publication GitHub Pages est réussie. Il ne reste que l’émission du certificat TLS par GitHub, puis l’activation de **Enforce HTTPS** dans `Settings → Pages`.
