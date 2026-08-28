@@ -1,0 +1,225 @@
+name: Auditer en ligne le référencement Google
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/audit-google-seo-live.yml"
+      - "data/live-seo-audit-trigger.txt"
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer le dépôt
+        uses: actions/checkout@v4
+
+      - name: Préparer Node.js et Python
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Installer les outils de contrôle
+        run: |
+          python -m pip install --disable-pip-version-check requests beautifulsoup4 lxml
+
+      - name: Attendre la publication GitHub Pages
+        run: |
+          set -e
+          for attempt in $(seq 1 30); do
+            body=$(curl -ksSL --max-time 30 "https://parisauriol.com/en/?audit=${GITHUB_SHA}-${attempt}" || true)
+            if grep -q "Paris 13 Apartment near Accor Arena" <<<"$body"; then
+              echo "Nouvelle version détectée au passage ${attempt}."
+              exit 0
+            fi
+            sleep 5
+          done
+          echo "La nouvelle version n’est pas encore servie."
+          exit 1
+
+      - name: Contrôler les 36 URL, les canoniques, hreflang et liens internes
+        run: |
+          python - <<'PY'
+          import json
+          import re
+          import ssl
+          import subprocess
+          import urllib3
+          from collections import Counter
+          from pathlib import Path
+          from urllib.parse import urljoin, urlparse
+          from xml.etree import ElementTree as ET
+
+          import requests
+          from bs4 import BeautifulSoup
+
+          urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+          BASE = 'https://parisauriol.com'
+          session = requests.Session()
+          session.headers['User-Agent'] = 'ParisAuriolSEOAudit/1.0'
+
+          sitemap_response = session.get(f'{BASE}/sitemap.xml', timeout=40, verify=False)
+          sitemap_response.raise_for_status()
+          root = ET.fromstring(sitemap_response.content)
+          ns = {'sm': 'http://www.sitemaps.org/schemas/sitemap/0.9'}
+          urls = [node.text.strip() for node in root.findall('sm:url/sm:loc', ns)]
+          assert len(urls) == 36, f'{len(urls)} URL(s) trouvée(s), 36 attendues'
+          assert len(set(urls)) == 36, 'URL dupliquée dans le sitemap'
+
+          errors = []
+          titles = Counter()
+          canonicals = Counter()
+          checked_internal = set()
+          language_counts = Counter()
+
+          for url in urls:
+            response = session.get(url, timeout=40, verify=False, allow_redirects=True)
+            if response.status_code != 200:
+              errors.append(f'{url}: HTTP {response.status_code}')
+              continue
+            soup = BeautifulSoup(response.text, 'lxml')
+            lang = soup.html.get('lang') if soup.html else None
+            language_counts[lang] += 1
+            title = soup.title.get_text(' ', strip=True) if soup.title else ''
+            titles[title] += 1
+            canonical = soup.select_one('link[rel="canonical"]')
+            canonical_url = canonical.get('href') if canonical else ''
+            canonicals[canonical_url] += 1
+            if canonical_url != url:
+              errors.append(f'{url}: canonical={canonical_url!r}')
+            robots = soup.select_one('meta[name="robots"]')
+            if not robots or 'noindex' in robots.get('content', '').lower():
+              errors.append(f'{url}: robots non indexable')
+            if len(soup.find_all('h1')) != 1:
+              errors.append(f'{url}: {len(soup.find_all("h1"))} H1')
+            alternates = {
+              link.get('hreflang'): link.get('href')
+              for link in soup.select('link[rel="alternate"][hreflang]')
+            }
+            if set(alternates) != {'fr', 'en', 'de', 'es', 'x-default'}:
+              errors.append(f'{url}: hreflang={sorted(alternates)}')
+            if not soup.select_one('script[type="application/ld+json"]'):
+              errors.append(f'{url}: JSON-LD absent')
+            for script in soup.select('script[type="application/ld+json"]'):
+              try:
+                json.loads(script.string or '{}')
+              except Exception as exc:
+                errors.append(f'{url}: JSON-LD invalide {exc}')
+            for link in soup.select('a[href]'):
+              absolute = urljoin(url, link.get('href'))
+              parsed = urlparse(absolute)
+              if parsed.netloc != 'parisauriol.com' or parsed.fragment:
+                continue
+              if parsed.path.startswith(('/assets/', '/data/')):
+                continue
+              checked_internal.add(absolute.split('#', 1)[0])
+
+          duplicate_titles = [title for title, count in titles.items() if title and count > 1]
+          if duplicate_titles:
+            errors.append(f'Titres dupliqués: {duplicate_titles}')
+          duplicate_canonicals = [canonical for canonical, count in canonicals.items() if canonical and count > 1]
+          if duplicate_canonicals:
+            errors.append(f'Canoniques dupliquées: {duplicate_canonicals}')
+
+          for url in sorted(checked_internal):
+            response = session.head(url, timeout=30, verify=False, allow_redirects=True)
+            if response.status_code >= 400 or response.status_code == 0:
+              response = session.get(url, timeout=30, verify=False, allow_redirects=True)
+            if response.status_code >= 400:
+              errors.append(f'Lien interne cassé {url}: HTTP {response.status_code}')
+
+          robots = session.get(f'{BASE}/robots.txt', timeout=30, verify=False)
+          if robots.status_code != 200 or f'Sitemap: {BASE}/sitemap.xml' not in robots.text:
+            errors.append('robots.txt ou déclaration du sitemap incorrecte')
+
+          home = session.get(f'{BASE}/', timeout=30, verify=False).text
+          home_soup = BeautifulSoup(home, 'lxml')
+          payloads = [json.loads(script.string or '{}') for script in home_soup.select('script[type="application/ld+json"]')]
+          graph = [node for payload in payloads for node in payload.get('@graph', [])]
+          rentals = [node for node in graph if node.get('@type') == 'VacationRental']
+          websites = [node for node in graph if node.get('@type') == 'WebSite']
+          assert len(rentals) == 1, f'{len(rentals)} VacationRental'
+          assert len(websites) == 1, f'{len(websites)} WebSite'
+          rental = rentals[0]
+          assert len(rental.get('image', [])) >= 8
+          assert rental.get('identifier') == '7511306769833'
+          assert rental.get('containsPlace', {}).get('occupancy', {}).get('value') == 3
+
+          report = {
+            'sitemap_urls': len(urls),
+            'languages': dict(language_counts),
+            'unique_titles': len(titles),
+            'unique_canonicals': len(canonicals),
+            'internal_links_checked': len(checked_internal),
+            'vacation_rental_images': len(rental.get('image', [])),
+            'errors': errors,
+          }
+          Path('live-seo-report.json').write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+          print(json.dumps(report, ensure_ascii=False, indent=2))
+          if errors:
+            raise SystemExit(1)
+          PY
+
+      - name: Auditer Lighthouse SEO sur mobile et ordinateur
+        run: |
+          set -euo pipefail
+          npx --yes lighthouse@latest https://parisauriol.com/ \
+            --only-categories=seo \
+            --form-factor=mobile \
+            --screen-emulation.mobile=true \
+            --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage --ignore-certificate-errors" \
+            --output=json --output-path=lighthouse-seo-mobile.json --quiet
+          npx --yes lighthouse@latest https://parisauriol.com/ \
+            --only-categories=seo \
+            --preset=desktop \
+            --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage --ignore-certificate-errors" \
+            --output=json --output-path=lighthouse-seo-desktop.json --quiet
+          node <<'NODE'
+          const fs = require('fs');
+          for (const [file, label] of [
+            ['lighthouse-seo-mobile.json', 'mobile'],
+            ['lighthouse-seo-desktop.json', 'ordinateur'],
+          ]) {
+            const report = JSON.parse(fs.readFileSync(file, 'utf8'));
+            const score = Math.round(report.categories.seo.score * 100);
+            console.log(`Lighthouse SEO ${label}: ${score}/100`);
+            const failures = report.categories.seo.auditRefs
+              .map(ref => report.audits[ref.id])
+              .filter(audit => audit.score !== null && audit.score < 1);
+            for (const audit of failures) console.log(`- ${audit.title}: ${audit.displayValue || ''}`);
+            if (score < 100) process.exitCode = 1;
+          }
+          NODE
+
+      - name: Vérifier le certificat HTTPS réel
+        id: tls
+        shell: bash
+        run: |
+          set +e
+          certificate=$(timeout 20 bash -c \
+            'echo | openssl s_client -connect parisauriol.com:443 -servername parisauriol.com 2>/dev/null | openssl x509 -noout -subject -issuer -dates -ext subjectAltName' \
+            2>/dev/null)
+          echo "$certificate"
+          if echo "$certificate" | grep -Eq 'DNS:parisauriol\.com([,[:space:]]|$)'; then
+            echo "valid=true" >> "$GITHUB_OUTPUT"
+            echo "Certificat HTTPS personnalisé valide."
+          else
+            echo "valid=false" >> "$GITHUB_OUTPUT"
+            echo "Certificat HTTPS personnalisé encore absent."
+          fi
+          exit 0
+
+      - name: Conserver les rapports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: parisauriol-live-google-seo-audit
+          path: |
+            live-seo-report.json
+            lighthouse-seo-*.json
+          if-no-files-found: warn
+          retention-days: 14
