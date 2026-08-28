@@ -1,0 +1,101 @@
+name: Auditer Lighthouse Best Practices
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/lighthouse-best-practices.yml"
+      - "data/lighthouse-trigger.txt"
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer le dépôt
+        uses: actions/checkout@v4
+
+      - name: Préparer Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Lancer Lighthouse mobile et ordinateur
+        shell: bash
+        run: |
+          set -euo pipefail
+          npx --yes lighthouse@latest https://parisauriol.com/ \
+            --only-categories=best-practices \
+            --form-factor=mobile \
+            --screen-emulation.mobile=true \
+            --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage" \
+            --output=json \
+            --output-path=lighthouse-mobile.json \
+            --quiet
+
+          npx --yes lighthouse@latest https://parisauriol.com/ \
+            --only-categories=best-practices \
+            --preset=desktop \
+            --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage" \
+            --output=json \
+            --output-path=lighthouse-desktop.json \
+            --quiet
+
+      - name: Afficher chaque audit pénalisant
+        shell: bash
+        run: |
+          node <<'NODE'
+          const fs = require('fs');
+
+          function compact(value, max = 500) {
+            const text = typeof value === 'string' ? value : JSON.stringify(value);
+            return text.length > max ? `${text.slice(0, max)}…` : text;
+          }
+
+          function report(path, label) {
+            const data = JSON.parse(fs.readFileSync(path, 'utf8'));
+            const category = data.categories['best-practices'];
+            const refs = new Set(category.auditRefs.map(ref => ref.id));
+            const failures = Object.entries(data.audits)
+              .filter(([id, audit]) => refs.has(id) && audit.score !== null && audit.score < 1)
+              .sort((a, b) => (a[1].score ?? 0) - (b[1].score ?? 0));
+
+            console.log(`\n================ ${label} ================`);
+            console.log(`SCORE BEST PRACTICES: ${Math.round(category.score * 100)}`);
+            console.log(`Lighthouse: ${data.lighthouseVersion}`);
+            console.log(`URL finale: ${data.finalDisplayedUrl}`);
+
+            if (!failures.length) {
+              console.log('Aucun audit pénalisant.');
+              return;
+            }
+
+            for (const [id, audit] of failures) {
+              console.log(`\n[${id}] score=${audit.score}`);
+              console.log(`Titre: ${audit.title}`);
+              if (audit.displayValue) console.log(`Valeur: ${audit.displayValue}`);
+              console.log(`Description: ${compact(audit.description, 900)}`);
+              const items = audit.details?.items;
+              if (Array.isArray(items) && items.length) {
+                console.log(`Éléments (${items.length}):`);
+                items.slice(0, 20).forEach((item, index) => {
+                  console.log(`  ${index + 1}. ${compact(item, 1200)}`);
+                });
+              }
+            }
+          }
+
+          report('lighthouse-mobile.json', 'MOBILE');
+          report('lighthouse-desktop.json', 'ORDINATEUR');
+          NODE
+
+      - name: Conserver les rapports complets
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-best-practices
+          path: lighthouse-*.json
+          retention-days: 7
