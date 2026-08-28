@@ -23,6 +23,19 @@ jobs:
         with:
           node-version: "22"
 
+      - name: Diagnostiquer DNS et certificat TLS
+        shell: bash
+        run: |
+          set +e
+          echo "=== Résolution IPv4 / IPv6 ==="
+          getent ahosts parisauriol.com | sort -u || true
+          echo
+          echo "=== Certificat présenté pour parisauriol.com ==="
+          timeout 20 bash -c 'echo | openssl s_client -connect parisauriol.com:443 -servername parisauriol.com 2>/dev/null | openssl x509 -noout -subject -issuer -dates -fingerprint -sha256 -ext subjectAltName' || true
+          echo
+          echo "=== Vérification du nom d’hôte ==="
+          timeout 20 bash -c 'echo | openssl s_client -connect parisauriol.com:443 -servername parisauriol.com -verify_hostname parisauriol.com -verify_return_error 2>&1 | tail -30' || true
+
       - name: Lancer Lighthouse mobile et ordinateur
         shell: bash
         run: |
@@ -31,7 +44,7 @@ jobs:
             --only-categories=best-practices \
             --form-factor=mobile \
             --screen-emulation.mobile=true \
-            --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage" \
+            --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage --ignore-certificate-errors" \
             --output=json \
             --output-path=lighthouse-mobile.json \
             --quiet
@@ -39,7 +52,7 @@ jobs:
           npx --yes lighthouse@latest https://parisauriol.com/ \
             --only-categories=best-practices \
             --preset=desktop \
-            --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage" \
+            --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage --ignore-certificate-errors" \
             --output=json \
             --output-path=lighthouse-desktop.json \
             --quiet
@@ -81,8 +94,8 @@ jobs:
               const items = audit.details?.items;
               if (Array.isArray(items) && items.length) {
                 console.log(`Éléments (${items.length}):`);
-                items.slice(0, 20).forEach((item, index) => {
-                  console.log(`  ${index + 1}. ${compact(item, 1200)}`);
+                items.slice(0, 30).forEach((item, index) => {
+                  console.log(`  ${index + 1}. ${compact(item, 1600)}`);
                 });
               }
             }
