@@ -1,0 +1,21 @@
+{
+  "audited_at": "2026-08-28",
+  "live_indexable_urls": 36,
+  "languages": {
+    "fr": 9,
+    "en": 9,
+    "de": 9,
+    "es": 9
+  },
+  "unique_titles": 36,
+  "unique_canonicals": 36,
+  "internal_links_checked": 45,
+  "vacation_rental_images": 8,
+  "lighthouse_seo": {
+    "mobile": 100,
+    "desktop": 100
+  },
+  "custom_https_certificate": false,
+  "errors": [],
+  "note": "Le site et son référencement technique sont valides. Le certificat personnalisé parisauriol.com doit encore être émis et l’option Enforce HTTPS activée dans GitHub Pages."
+}
