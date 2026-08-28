@@ -1,0 +1,6 @@
+{
+  "status": "pending",
+  "updated_at": null,
+  "busy": [],
+  "note": "Ajoutez AIRBNB_ICAL_URL et BOOKING_ICAL_URL dans les secrets GitHub Actions pour activer la synchronisation."
+}
