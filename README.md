@@ -2,16 +2,18 @@
 
 Site officiel de présentation du meublé situé au 18 boulevard Vincent Auriol, 75013 Paris.
 
-## Publication
+## Publication GitHub Pages
 
-Le site est déployé par GitHub Actions avec le workflow `.github/workflows/deploy-pages.yml`.
-
-Pour la première activation :
+Le site est statique et doit être publié directement depuis la branche `main` :
 
 1. Ouvrir **Settings → Pages**.
-2. Dans **Build and deployment**, choisir **Source: GitHub Actions**.
-3. Dans **Custom domain**, saisir `parisauriol.com` puis enregistrer.
-4. Après validation DNS, activer **Enforce HTTPS**.
+2. Dans **Build and deployment**, choisir **Source: Deploy from a branch**.
+3. Choisir **Branch: main** et **Folder: / (root)**.
+4. Cliquer sur **Save**.
+5. Dans **Custom domain**, saisir `parisauriol.com`, puis enregistrer.
+6. Après validation du DNS et du certificat, activer **Enforce HTTPS**.
+
+Le fichier `CNAME` et le fichier `.nojekyll` sont déjà présents. Toute modification de `main`, y compris la mise à jour automatique du calendrier, déclenchera la republication par GitHub Pages.
 
 ## DNS OVH
 
