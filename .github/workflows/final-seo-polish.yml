@@ -1,0 +1,190 @@
+name: Finaliser accessibilité et performance SEO
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/final-seo-polish.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: parisauriol-final-seo-polish
+  cancel-in-progress: true
+
+jobs:
+  polish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer le dépôt
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Préparer Node.js et Python
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Installer le générateur HTML
+        run: python -m pip install --disable-pip-version-check beautifulsoup4==4.13.4
+
+      - name: Corriger les derniers écarts mesurés
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          # Éviter le gros catalogue de traduction sur les pages sans contenu dynamique.
+          app_path = Path('assets/app.js')
+          app = app_path.read_text(encoding='utf-8')
+          app = app.replace(
+              '  messages: {},\n};',
+              '''  messages: {
+              'Langue': {en: 'Language', de: 'Sprache', es: 'Idioma'},
+              'Ouvrir le menu': {en: 'Open menu', de: 'Menü öffnen', es: 'Abrir el menú'},
+              'Fermer le menu': {en: 'Close menu', de: 'Menü schließen', es: 'Cerrar el menú'},
+            },
+          };''',
+              1,
+          )
+          old_fetch = '''  try {
+              const response = await fetch('/assets/translations.json', {cache: 'force-cache'});
+              if (response.ok) catalogue = await response.json();
+            } catch (error) {
+              console.warn('Traductions dynamiques indisponibles.', error);
+            }
+          '''
+          new_fetch = '''  const needsDynamicTranslations = Boolean($('#calendar') || $('#events') || $('[data-lightbox]'));
+            if (needsDynamicTranslations) {
+              try {
+                const response = await fetch('/assets/translations.json', {cache: 'force-cache'});
+                if (response.ok) catalogue = await response.json();
+              } catch (error) {
+                console.warn('Traductions dynamiques indisponibles.', error);
+              }
+            }
+          '''
+          if old_fetch not in app:
+              raise SystemExit('Bloc de chargement des traductions introuvable')
+          app = app.replace(old_fetch, new_fetch, 1)
+          app_path.write_text(app, encoding='utf-8')
+
+          # Contrastes AA : texte secondaire sur fond beige et signature dans le pied de page.
+          css_path = Path('assets/seo.css')
+          css = css_path.read_text(encoding='utf-8')
+          marker = '/* Final accessibility polish */'
+          if marker not in css:
+              css += '''
+
+          /* Final accessibility polish */
+          :root{--muted:#5f6d76}
+          .brand-footer small{color:#d8a37a}
+          '''
+          css_path.write_text(css, encoding='utf-8')
+
+          # Laisser le texte visible du logo constituer son nom accessible.
+          generator_path = Path('scripts/build_seo_site.py')
+          generator = generator_path.read_text(encoding='utf-8')
+          anchor = '    soup.html["lang"] = language\n'
+          insertion = '''    soup.html["lang"] = language
+            brand_link = soup.select_one("header a.brand")
+            if brand_link and brand_link.has_attr("aria-label"):
+                del brand_link["aria-label"]
+          '''
+          if 'brand_link = soup.select_one("header a.brand")' not in generator:
+              if anchor not in generator:
+                  raise SystemExit('Point d’insertion du logo introuvable')
+              generator = generator.replace(anchor, insertion, 1)
+          generator_path.write_text(generator, encoding='utf-8')
+          PY
+
+      - name: Régénérer toutes les pages indexables
+        run: python scripts/build_seo_site.py
+
+      - name: Vérifier les fichiers
+        run: |
+          node --check assets/app.js
+          python -m py_compile scripts/build_seo_site.py
+          ! grep -R --line-number 'aria-label="Paris Auriol, accueil"' ./*.html en de es
+          grep -q 'Final accessibility polish' assets/seo.css
+          grep -q 'needsDynamicTranslations' assets/app.js
+
+      - name: Démarrer le site local
+        run: |
+          python3 -m http.server 8080 --bind 127.0.0.1 >/tmp/http.log 2>&1 &
+          echo $! >/tmp/http.pid
+          for attempt in $(seq 1 20); do
+            curl -fsS http://127.0.0.1:8080/ >/dev/null && exit 0
+            sleep 1
+          done
+          cat /tmp/http.log
+          exit 1
+
+      - name: Auditer Lighthouse mobile
+        run: |
+          set -euo pipefail
+          CHROME=$(command -v google-chrome-stable || command -v google-chrome)
+          rm -rf /tmp/chrome-final
+          "$CHROME" --headless=new --no-sandbox --disable-dev-shm-usage --disable-gpu \
+            --remote-debugging-address=127.0.0.1 --remote-debugging-port=9444 \
+            --user-data-dir=/tmp/chrome-final about:blank >/tmp/chrome-final.log 2>&1 &
+          pid=$!
+          for attempt in $(seq 1 30); do
+            curl -fsS http://127.0.0.1:9444/json/version >/dev/null && break
+            sleep 1
+          done
+          npx --yes lighthouse@13.4.1 http://127.0.0.1:8080/ \
+            --form-factor=mobile --screen-emulation.mobile=true --port=9444 \
+            --output=json --output-path=lighthouse-final-mobile.json --quiet
+          kill "$pid" 2>/dev/null || true
+          wait "$pid" 2>/dev/null || true
+
+          node <<'NODE'
+          const fs = require('fs');
+          const report = JSON.parse(fs.readFileSync('lighthouse-final-mobile.json', 'utf8'));
+          const scores = Object.fromEntries(
+            Object.entries(report.categories).map(([id, category]) => [id, Math.round(category.score * 100)])
+          );
+          console.log(JSON.stringify(scores, null, 2));
+          if (scores.accessibility !== 100) {
+            for (const ref of report.categories.accessibility.auditRefs) {
+              const audit = report.audits[ref.id];
+              if (audit.score !== null && audit.score < 1) console.log(ref.id, audit.title, audit.details?.items || []);
+            }
+            process.exit(1);
+          }
+          if (scores.seo !== 100 || scores['best-practices'] !== 100 || scores.performance < 98) process.exit(1);
+          fs.writeFileSync('lighthouse-final-scores.json', JSON.stringify(scores, null, 2) + '\n');
+          NODE
+
+      - name: Actualiser le rapport public
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          audit_path = Path('data/live-seo-audit.json')
+          audit = json.loads(audit_path.read_text(encoding='utf-8'))
+          scores = json.loads(Path('lighthouse-final-scores.json').read_text(encoding='utf-8'))
+          audit['lighthouse']['mobile']['performance'] = scores['performance']
+          audit['lighthouse']['mobile']['accessibility'] = scores['accessibility']
+          audit['lighthouse']['mobile']['best_practices'] = scores['best-practices']
+          audit['lighthouse']['mobile']['seo'] = scores['seo']
+          audit['note'] = 'Le site, son maillage, son référencement et son accessibilité technique sont validés. Le certificat personnalisé parisauriol.com doit encore être émis et l’option Enforce HTTPS activée dans GitHub Pages.'
+          audit_path.write_text(json.dumps(audit, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+          PY
+
+      - name: Enregistrer les optimisations finales
+        run: |
+          git add \
+            assets/app.js assets/seo.css \
+            scripts/build_seo_site.py \
+            '*.html' en de es sitemap.xml robots.txt \
+            data/seo-manifest.json data/seo-translation-report.json data/live-seo-audit.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Finaliser accessibilité et performance SEO"
+          git pull --rebase origin main
+          git push origin HEAD:main
