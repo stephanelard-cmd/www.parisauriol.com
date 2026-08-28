@@ -39,33 +39,38 @@ jobs:
           # Éviter le gros catalogue de traduction sur les pages sans contenu dynamique.
           app_path = Path('assets/app.js')
           app = app_path.read_text(encoding='utf-8')
-          app = app.replace(
-              '  messages: {},\n};',
-              '''  messages: {
-              'Langue': {en: 'Language', de: 'Sprache', es: 'Idioma'},
-              'Ouvrir le menu': {en: 'Open menu', de: 'Menü öffnen', es: 'Abrir el menú'},
-              'Fermer le menu': {en: 'Close menu', de: 'Menü schließen', es: 'Cerrar el menú'},
-            },
-          };''',
-              1,
+          messages_old = '  messages: {},\n};'
+          messages_new = (
+              "  messages: {\n"
+              "    'Langue': {en: 'Language', de: 'Sprache', es: 'Idioma'},\n"
+              "    'Ouvrir le menu': {en: 'Open menu', de: 'Menü öffnen', es: 'Abrir el menú'},\n"
+              "    'Fermer le menu': {en: 'Close menu', de: 'Menü schließen', es: 'Cerrar el menú'},\n"
+              "  },\n"
+              "};"
           )
-          old_fetch = '''  try {
-              const response = await fetch('/assets/translations.json', {cache: 'force-cache'});
-              if (response.ok) catalogue = await response.json();
-            } catch (error) {
-              console.warn('Traductions dynamiques indisponibles.', error);
-            }
-          '''
-          new_fetch = '''  const needsDynamicTranslations = Boolean($('#calendar') || $('#events') || $('[data-lightbox]'));
-            if (needsDynamicTranslations) {
-              try {
-                const response = await fetch('/assets/translations.json', {cache: 'force-cache'});
-                if (response.ok) catalogue = await response.json();
-              } catch (error) {
-                console.warn('Traductions dynamiques indisponibles.', error);
-              }
-            }
-          '''
+          if messages_old not in app:
+              raise SystemExit('Bloc de messages initial introuvable')
+          app = app.replace(messages_old, messages_new, 1)
+
+          old_fetch = (
+              "  try {\n"
+              "    const response = await fetch('/assets/translations.json', {cache: 'force-cache'});\n"
+              "    if (response.ok) catalogue = await response.json();\n"
+              "  } catch (error) {\n"
+              "    console.warn('Traductions dynamiques indisponibles.', error);\n"
+              "  }\n"
+          )
+          new_fetch = (
+              "  const needsDynamicTranslations = Boolean($('#calendar') || $('#events') || $('[data-lightbox]'));\n"
+              "  if (needsDynamicTranslations) {\n"
+              "    try {\n"
+              "      const response = await fetch('/assets/translations.json', {cache: 'force-cache'});\n"
+              "      if (response.ok) catalogue = await response.json();\n"
+              "    } catch (error) {\n"
+              "      console.warn('Traductions dynamiques indisponibles.', error);\n"
+              "    }\n"
+              "  }\n"
+          )
           if old_fetch not in app:
               raise SystemExit('Bloc de chargement des traductions introuvable')
           app = app.replace(old_fetch, new_fetch, 1)
@@ -76,23 +81,23 @@ jobs:
           css = css_path.read_text(encoding='utf-8')
           marker = '/* Final accessibility polish */'
           if marker not in css:
-              css += '''
-
-          /* Final accessibility polish */
-          :root{--muted:#5f6d76}
-          .brand-footer small{color:#d8a37a}
-          '''
+              css += (
+                  "\n\n/* Final accessibility polish */\n"
+                  ":root{--muted:#5f6d76}\n"
+                  ".brand-footer small{color:#d8a37a}\n"
+              )
           css_path.write_text(css, encoding='utf-8')
 
           # Laisser le texte visible du logo constituer son nom accessible.
           generator_path = Path('scripts/build_seo_site.py')
           generator = generator_path.read_text(encoding='utf-8')
           anchor = '    soup.html["lang"] = language\n'
-          insertion = '''    soup.html["lang"] = language
-            brand_link = soup.select_one("header a.brand")
-            if brand_link and brand_link.has_attr("aria-label"):
-                del brand_link["aria-label"]
-          '''
+          insertion = (
+              '    soup.html["lang"] = language\n'
+              '    brand_link = soup.select_one("header a.brand")\n'
+              '    if brand_link and brand_link.has_attr("aria-label"):\n'
+              '        del brand_link["aria-label"]\n'
+          )
           if 'brand_link = soup.select_one("header a.brand")' not in generator:
               if anchor not in generator:
                   raise SystemExit('Point d’insertion du logo introuvable')
