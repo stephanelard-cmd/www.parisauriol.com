@@ -1,0 +1,173 @@
+name: Construire le référencement Google multilingue
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/build_seo_site.py"
+      - "assets/app.js"
+      - "assets/seo.css"
+      - "assets/translations.json"
+      - "assets/photos/manifest.json"
+      - ".github/workflows/build-google-seo.yml"
+      - "data/google-seo-trigger.txt"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: parisauriol-google-seo
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer le dépôt
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Préparer Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Installer le parseur HTML
+        run: python -m pip install --disable-pip-version-check beautifulsoup4==4.13.4
+
+      - name: Finaliser le générateur SEO
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path('scripts/build_seo_site.py')
+          text = path.read_text(encoding='utf-8')
+
+          old = '''    if page == "faq.html":
+              faq_fragment = build_faq_main(language)
+              if soup.main:
+                  soup.main.replace_with(faq_fragment.main)
+              else:
+                  soup.body.append(faq_fragment.main)
+          else:
+              translate_soup(soup, language, catalogue, missing)
+          '''
+          new = '''    translate_soup(soup, language, catalogue, missing)
+          if page == "faq.html":
+              faq_fragment = build_faq_main(language)
+              if soup.main:
+                  soup.main.replace_with(faq_fragment.main)
+              else:
+                  soup.body.append(faq_fragment.main)
+          '''
+          if old not in text:
+              raise SystemExit('Bloc FAQ attendu introuvable')
+          text = text.replace(old, new)
+
+          old = '''    for code, language_config in LANGUAGES.items():
+              if code != language:
+                  set_meta(soup, "property", "og:locale:alternate", language_config["locale"])
+          '''
+          new = '''    for code, language_config in LANGUAGES.items():
+              if code != language:
+                  alternate_locale = soup.new_tag("meta")
+                  alternate_locale["property"] = "og:locale:alternate"
+                  alternate_locale["content"] = language_config["locale"]
+                  soup.head.append(alternate_locale)
+          '''
+          if old not in text:
+              raise SystemExit('Bloc og:locale attendu introuvable')
+          text = text.replace(old, new)
+
+          old = '''    for link in soup.find_all(href=True):
+              href = link.get("href", "")
+          '''
+          new = '''    for link in soup.find_all(href=True):
+              relations = set(link.get("rel", []))
+              if link.name == "link" and relations.intersection({"canonical", "alternate"}):
+                  continue
+              href = link.get("href", "")
+          '''
+          if old not in text:
+              raise SystemExit('Boucle de réécriture attendue introuvable')
+          text = text.replace(old, new)
+
+          old = '''    soup.html["lang"] = language
+              set_current_navigation(soup, page)
+          '''
+          new = '''    soup.html["lang"] = language
+              for link in soup.select("[data-airbnb]"):
+                  link["href"] = "https://www.airbnb.fr/rooms/926532409861049580"
+              for link in soup.select("[data-booking]"):
+                  link["href"] = "https://www.booking.com/hotel/fr/paris-auriol.fr.html"
+              set_current_navigation(soup, page)
+          '''
+          if old not in text:
+              raise SystemExit('Insertion des liens de réservation impossible')
+          text = text.replace(old, new)
+
+          text = text.replace('"latitude": 48.83720,', '"latitude": "48.83720",')
+          text = text.replace('"longitude": 2.37220,', '"longitude": "2.37220",')
+
+          old = '''Disallow: /data/
+          Disallow: /README.md
+          '''
+          new = '''Disallow: /data/seo-translation-report.json
+          Disallow: /data/seo-manifest.json
+          Disallow: /data/manual-sync-trigger.txt
+          Disallow: /data/google-seo-trigger.txt
+          Disallow: /README.md
+          '''
+          if old not in text:
+              raise SystemExit('Bloc robots.txt attendu introuvable')
+          text = text.replace(old, new)
+
+          path.write_text(text, encoding='utf-8')
+          PY
+
+      - name: Générer les pages françaises, anglaises, allemandes et espagnoles
+        run: python scripts/build_seo_site.py
+
+      - name: Contrôler la qualité technique
+        run: |
+          python -m py_compile scripts/build_seo_site.py scripts/sync_calendars.py
+          node --check assets/app.js
+          python -m json.tool data/seo-manifest.json
+          python -m json.tool data/seo-translation-report.json >/dev/null
+          grep -q 'VacationRental' index.html
+          grep -q 'containsPlace' index.html
+          grep -q 'identifier' index.html
+          grep -q 'hreflang="en"' index.html
+          grep -q 'hreflang="de"' index.html
+          grep -q 'hreflang="es"' index.html
+          grep -q 'xmlns:xhtml' sitemap.xml
+          grep -q 'xmlns:image' sitemap.xml
+          test -f faq.html
+          test -f en/index.html
+          test -f de/index.html
+          test -f es/index.html
+          test -f en/faq.html
+          test -f de/faq.html
+          test -f es/faq.html
+          ! grep -R --line-number '?lang=' ./*.html en de es
+          ! grep -R --line-number 'images.unsplash.com' ./*.html en de es
+
+      - name: Enregistrer la nouvelle architecture SEO
+        run: |
+          git add \
+            '*.html' \
+            en de es \
+            sitemap.xml robots.txt \
+            data/seo-manifest.json data/seo-translation-report.json \
+            scripts/build_seo_site.py
+          if git diff --cached --quiet; then
+            echo "Le référencement est déjà à jour."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Optimiser le référencement Google et publier les langues"
+          git pull --rebase origin main
+          git push origin HEAD:main
