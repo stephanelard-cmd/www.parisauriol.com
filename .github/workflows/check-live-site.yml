@@ -1,0 +1,79 @@
+name: Contrôler le site public
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - ".github/workflows/check-live-site.yml"
+  schedule:
+    - cron: "17 6 * * *"
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Vérifier DNS, HTTP et HTTPS
+        shell: bash
+        run: |
+          set +e
+          echo "=== DATE UTC ==="
+          date -u
+
+          echo "=== DNS PARISAURIOL.COM ==="
+          python - <<'PY'
+          import socket
+          for host in ("parisauriol.com", "www.parisauriol.com", "stephanelard-cmd.github.io"):
+              try:
+                  rows = socket.getaddrinfo(host, 443, type=socket.SOCK_STREAM)
+                  addresses = sorted({row[4][0] for row in rows})
+                  print(f"{host}: {', '.join(addresses)}")
+              except Exception as exc:
+                  print(f"{host}: ERREUR {exc}")
+          PY
+
+          echo "=== ENREGISTREMENTS DNS ==="
+          if command -v dig >/dev/null 2>&1; then
+            echo "A apex:"; dig +short parisauriol.com A
+            echo "AAAA apex:"; dig +short parisauriol.com AAAA
+            echo "CNAME www:"; dig +short www.parisauriol.com CNAME
+            echo "A www:"; dig +short www.parisauriol.com A
+          else
+            echo "dig indisponible"
+          fi
+
+          echo "=== REPONSES HTTP ==="
+          for url in \
+            http://parisauriol.com/ \
+            https://parisauriol.com/ \
+            http://www.parisauriol.com/ \
+            https://www.parisauriol.com/ \
+            https://stephanelard-cmd.github.io/www.parisauriol.com/; do
+            echo "--- $url"
+            curl -sSIL --max-time 25 "$url" | sed -n '1,18p'
+            echo "curl_exit=${PIPESTATUS[0]}"
+          done
+
+          echo "=== CONTENU PUBLIC ==="
+          for path in / /logement.html /photos.html /disponibilites.html /quartier.html /decouvrir.html /agenda.html /sejour.html /mentions-legales.html /confidentialite.html /robots.txt /sitemap.xml; do
+            code=$(curl -sS -L --max-time 25 -o /tmp/page -w '%{http_code}' "https://parisauriol.com${path}")
+            bytes=$(wc -c </tmp/page 2>/dev/null || echo 0)
+            title=$(grep -io '<title>[^<]*' /tmp/page 2>/dev/null | head -1 | sed 's/<title>//I')
+            printf '%-28s code=%s bytes=%s title=%s\n' "$path" "$code" "$bytes" "$title"
+          done
+
+          echo "=== CERTIFICAT HTTPS ==="
+          timeout 20 openssl s_client -connect parisauriol.com:443 -servername parisauriol.com </dev/null 2>/dev/null | openssl x509 -noout -subject -issuer -dates -ext subjectAltName 2>/dev/null
+          echo "openssl_exit=${PIPESTATUS[0]}"
+
+      - name: Valider la page d’accueil lorsqu’elle est accessible
+        shell: bash
+        run: |
+          set -e
+          html=$(curl -fsSL --max-time 30 https://parisauriol.com/)
+          grep -q "Paris Auriol Austerlitz Arena" <<<"$html"
+          grep -q "assets/style.css" <<<"$html"
+          grep -q "assets/app.js" <<<"$html"
+          echo "Page d’accueil et ressources principales validées."
