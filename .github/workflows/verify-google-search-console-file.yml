@@ -1,0 +1,25 @@
+name: Vérifier le fichier Google Search Console
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/verify-google-search-console-file.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Contrôler le fichier public exact
+        run: |
+          set -euo pipefail
+          expected='google-site-verification: googlefec5e1e106c9c180.html'
+          url='https://parisauriol.com/googlefec5e1e106c9c180.html'
+          body=$(curl -fsSL --retry 5 --retry-delay 3 --max-time 30 "$url")
+          printf 'Contenu reçu : %s\n' "$body"
+          test "$body" = "$expected"
+          curl -fsSI --retry 5 --retry-delay 3 --max-time 30 "$url"
