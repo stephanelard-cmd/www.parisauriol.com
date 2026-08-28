@@ -157,7 +157,7 @@ def save_variants(photo: dict[str, object], body: bytes, source_url: str) -> dic
     with Image.open(io.BytesIO(body)) as image:
         image = ImageOps.exif_transpose(image).convert("RGB")
         width, height = image.size
-        if width < 600 or height < 400:
+        if min(width, height) < 400 or max(width, height) < 600:
             raise RuntimeError(f"Résolution insuffisante pour {slug}: {width}x{height}")
 
         original_path = OUTPUT / f"{slug}.jpg"

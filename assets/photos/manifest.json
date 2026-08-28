@@ -1,0 +1,168 @@
+{
+  "property": "PARIS AURIOL",
+  "address": "18 boulevard Vincent Auriol, 75013 Paris",
+  "source": "Booking.com public listing",
+  "count": 8,
+  "photos": [
+    {
+      "slug": "salon-fenetre",
+      "width": 1280,
+      "height": 576,
+      "source": "Booking.com",
+      "source_url": "https://cf.bstatic.com/xdata/images/hotel/max1280x900/377064721.jpg?k=445bee5b5746f2a027382a61f417cc20eb2452366f1295f397300c57617c0a61&o=",
+      "original": "assets/photos/salon-fenetre.jpg",
+      "variants": {
+        "480": "assets/photos/salon-fenetre-480.webp",
+        "768": "assets/photos/salon-fenetre-768.webp",
+        "1024": "assets/photos/salon-fenetre-1024.webp"
+      },
+      "captions": {
+        "fr": "Salon lumineux avec canapé et grande fenêtre",
+        "en": "Bright living room with sofa and large window",
+        "de": "Helles Wohnzimmer mit Sofa und großem Fenster",
+        "es": "Salón luminoso con sofá y gran ventana"
+      },
+      "position": 1
+    },
+    {
+      "slug": "immeuble-boulevard",
+      "width": 1280,
+      "height": 524,
+      "source": "Booking.com",
+      "source_url": "https://cf.bstatic.com/xdata/images/hotel/max1280x900/606340575.jpg?k=905f9d696674f52df698e4a66e5ee10bff06a4e70e89dc521bf427ae84e7bbd8&o=",
+      "original": "assets/photos/immeuble-boulevard.jpg",
+      "variants": {
+        "480": "assets/photos/immeuble-boulevard-480.webp",
+        "768": "assets/photos/immeuble-boulevard-768.webp",
+        "1024": "assets/photos/immeuble-boulevard-1024.webp"
+      },
+      "captions": {
+        "fr": "Immeuble du 18 boulevard Vincent Auriol",
+        "en": "Building at 18 Boulevard Vincent Auriol",
+        "de": "Gebäude am Boulevard Vincent Auriol 18",
+        "es": "Edificio del 18 Boulevard Vincent Auriol"
+      },
+      "position": 2
+    },
+    {
+      "slug": "espace-repas",
+      "width": 405,
+      "height": 900,
+      "source": "Booking.com",
+      "source_url": "https://cf.bstatic.com/xdata/images/hotel/max1280x900/377064292.jpg?k=40e1cdbe55067930e6dcc335e3e9a2d428fa553acc4e0ac82f70073d61ef9580&o=",
+      "original": "assets/photos/espace-repas.jpg",
+      "variants": {
+        "480": "assets/photos/espace-repas-480.webp",
+        "768": "assets/photos/espace-repas-768.webp",
+        "1024": "assets/photos/espace-repas-1024.webp"
+      },
+      "captions": {
+        "fr": "Espace repas intégré au séjour",
+        "en": "Dining area adjoining the living room",
+        "de": "Essbereich neben dem Wohnzimmer",
+        "es": "Zona de comedor junto al salón"
+      },
+      "position": 3
+    },
+    {
+      "slug": "chambre-lit",
+      "width": 675,
+      "height": 900,
+      "source": "Booking.com",
+      "source_url": "https://cf.bstatic.com/xdata/images/hotel/max1280x900/379383001.jpg?k=788d411bc7301f8373c13da4e945094822cf5a20c648b4db3781214ab216f14d&o=",
+      "original": "assets/photos/chambre-lit.jpg",
+      "variants": {
+        "480": "assets/photos/chambre-lit-480.webp",
+        "768": "assets/photos/chambre-lit-768.webp",
+        "1024": "assets/photos/chambre-lit-1024.webp"
+      },
+      "captions": {
+        "fr": "Chambre avec grand lit et fenêtre",
+        "en": "Bedroom with a large bed and window",
+        "de": "Schlafzimmer mit großem Bett und Fenster",
+        "es": "Dormitorio con cama grande y ventana"
+      },
+      "position": 4
+    },
+    {
+      "slug": "cuisine-equipee",
+      "width": 1280,
+      "height": 576,
+      "source": "Booking.com",
+      "source_url": "https://cf.bstatic.com/xdata/images/hotel/max1280x900/377064355.jpg?k=ed034ca3e3ee598b2a636a62f2f9f2c900a30125e83dee091eeb2dfeeb2e3b51&o=",
+      "original": "assets/photos/cuisine-equipee.jpg",
+      "variants": {
+        "480": "assets/photos/cuisine-equipee-480.webp",
+        "768": "assets/photos/cuisine-equipee-768.webp",
+        "1024": "assets/photos/cuisine-equipee-1024.webp"
+      },
+      "captions": {
+        "fr": "Cuisine équipée et coin repas",
+        "en": "Fully equipped kitchen and dining corner",
+        "de": "Ausgestattete Küche mit Essplatz",
+        "es": "Cocina equipada y rincón comedor"
+      },
+      "position": 5
+    },
+    {
+      "slug": "salon-miroir",
+      "width": 1280,
+      "height": 576,
+      "source": "Booking.com",
+      "source_url": "https://cf.bstatic.com/xdata/images/hotel/max1280x900/377064818.jpg?k=df9e30b0f3a88bb6ff52b3997deb2e7c160adcd7e29c5fe66e7b4788a0f2ddcc&o=",
+      "original": "assets/photos/salon-miroir.jpg",
+      "variants": {
+        "480": "assets/photos/salon-miroir-480.webp",
+        "768": "assets/photos/salon-miroir-768.webp",
+        "1024": "assets/photos/salon-miroir-1024.webp"
+      },
+      "captions": {
+        "fr": "Salon, canapé et grand miroir",
+        "en": "Living room with sofa and large mirror",
+        "de": "Wohnzimmer mit Sofa und großem Spiegel",
+        "es": "Salón con sofá y espejo grande"
+      },
+      "position": 6
+    },
+    {
+      "slug": "salle-de-bains",
+      "width": 405,
+      "height": 900,
+      "source": "Booking.com",
+      "source_url": "https://cf.bstatic.com/xdata/images/hotel/max1280x900/377064599.jpg?k=012a33c37ceb81fb58b64844c6c4a726436fc138b3efba32d2e36170240356a8&o=",
+      "original": "assets/photos/salle-de-bains.jpg",
+      "variants": {
+        "480": "assets/photos/salle-de-bains-480.webp",
+        "768": "assets/photos/salle-de-bains-768.webp",
+        "1024": "assets/photos/salle-de-bains-1024.webp"
+      },
+      "captions": {
+        "fr": "Salle de bains avec douche, lavabo et toilettes",
+        "en": "Bathroom with shower, washbasin and toilet",
+        "de": "Bad mit Dusche, Waschbecken und WC",
+        "es": "Baño con ducha, lavabo e inodoro"
+      },
+      "position": 7
+    },
+    {
+      "slug": "vue-seine-bercy",
+      "width": 1280,
+      "height": 576,
+      "source": "Booking.com",
+      "source_url": "https://cf.bstatic.com/xdata/images/hotel/max1280x900/379384074.jpg?k=c9f59e51755371e5d011e338725269ce7c628580853101cf1dffe8a6429a3bca&o=",
+      "original": "assets/photos/vue-seine-bercy.jpg",
+      "variants": {
+        "480": "assets/photos/vue-seine-bercy-480.webp",
+        "768": "assets/photos/vue-seine-bercy-768.webp",
+        "1024": "assets/photos/vue-seine-bercy-1024.webp"
+      },
+      "captions": {
+        "fr": "Vue urbaine vers la Seine et Bercy",
+        "en": "City view towards the Seine and Bercy",
+        "de": "Stadtblick in Richtung Seine und Bercy",
+        "es": "Vista urbana hacia el Sena y Bercy"
+      },
+      "position": 8
+    }
+  ]
+}
