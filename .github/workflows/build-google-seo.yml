@@ -43,87 +43,74 @@ jobs:
           from pathlib import Path
 
           path = Path('scripts/build_seo_site.py')
-          text = path.read_text(encoding='utf-8')
+          lines = path.read_text(encoding='utf-8').splitlines()
 
-          old = '''    if page == "faq.html":
-              faq_fragment = build_faq_main(language)
-              if soup.main:
-                  soup.main.replace_with(faq_fragment.main)
-              else:
-                  soup.body.append(faq_fragment.main)
-          else:
-              translate_soup(soup, language, catalogue, missing)
-          '''
-          new = '''    translate_soup(soup, language, catalogue, missing)
-          if page == "faq.html":
-              faq_fragment = build_faq_main(language)
-              if soup.main:
-                  soup.main.replace_with(faq_fragment.main)
-              else:
-                  soup.body.append(faq_fragment.main)
-          '''
-          if old not in text:
-              raise SystemExit('Bloc FAQ attendu introuvable')
-          text = text.replace(old, new)
+          # Traduire l’enveloppe de la FAQ avant de remplacer son contenu principal.
+          translate_line = '    translate_soup(soup, language, catalogue, missing)'
+          faq_line = '    if page == "faq.html":'
+          if faq_line in lines:
+              faq_index = lines.index(faq_line)
+              if faq_index == 0 or lines[faq_index - 1] != translate_line:
+                  else_index = lines.index('    else:', faq_index)
+                  old_translate_index = lines.index('        translate_soup(soup, language, catalogue, missing)', else_index)
+                  replacement = [
+                      translate_line,
+                      faq_line,
+                      '        faq_fragment = build_faq_main(language)',
+                      '        if soup.main:',
+                      '            soup.main.replace_with(faq_fragment.main)',
+                      '        else:',
+                      '            soup.body.append(faq_fragment.main)',
+                  ]
+                  lines[faq_index:old_translate_index + 1] = replacement
 
-          old = '''    for code, language_config in LANGUAGES.items():
-              if code != language:
-                  set_meta(soup, "property", "og:locale:alternate", language_config["locale"])
-          '''
-          new = '''    for code, language_config in LANGUAGES.items():
-              if code != language:
-                  alternate_locale = soup.new_tag("meta")
-                  alternate_locale["property"] = "og:locale:alternate"
-                  alternate_locale["content"] = language_config["locale"]
-                  soup.head.append(alternate_locale)
-          '''
-          if old not in text:
-              raise SystemExit('Bloc og:locale attendu introuvable')
-          text = text.replace(old, new)
+          # Créer une balise og:locale:alternate distincte par langue.
+          faulty_locale = '            set_meta(soup, "property", "og:locale:alternate", language_config["locale"])'
+          if faulty_locale in lines:
+              index = lines.index(faulty_locale)
+              lines[index:index + 1] = [
+                  '            alternate_locale = soup.new_tag("meta")',
+                  '            alternate_locale["property"] = "og:locale:alternate"',
+                  '            alternate_locale["content"] = language_config["locale"]',
+                  '            soup.head.append(alternate_locale)',
+              ]
 
-          old = '''    for link in soup.find_all(href=True):
-              href = link.get("href", "")
-          '''
-          new = '''    for link in soup.find_all(href=True):
-              relations = set(link.get("rel", []))
-              if link.name == "link" and relations.intersection({"canonical", "alternate"}):
-                  continue
-              href = link.get("href", "")
-          '''
-          if old not in text:
-              raise SystemExit('Boucle de réécriture attendue introuvable')
-          text = text.replace(old, new)
+          # Ne jamais réécrire les URL absolues canonical et hreflang.
+          rewrite_loop = '    for link in soup.find_all(href=True):'
+          relations_line = '        relations = set(link.get("rel", []))'
+          if rewrite_loop in lines:
+              index = lines.index(rewrite_loop)
+              if index + 1 >= len(lines) or lines[index + 1] != relations_line:
+                  lines[index + 1:index + 1] = [
+                      relations_line,
+                      '        if link.name == "link" and relations.intersection({"canonical", "alternate"}):',
+                      '            continue',
+                  ]
 
-          old = '''    soup.html["lang"] = language
-              set_current_navigation(soup, page)
-          '''
-          new = '''    soup.html["lang"] = language
-              for link in soup.select("[data-airbnb]"):
-                  link["href"] = "https://www.airbnb.fr/rooms/926532409861049580"
-              for link in soup.select("[data-booking]"):
-                  link["href"] = "https://www.booking.com/hotel/fr/paris-auriol.fr.html"
-              set_current_navigation(soup, page)
-          '''
-          if old not in text:
-              raise SystemExit('Insertion des liens de réservation impossible')
-          text = text.replace(old, new)
+          # Inscrire les liens de réservation dans le HTML servi aux robots, sans dépendre de JavaScript.
+          html_language_line = '    soup.html["lang"] = language'
+          airbnb_loop = '    for link in soup.select("[data-airbnb]"):'
+          if html_language_line in lines:
+              index = lines.index(html_language_line)
+              if airbnb_loop not in lines[index:index + 10]:
+                  lines[index + 1:index + 1] = [
+                      airbnb_loop,
+                      '        link["href"] = "https://www.airbnb.fr/rooms/926532409861049580"',
+                      '    for link in soup.select("[data-booking]"):',
+                      '        link["href"] = "https://www.booking.com/hotel/fr/paris-auriol.fr.html"',
+                  ]
 
+          text = '\n'.join(lines) + '\n'
           text = text.replace('"latitude": 48.83720,', '"latitude": "48.83720",')
           text = text.replace('"longitude": 2.37220,', '"longitude": "2.37220",')
-
-          old = '''Disallow: /data/
-          Disallow: /README.md
-          '''
-          new = '''Disallow: /data/seo-translation-report.json
-          Disallow: /data/seo-manifest.json
-          Disallow: /data/manual-sync-trigger.txt
-          Disallow: /data/google-seo-trigger.txt
-          Disallow: /README.md
-          '''
-          if old not in text:
-              raise SystemExit('Bloc robots.txt attendu introuvable')
-          text = text.replace(old, new)
-
+          text = text.replace(
+              'Disallow: /data/\nDisallow: /README.md',
+              'Disallow: /data/seo-translation-report.json\n'
+              'Disallow: /data/seo-manifest.json\n'
+              'Disallow: /data/manual-sync-trigger.txt\n'
+              'Disallow: /data/google-seo-trigger.txt\n'
+              'Disallow: /README.md',
+          )
           path.write_text(text, encoding='utf-8')
           PY
 
