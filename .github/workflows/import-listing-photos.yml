@@ -33,6 +33,21 @@ jobs:
       - name: Installer Pillow
         run: python -m pip install --disable-pip-version-check pillow
 
+      - name: Corriger le contrôle des formats portrait
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          path = Path('scripts/import_listing_photos.py')
+          source = path.read_text(encoding='utf-8')
+          old = 'if width < 600 or height < 400:'
+          new = 'if min(width, height) < 400 or max(width, height) < 600:'
+          if old in source:
+              source = source.replace(old, new)
+              path.write_text(source, encoding='utf-8')
+          elif new not in source:
+              raise SystemExit('Contrôle de résolution introuvable')
+          PY
+
       - name: Télécharger, vérifier et optimiser les photographies
         run: python scripts/import_listing_photos.py
 
@@ -49,13 +64,13 @@ jobs:
           payload = json.loads(Path('assets/photos/manifest.json').read_text(encoding='utf-8'))
           assert payload['count'] == 8
           assert len(payload['photos']) == 8
-          assert all(item['width'] >= 600 and item['height'] >= 400 for item in payload['photos'])
+          assert all(min(item['width'], item['height']) >= 400 and max(item['width'], item['height']) >= 600 for item in payload['photos'])
           print([(item['slug'], item['width'], item['height']) for item in payload['photos']])
           PY
 
       - name: Enregistrer les images dans le dépôt
         run: |
-          git add assets/photos
+          git add assets/photos scripts/import_listing_photos.py
           if git diff --cached --quiet; then
             echo "Les photographies sont déjà à jour."
             exit 0
