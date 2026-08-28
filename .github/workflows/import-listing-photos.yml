@@ -1,0 +1,67 @@
+name: Importer les photos du logement
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "data/photo-import-trigger.txt"
+      - "scripts/import_listing_photos.py"
+      - ".github/workflows/import-listing-photos.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: parisauriol-photo-import
+  cancel-in-progress: false
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer le dépôt
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Préparer Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Installer Pillow
+        run: python -m pip install --disable-pip-version-check pillow
+
+      - name: Télécharger, vérifier et optimiser les photographies
+        run: python scripts/import_listing_photos.py
+
+      - name: Contrôler les fichiers produits
+        run: |
+          test -f assets/photos/manifest.json
+          test "$(find assets/photos -maxdepth 1 -name '*.jpg' | wc -l)" -eq 8
+          test "$(find assets/photos -maxdepth 1 -name '*-480.webp' | wc -l)" -eq 8
+          test "$(find assets/photos -maxdepth 1 -name '*-768.webp' | wc -l)" -eq 8
+          test "$(find assets/photos -maxdepth 1 -name '*-1024.webp' | wc -l)" -eq 8
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          payload = json.loads(Path('assets/photos/manifest.json').read_text(encoding='utf-8'))
+          assert payload['count'] == 8
+          assert len(payload['photos']) == 8
+          assert all(item['width'] >= 600 and item['height'] >= 400 for item in payload['photos'])
+          print([(item['slug'], item['width'], item['height']) for item in payload['photos']])
+          PY
+
+      - name: Enregistrer les images dans le dépôt
+        run: |
+          git add assets/photos
+          if git diff --cached --quiet; then
+            echo "Les photographies sont déjà à jour."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Importer les photographies réelles de Paris Auriol"
+          git pull --rebase origin main
+          git push origin HEAD:main
