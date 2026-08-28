@@ -9,29 +9,17 @@ const FALLBACK_LANGUAGE = 'fr';
 
 let catalogue = {
   languages: {
-    fr: {label: 'Français', short: 'FR', locale: 'fr-FR', ogLocale: 'fr_FR'},
-    en: {label: 'English', short: 'EN', locale: 'en-GB', ogLocale: 'en_GB'},
-    de: {label: 'Deutsch', short: 'DE', locale: 'de-DE', ogLocale: 'de_DE'},
-    es: {label: 'Español', short: 'ES', locale: 'es-ES', ogLocale: 'es_ES'},
+    fr: {label: 'Français', short: 'FR', locale: 'fr-FR'},
+    en: {label: 'English', short: 'EN', locale: 'en-GB'},
+    de: {label: 'Deutsch', short: 'DE', locale: 'de-DE'},
+    es: {label: 'Español', short: 'ES', locale: 'es-ES'},
   },
   messages: {},
-  meta: {},
 };
 let currentLanguage = FALLBACK_LANGUAGE;
 let calendarPayload = null;
 let eventsPayload = null;
 let lightboxState = null;
-
-const originalText = new WeakMap();
-const originalAttributes = new WeakMap();
-const originalLinks = new WeakMap();
-const originalMetadata = {
-  title: document.title,
-  description: $('meta[name="description"]')?.content || '',
-  ogTitle: $('meta[property="og:title"]')?.content || '',
-  ogDescription: $('meta[property="og:description"]')?.content || '',
-  ogLocale: $('meta[property="og:locale"]')?.content || 'fr_FR',
-};
 
 function normalize(value) {
   return String(value || '').replace(/\s+/g, ' ').trim();
@@ -47,109 +35,47 @@ function translated(source, language = currentLanguage) {
   return catalogue.messages?.[key]?.[language] || key;
 }
 
-function preserveWhitespace(source, replacement) {
-  const leading = String(source).match(/^\s*/)?.[0] || '';
-  const trailing = String(source).match(/\s*$/)?.[0] || '';
-  return `${leading}${replacement}${trailing}`;
-}
-
-function shouldSkipTextNode(node) {
-  const parent = node.parentElement;
-  if (!parent) return true;
-  if (['SCRIPT', 'STYLE', 'NOSCRIPT', 'TEXTAREA', 'CODE'].includes(parent.tagName)) return true;
-  return Boolean(parent.closest('.language-picker, #calendar, #calendar-status, #events, .photo-lightbox'));
-}
-
-function translateTextNode(node) {
-  if (shouldSkipTextNode(node)) return;
-  if (!originalText.has(node)) originalText.set(node, node.nodeValue || '');
-  const source = originalText.get(node) || '';
-  const key = normalize(source);
-  if (!key) return;
-  node.nodeValue = preserveWhitespace(source, translated(key));
-}
-
-function translateAttributes(element) {
-  if (element.closest('.language-picker, #calendar, #calendar-status, #events, .photo-lightbox')) return;
-  const attributes = ['aria-label', 'title', 'placeholder'];
-  if (!originalAttributes.has(element)) originalAttributes.set(element, new Map());
-  const store = originalAttributes.get(element);
-  attributes.forEach(attribute => {
-    if (!element.hasAttribute(attribute)) return;
-    if (!store.has(attribute)) store.set(attribute, element.getAttribute(attribute) || '');
-    const source = store.get(attribute) || '';
-    element.setAttribute(attribute, translated(source));
-  });
-}
-
-function translateStaticPage() {
-  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
-  let node;
-  while ((node = walker.nextNode())) translateTextNode(node);
-  $$('[aria-label], [title], [placeholder]').forEach(translateAttributes);
-}
-
 function pageKey() {
   const file = location.pathname.split('/').filter(Boolean).pop();
   return file && file.includes('.') ? file : 'index.html';
 }
 
-function setMetaContent(selector, value) {
-  const element = $(selector);
-  if (element && value) element.setAttribute('content', value);
+function languageFromPath() {
+  const firstSegment = location.pathname.split('/').filter(Boolean)[0]?.toLowerCase();
+  return SUPPORTED_LANGUAGES.includes(firstSegment) ? firstSegment : FALLBACK_LANGUAGE;
 }
 
-function updateMetadata() {
-  const metadata = catalogue.meta?.[pageKey()]?.[currentLanguage];
-  if (currentLanguage === 'fr' || !metadata) {
-    document.title = originalMetadata.title;
-    setMetaContent('meta[name="description"]', originalMetadata.description);
-    setMetaContent('meta[property="og:title"]', originalMetadata.ogTitle);
-    setMetaContent('meta[property="og:description"]', originalMetadata.ogDescription);
-    setMetaContent('meta[property="og:locale"]', originalMetadata.ogLocale);
-    return;
-  }
-  document.title = metadata.title || originalMetadata.title;
-  setMetaContent('meta[name="description"]', metadata.description || originalMetadata.description);
-  setMetaContent('meta[property="og:title"]', metadata.title || originalMetadata.ogTitle);
-  setMetaContent('meta[property="og:description"]', metadata.description || originalMetadata.ogDescription);
-  setMetaContent('meta[property="og:locale"]', languageConfig().ogLocale);
+function localizedURL(language) {
+  const selected = SUPPORTED_LANGUAGES.includes(language) ? language : FALLBACK_LANGUAGE;
+  const file = pageKey();
+  const suffix = file === 'index.html' ? '' : file;
+  const pathname = selected === 'fr' ? `/${suffix}` : `/${selected}/${suffix}`;
+  return `${pathname}${location.hash || ''}`;
 }
 
-function syncLanguageURL() {
-  const url = new URL(location.href);
-  if (currentLanguage === 'fr') url.searchParams.delete('lang');
-  else url.searchParams.set('lang', currentLanguage);
-  history.replaceState(null, '', `${url.pathname}${url.search}${url.hash}`);
+function redirectLegacyLanguageQuery() {
+  const requested = new URLSearchParams(location.search).get('lang')?.toLowerCase();
+  if (!SUPPORTED_LANGUAGES.includes(requested) || requested === languageFromPath()) return false;
+  location.replace(localizedURL(requested));
+  return true;
 }
 
-function syncInternalLinks() {
-  $$('a[href]').forEach(link => {
-    if (link.hasAttribute('data-airbnb') || link.hasAttribute('data-booking')) return;
-    if (!originalLinks.has(link)) originalLinks.set(link, link.getAttribute('href') || '');
-    const source = originalLinks.get(link) || '';
-    if (!source || source.startsWith(('#', 'mailto:', 'tel:', 'javascript:')) || /^https?:\/\//i.test(source)) return;
-    const [withoutHash, hash = ''] = source.split('#');
-    const separator = withoutHash.includes('?') ? '&' : '?';
-    const target = currentLanguage === 'fr' ? withoutHash : `${withoutHash}${separator}lang=${currentLanguage}`;
-    link.setAttribute('href', `${target}${hash ? `#${hash}` : ''}`);
+function setupMenu() {
+  const toggle = $('.mobile-toggle');
+  const menu = $('#main-menu');
+  if (!toggle || !menu) return;
+  toggle.addEventListener('click', () => {
+    const open = menu.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', translated(open ? 'Fermer le menu' : 'Ouvrir le menu'));
   });
-}
-
-function galleryCaption(item, language = currentLanguage) {
-  const suffix = language.charAt(0).toUpperCase() + language.slice(1);
-  return item.dataset[`caption${suffix}`] || item.dataset.captionFr || '';
-}
-
-function updateGalleryCaptions() {
-  $$('[data-lightbox]').forEach(item => {
-    const caption = galleryCaption(item);
-    const visibleCaption = $('.gallery-caption', item);
-    const image = $('img', item);
-    if (visibleCaption) visibleCaption.textContent = caption;
-    if (image) image.alt = caption;
+  menu.addEventListener('click', event => {
+    if (event.target.closest('a')) {
+      menu.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', translated('Ouvrir le menu'));
+    }
   });
-  if (lightboxState?.dialog?.open) renderLightbox(lightboxState.index);
 }
 
 function injectLanguagePicker() {
@@ -170,66 +96,25 @@ function injectLanguagePicker() {
   menu.insertBefore(picker, bookingButton || null);
   const select = $('#language-select');
   select.value = currentLanguage;
-  select.addEventListener('change', event => applyLanguage(event.target.value));
-}
-
-function updateLanguagePicker() {
-  const picker = $('.language-picker');
-  const select = $('#language-select');
-  if (select) {
-    select.value = currentLanguage;
-    select.setAttribute('aria-label', translated('Langue'));
-  }
-  const hiddenLabel = $('.sr-only', picker || document);
-  if (hiddenLabel) hiddenLabel.textContent = translated('Langue');
-}
-
-function applyLanguage(language, updateURL = true) {
-  currentLanguage = SUPPORTED_LANGUAGES.includes(language) ? language : FALLBACK_LANGUAGE;
-  document.documentElement.lang = currentLanguage;
-  try { localStorage.setItem('parisauriol-language', currentLanguage); } catch (_) {}
-  if (updateURL) syncLanguageURL();
-  updateLanguagePicker();
-  translateStaticPage();
-  updateMetadata();
-  syncInternalLinks();
-  updateGalleryCaptions();
-  updateLightboxControls();
-  if ($('#calendar')) renderCalendar();
-  if ($('#events') && eventsPayload !== null) renderEvents();
-  const toggle = $('.mobile-toggle');
-  if (toggle) {
-    const open = $('#main-menu')?.classList.contains('open');
-    toggle.setAttribute('aria-label', translated(open ? 'Fermer le menu' : 'Ouvrir le menu'));
-  }
-}
-
-function detectInitialLanguage() {
-  const requested = new URLSearchParams(location.search).get('lang')?.toLowerCase();
-  if (SUPPORTED_LANGUAGES.includes(requested)) return requested;
-  try {
-    const stored = localStorage.getItem('parisauriol-language');
-    if (SUPPORTED_LANGUAGES.includes(stored)) return stored;
-  } catch (_) {}
-  const browserLanguage = String(navigator.language || '').slice(0, 2).toLowerCase();
-  return SUPPORTED_LANGUAGES.includes(browserLanguage) ? browserLanguage : FALLBACK_LANGUAGE;
-}
-
-function setupMenu() {
-  const toggle = $('.mobile-toggle');
-  const menu = $('#main-menu');
-  if (!toggle || !menu) return;
-  toggle.addEventListener('click', () => {
-    const open = menu.classList.toggle('open');
-    toggle.setAttribute('aria-expanded', String(open));
-    toggle.setAttribute('aria-label', translated(open ? 'Fermer le menu' : 'Ouvrir le menu'));
+  select.addEventListener('change', event => {
+    const language = event.target.value;
+    try { localStorage.setItem('parisauriol-language', language); } catch (_) {}
+    location.assign(localizedURL(language));
   });
-  menu.addEventListener('click', event => {
-    if (event.target.closest('a')) {
-      menu.classList.remove('open');
-      toggle.setAttribute('aria-expanded', 'false');
-      toggle.setAttribute('aria-label', translated('Ouvrir le menu'));
-    }
+}
+
+function galleryCaption(item, language = currentLanguage) {
+  const suffix = language.charAt(0).toUpperCase() + language.slice(1);
+  return item.dataset[`caption${suffix}`] || item.dataset.captionFr || '';
+}
+
+function updateGalleryCaptions() {
+  $$('[data-lightbox]').forEach(item => {
+    const caption = galleryCaption(item);
+    const visibleCaption = $('.gallery-caption', item);
+    const image = $('img', item);
+    if (visibleCaption) visibleCaption.textContent = caption;
+    if (image) image.alt = caption;
   });
 }
 
@@ -257,7 +142,7 @@ function weekdayLabels() {
 async function loadCalendar() {
   if (!$('#calendar')) return;
   try {
-    const response = await fetch(`data/calendar.json?v=${Date.now()}`, {cache: 'no-store'});
+    const response = await fetch(`/data/calendar.json?v=${Date.now()}`, {cache: 'no-store'});
     if (!response.ok) throw new Error('calendar');
     calendarPayload = await response.json();
   } catch (_) {
@@ -446,19 +331,21 @@ function updateLightboxControls() {
 }
 
 async function init() {
+  if (redirectLegacyLanguageQuery()) return;
+  currentLanguage = languageFromPath();
+  document.documentElement.lang = currentLanguage;
   $$('[data-airbnb]').forEach(link => { link.href = AIRBNB; });
   $$('[data-booking]').forEach(link => { link.href = BOOKING; });
   try {
-    const response = await fetch('assets/translations.json', {cache: 'force-cache'});
+    const response = await fetch('/assets/translations.json', {cache: 'force-cache'});
     if (response.ok) catalogue = await response.json();
   } catch (error) {
-    console.warn('Traductions indisponibles, affichage en français.', error);
+    console.warn('Traductions dynamiques indisponibles.', error);
   }
-  currentLanguage = detectInitialLanguage();
   injectLanguagePicker();
   setupMenu();
+  updateGalleryCaptions();
   createLightbox();
-  applyLanguage(currentLanguage, false);
   await Promise.allSettled([loadCalendar(), loadEvents()]);
 }
 
