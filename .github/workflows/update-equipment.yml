@@ -1,0 +1,173 @@
+name: Update apartment equipment
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/update-equipment.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  update-equipment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Update equipment information
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          import re
+
+          root = Path('.')
+
+          equipment = {
+              'fr': {
+                  'list_old': '<li>Télévision</li>',
+                  'list_new': '<li>Vidéoprojecteur connecté à Internet</li><li>Déshumidificateur</li><li>Ventilateur sur pied</li><li>Lave-linge séchant</li>',
+                  'card_title_old': 'Wi‑Fi &amp; travail',
+                  'card_title_new': 'Wi‑Fi &amp; équipements',
+                  'card_text_old': 'Connexion Wi‑Fi, télévision et espace de travail dédié pour les séjours professionnels ou prolongés.',
+                  'card_text_new': 'Connexion Wi‑Fi, vidéoprojecteur connecté à Internet, espace de travail dédié, déshumidificateur, ventilateur sur pied et lave-linge séchant.',
+              },
+              'en': {
+                  'list_old': '<li>Television</li>',
+                  'list_new': '<li>Internet-connected video projector</li><li>Dehumidifier</li><li>Pedestal fan</li><li>Washer-dryer</li>',
+                  'card_title_old': 'Wi-Fi &amp; work',
+                  'card_title_new': 'Wi-Fi &amp; amenities',
+                  'card_text_old': 'Wi-Fi, television and a dedicated workspace for business or longer stays.',
+                  'card_text_new': 'Wi-Fi, an Internet-connected video projector, a dedicated workspace, a dehumidifier, a pedestal fan and a washer-dryer.',
+              },
+              'de': {
+                  'list_old': '<li>Fernseher</li>',
+                  'list_new': '<li>Videoprojektor mit Internetzugang</li><li>Luftentfeuchter</li><li>Standventilator</li><li>Waschtrockner</li>',
+                  'card_title_old': 'WLAN &amp; Arbeiten',
+                  'card_title_new': 'WLAN &amp; Ausstattung',
+                  'card_text_old': 'WLAN, Fernseher und ein eigener Arbeitsplatz für Geschäfts- oder längere Aufenthalte.',
+                  'card_text_new': 'WLAN, Videoprojektor mit Internetzugang, eigener Arbeitsplatz, Luftentfeuchter, Standventilator und Waschtrockner.',
+              },
+              'es': {
+                  'list_old': '<li>Televisión</li>',
+                  'list_new': '<li>Proyector de vídeo conectado a Internet</li><li>Deshumidificador</li><li>Ventilador de pie</li><li>Lavadora-secadora</li>',
+                  'card_title_old': 'Wi-Fi y trabajo',
+                  'card_title_new': 'Wi-Fi y equipamiento',
+                  'card_text_old': 'Wi-Fi, televisión y una zona de trabajo dedicada para estancias profesionales o prolongadas.',
+                  'card_text_new': 'Wi-Fi, proyector de vídeo conectado a Internet, zona de trabajo dedicada, deshumidificador, ventilador de pie y lavadora-secadora.',
+              },
+          }
+
+          html_targets = {
+              'fr': (root / 'index.html', root / 'logement.html'),
+              'en': (root / 'en' / 'index.html', root / 'en' / 'logement.html'),
+              'de': (root / 'de' / 'index.html', root / 'de' / 'logement.html'),
+              'es': (root / 'es' / 'index.html', root / 'es' / 'logement.html'),
+          }
+
+          amenity_old = '{"@type":"LocationFeatureSpecification","name":"tv","value":true},'
+          amenity_new = ''.join([
+              '{"@type":"LocationFeatureSpecification","name":"videoProjector","value":true},',
+              '{"@type":"LocationFeatureSpecification","name":"dehumidifier","value":true},',
+              '{"@type":"LocationFeatureSpecification","name":"pedestalFan","value":true},',
+              '{"@type":"LocationFeatureSpecification","name":"washerDryer","value":true},',
+          ])
+
+          for lang, paths in html_targets.items():
+              cfg = equipment[lang]
+              index_path, logement_path = paths
+
+              text = index_path.read_text(encoding='utf-8')
+              text = text.replace(cfg['list_old'], cfg['list_new'])
+              text = text.replace(amenity_old, amenity_new)
+              index_path.write_text(text, encoding='utf-8')
+
+              text = logement_path.read_text(encoding='utf-8')
+              text = text.replace(cfg['card_title_old'], cfg['card_title_new'])
+              text = text.replace(cfg['card_text_old'], cfg['card_text_new'])
+              logement_path.write_text(text, encoding='utf-8')
+
+          # Keep the translation catalogue aligned so future SEO/translation rebuilds
+          # preserve the corrected equipment information.
+          translations_path = root / 'assets' / 'translations.json'
+          data = json.loads(translations_path.read_text(encoding='utf-8'))
+          messages = data['messages']
+
+          messages.pop('Télévision', None)
+          messages.pop('Wi‑Fi & travail', None)
+          messages.pop('Connexion Wi‑Fi, télévision et espace de travail dédié pour les séjours professionnels ou prolongés.', None)
+
+          messages['Vidéoprojecteur connecté à Internet'] = {
+              'en': 'Internet-connected video projector',
+              'de': 'Videoprojektor mit Internetzugang',
+              'es': 'Proyector de vídeo conectado a Internet',
+          }
+          messages['Déshumidificateur'] = {
+              'en': 'Dehumidifier',
+              'de': 'Luftentfeuchter',
+              'es': 'Deshumidificador',
+          }
+          messages['Ventilateur sur pied'] = {
+              'en': 'Pedestal fan',
+              'de': 'Standventilator',
+              'es': 'Ventilador de pie',
+          }
+          messages['Lave-linge séchant'] = {
+              'en': 'Washer-dryer',
+              'de': 'Waschtrockner',
+              'es': 'Lavadora-secadora',
+          }
+          messages['Wi‑Fi & équipements'] = {
+              'en': 'Wi-Fi & amenities',
+              'de': 'WLAN & Ausstattung',
+              'es': 'Wi-Fi y equipamiento',
+          }
+          messages['Connexion Wi‑Fi, vidéoprojecteur connecté à Internet, espace de travail dédié, déshumidificateur, ventilateur sur pied et lave-linge séchant.'] = {
+              'en': 'Wi-Fi, an Internet-connected video projector, a dedicated workspace, a dehumidifier, a pedestal fan and a washer-dryer.',
+              'de': 'WLAN, Videoprojektor mit Internetzugang, eigener Arbeitsplatz, Luftentfeuchter, Standventilator und Waschtrockner.',
+              'es': 'Wi-Fi, proyector de vídeo conectado a Internet, zona de trabajo dedicada, deshumidificador, ventilador de pie y lavadora-secadora.',
+          }
+          translations_path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+
+          # Keep JSON-LD generation durable: remove TV and advertise the actual equipment.
+          seo_script = root / 'scripts' / 'build_seo_site.py'
+          seo = seo_script.read_text(encoding='utf-8')
+          old_line = '                {"@type": "LocationFeatureSpecification", "name": "tv", "value": True},'
+          new_lines = '\n'.join([
+              '                {"@type": "LocationFeatureSpecification", "name": "videoProjector", "value": True},',
+              '                {"@type": "LocationFeatureSpecification", "name": "dehumidifier", "value": True},',
+              '                {"@type": "LocationFeatureSpecification", "name": "pedestalFan", "value": True},',
+              '                {"@type": "LocationFeatureSpecification", "name": "washerDryer", "value": True},',
+          ])
+          seo = seo.replace(old_line, new_lines)
+          seo_script.write_text(seo, encoding='utf-8')
+
+          # Fail if any public HTML still claims a television/TV.
+          remaining = []
+          tv_patterns = [re.compile(r'\bTélévision\b', re.I), re.compile(r'\btelevision\b', re.I), re.compile(r'\bFernseher\b', re.I), re.compile(r'\bTelevisión\b', re.I)]
+          for path in [p for pair in html_targets.values() for p in pair]:
+              text = path.read_text(encoding='utf-8')
+              if any(pattern.search(text) for pattern in tv_patterns):
+                  remaining.append(str(path))
+          if remaining:
+              raise SystemExit('Residual television claim found in: ' + ', '.join(remaining))
+          PY
+
+      - name: Commit update
+        shell: bash
+        run: |
+          if git diff --quiet; then
+            echo 'No equipment changes needed.'
+            exit 0
+          fi
+          git config user.name 'Paris Auriol site updater'
+          git config user.email 'actions@users.noreply.github.com'
+          git add index.html logement.html en/index.html en/logement.html de/index.html de/logement.html es/index.html es/logement.html assets/translations.json scripts/build_seo_site.py
+          git commit -m 'Update apartment equipment'
+          git push origin HEAD:main
