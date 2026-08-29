@@ -1,306 +1,1326 @@
 {
   "languages": {
-    "fr": {"label": "Français", "short": "FR", "locale": "fr-FR", "ogLocale": "fr_FR"},
-    "en": {"label": "English", "short": "EN", "locale": "en-GB", "ogLocale": "en_GB"},
-    "de": {"label": "Deutsch", "short": "DE", "locale": "de-DE", "ogLocale": "de_DE"},
-    "es": {"label": "Español", "short": "ES", "locale": "es-ES", "ogLocale": "es_ES"}
+    "fr": {
+      "label": "Français",
+      "short": "FR",
+      "locale": "fr-FR",
+      "ogLocale": "fr_FR"
+    },
+    "en": {
+      "label": "English",
+      "short": "EN",
+      "locale": "en-GB",
+      "ogLocale": "en_GB"
+    },
+    "de": {
+      "label": "Deutsch",
+      "short": "DE",
+      "locale": "de-DE",
+      "ogLocale": "de_DE"
+    },
+    "es": {
+      "label": "Español",
+      "short": "ES",
+      "locale": "es-ES",
+      "ogLocale": "es_ES"
+    }
   },
   "messages": {
-    "Langue": {"en": "Language", "de": "Sprache", "es": "Idioma"},
-    "Appartement entier · 3 voyageurs · métro Quai de la Gare · arrivée autonome": {"en": "Entire apartment · 3 guests · Quai de la Gare metro · self check-in", "de": "Ganze Wohnung · 3 Gäste · Metro Quai de la Gare · eigenständiger Check-in", "es": "Apartamento entero · 3 huéspedes · metro Quai de la Gare · llegada autónoma"},
-    "Le logement": {"en": "The apartment", "de": "Die Unterkunft", "es": "El alojamiento"},
-    "Photos": {"en": "Photos", "de": "Fotos", "es": "Fotos"},
-    "Disponibilités": {"en": "Availability", "de": "Verfügbarkeit", "es": "Disponibilidad"},
-    "Quartier": {"en": "Area", "de": "Umgebung", "es": "Barrio"},
-    "Découvrir": {"en": "Explore", "de": "Entdecken", "es": "Descubrir"},
-    "Agenda": {"en": "Events", "de": "Veranstaltungen", "es": "Agenda"},
-    "Réserver": {"en": "Book", "de": "Buchen", "es": "Reservar"},
-    "Ouvrir le menu": {"en": "Open menu", "de": "Menü öffnen", "es": "Abrir el menú"},
-    "Fermer le menu": {"en": "Close menu", "de": "Menü schließen", "es": "Cerrar el menú"},
-    "Navigation principale": {"en": "Main navigation", "de": "Hauptnavigation", "es": "Navegación principal"},
-    "Paris Auriol, accueil": {"en": "Paris Auriol, home", "de": "Paris Auriol, Startseite", "es": "Paris Auriol, inicio"},
-    "Appartement de séjour au 18 boulevard Vincent Auriol, 75013 Paris.": {"en": "Holiday apartment at 18 Boulevard Vincent Auriol, 75013 Paris.", "de": "Ferienwohnung am Boulevard Vincent Auriol 18, 75013 Paris.", "es": "Apartamento turístico en 18 Boulevard Vincent Auriol, 75013 París."},
-    "Enregistrement meublé de tourisme : 7511306769833.": {"en": "Furnished tourist accommodation registration: 7511306769833.", "de": "Registrierung als möblierte Ferienunterkunft: 7511306769833.", "es": "Número de registro de alojamiento turístico: 7511306769833."},
-    "Explorer": {"en": "Explore", "de": "Entdecken", "es": "Explorar"},
-    "Quartier & accès": {"en": "Area & access", "de": "Umgebung & Anreise", "es": "Barrio y acceso"},
-    "Guide local": {"en": "Local guide", "de": "Reiseführer", "es": "Guía local"},
-    "Agenda du 13ᵉ": {"en": "13th arrondissement events", "de": "Veranstaltungen im 13. Arrondissement", "es": "Agenda del distrito 13"},
-    "Informations": {"en": "Information", "de": "Informationen", "es": "Información"},
-    "Règles du séjour": {"en": "House rules", "de": "Hausregeln", "es": "Normas de la estancia"},
-    "Mentions légales": {"en": "Legal notice", "de": "Impressum", "es": "Aviso legal"},
-    "Confidentialité": {"en": "Privacy", "de": "Datenschutz", "es": "Privacidad"},
-    "Plan du site XML": {"en": "XML sitemap", "de": "XML-Sitemap", "es": "Mapa XML del sitio"},
-    "Réservation sécurisée sur Airbnb ou Booking.com": {"en": "Secure booking on Airbnb or Booking.com", "de": "Sichere Buchung über Airbnb oder Booking.com", "es": "Reserva segura en Airbnb o Booking.com"},
-    "Caractéristiques principales": {"en": "Main features", "de": "Wichtigste Merkmale", "es": "Características principales"},
-
-    "Un appartement parisien, au pied du métro.": {"en": "A Paris apartment right by the metro.", "de": "Eine Pariser Wohnung direkt an der Metro.", "es": "Un apartamento parisino junto al metro."},
-    "À quelques pas de Quai de la Gare, un pied-à-terre rénové pour trois voyageurs, proche de la Seine, de la gare d’Austerlitz et de l’Accor Arena.": {"en": "A renovated base for three guests, a few steps from Quai de la Gare and close to the Seine, Austerlitz station and the Accor Arena.", "de": "Eine renovierte Unterkunft für drei Gäste, nur wenige Schritte von Quai de la Gare und nahe der Seine, dem Bahnhof Austerlitz und der Accor Arena.", "es": "Un alojamiento renovado para tres huéspedes, a pocos pasos de Quai de la Gare y cerca del Sena, de la estación de Austerlitz y del Accor Arena."},
-    "Voir les disponibilités": {"en": "View availability", "de": "Verfügbarkeit prüfen", "es": "Ver disponibilidad"},
-    "Découvrir le logement": {"en": "Explore the apartment", "de": "Unterkunft entdecken", "es": "Descubrir el alojamiento"},
-    "3 voyageurs": {"en": "3 guests", "de": "3 Gäste", "es": "3 huéspedes"},
-    "capacité maximale": {"en": "maximum occupancy", "de": "maximale Belegung", "es": "capacidad máxima"},
-    "1 chambre": {"en": "1 bedroom", "de": "1 Schlafzimmer", "es": "1 dormitorio"},
-    "2 lits · 1 salle de bain": {"en": "2 beds · 1 bathroom", "de": "2 Betten · 1 Bad", "es": "2 camas · 1 baño"},
-    "Airbnb · relevé août 2026": {"en": "Airbnb · recorded August 2026", "de": "Airbnb · Stand August 2026", "es": "Airbnb · dato de agosto de 2026"},
-    "50 m env.": {"en": "about 50 m", "de": "ca. 50 m", "es": "unos 50 m"},
-    "métro Quai de la Gare": {"en": "Quai de la Gare metro", "de": "Metro Quai de la Gare", "es": "metro Quai de la Gare"},
-    "Rénové en 2022, pratique et connecté": {"en": "Renovated in 2022, practical and connected", "de": "2022 renoviert, praktisch und gut ausgestattet", "es": "Renovado en 2022, práctico y conectado"},
-    "Appartement entier dans une résidence sécurisée avec ascenseur, vue dégagée, cuisine équipée, Wi‑Fi et espace de travail.": {"en": "Entire apartment in a secure building with a lift, open view, equipped kitchen, Wi-Fi and workspace.", "de": "Ganze Wohnung in einem sicheren Gebäude mit Aufzug, freiem Blick, ausgestatteter Küche, WLAN und Arbeitsplatz.", "es": "Apartamento entero en un edificio seguro con ascensor, vistas despejadas, cocina equipada, Wi-Fi y zona de trabajo."},
-    "Arrivée autonome": {"en": "Self check-in", "de": "Eigenständiger Check-in", "es": "Llegada autónoma"},
-    "Cuisine équipée": {"en": "Equipped kitchen", "de": "Ausgestattete Küche", "es": "Cocina equipada"},
-    "Espace de travail": {"en": "Workspace", "de": "Arbeitsplatz", "es": "Zona de trabajo"},
-    "Télévision": {"en": "Television", "de": "Fernseher", "es": "Televisión"},
-    "Animaux acceptés": {"en": "Pets welcome", "de": "Haustiere erlaubt", "es": "Se admiten mascotas"},
-    "Tous les détails": {"en": "Full details", "de": "Alle Details", "es": "Todos los detalles"},
-    "Vue réelle du logement Paris Auriol Austerlitz Arena.": {"en": "Real view of the Paris Auriol Austerlitz Arena apartment.", "de": "Originalaufnahme der Wohnung Paris Auriol Austerlitz Arena.", "es": "Vista real del apartamento Paris Auriol Austerlitz Arena."},
-    "Emplacement": {"en": "Location", "de": "Lage", "es": "Ubicación"},
-    "La ligne 6, la Seine et Bercy à proximité": {"en": "Metro line 6, the Seine and Bercy nearby", "de": "Metrolinie 6, Seine und Bercy ganz in der Nähe", "es": "La línea 6, el Sena y Bercy muy cerca"},
-    "Le métro Quai de la Gare est au pied du boulevard. Austerlitz, la BnF, le Jardin des Plantes et l’Accor Arena se rejoignent facilement à pied ou en métro.": {"en": "Quai de la Gare metro is at the foot of the boulevard. Austerlitz, the BnF, the Jardin des Plantes and the Accor Arena are easy to reach on foot or by metro.", "de": "Die Metrostation Quai de la Gare liegt direkt am Boulevard. Austerlitz, die BnF, der Jardin des Plantes und die Accor Arena sind bequem zu Fuß oder mit der Metro erreichbar.", "es": "El metro Quai de la Gare está al pie del bulevar. Austerlitz, la BnF, el Jardin des Plantes y el Accor Arena se alcanzan fácilmente a pie o en metro."},
-    "Transports faciles": {"en": "Easy transport links", "de": "Gute Verkehrsanbindung", "es": "Transporte fácil"},
-    "Ligne 6, bus et gare d’Austerlitz pour rejoindre rapidement les principaux quartiers de Paris.": {"en": "Line 6, buses and Austerlitz station provide quick access to Paris’s main districts.", "de": "Mit Linie 6, Bussen und dem Bahnhof Austerlitz erreichen Sie die wichtigsten Viertel von Paris schnell.", "es": "La línea 6, los autobuses y la estación de Austerlitz permiten llegar rápidamente a los principales barrios de París."},
-    "Préparer l’arrivée →": {"en": "Plan your arrival →", "de": "Anreise planen →", "es": "Preparar la llegada →"},
-    "Paris au bord de l’eau": {"en": "Paris by the water", "de": "Paris am Wasser", "es": "París junto al agua"},
-    "Quais de Seine, passerelle Simone-de-Beauvoir, Bercy et promenades de Paris Rive Gauche.": {"en": "The Seine quays, Simone-de-Beauvoir footbridge, Bercy and Paris Rive Gauche walks.", "de": "Seine-Ufer, Simone-de-Beauvoir-Steg, Bercy und Spazierwege in Paris Rive Gauche.", "es": "Los muelles del Sena, la pasarela Simone-de-Beauvoir, Bercy y los paseos de Paris Rive Gauche."},
-    "Voir le guide →": {"en": "View the guide →", "de": "Reiseführer ansehen →", "es": "Ver la guía →"},
-    "Concerts et grands événements à Bercy, à environ 500 mètres de l’adresse.": {"en": "Concerts and major events in Bercy, about 500 metres from the apartment.", "de": "Konzerte und Großveranstaltungen in Bercy, etwa 500 Meter von der Wohnung entfernt.", "es": "Conciertos y grandes eventos en Bercy, a unos 500 metros del apartamento."},
-    "Consulter l’agenda →": {"en": "View events →", "de": "Veranstaltungen ansehen →", "es": "Consultar la agenda →"},
-    "Réservation": {"en": "Booking", "de": "Buchung", "es": "Reserva"},
-    "Comparez les dates sur vos plateformes habituelles": {"en": "Compare dates on your usual booking platforms", "de": "Vergleichen Sie die Daten auf Ihren gewohnten Buchungsplattformen", "es": "Compare las fechas en sus plataformas habituales"},
-    "Le calendrier du site consolide les périodes occupées Airbnb et Booking dès que les deux flux iCal sont activés.": {"en": "The website calendar combines occupied periods from Airbnb and Booking once both iCal feeds are active.", "de": "Der Website-Kalender fasst belegte Zeiträume von Airbnb und Booking zusammen, sobald beide iCal-Feeds aktiv sind.", "es": "El calendario del sitio reúne los periodos ocupados de Airbnb y Booking cuando ambos calendarios iCal están activos."},
-    "Calendrier": {"en": "Calendar", "de": "Kalender", "es": "Calendario"},
-
-    "Galerie": {"en": "Gallery", "de": "Galerie", "es": "Galería"},
-    "Photos du logement": {"en": "Apartment photos", "de": "Fotos der Unterkunft", "es": "Fotos del alojamiento"},
-    "Découvrez l’appartement, ses équipements et ses différentes vues grâce aux photographies réelles de l’annonce.": {"en": "Discover the apartment, its facilities and different views through the genuine listing photos.", "de": "Entdecken Sie die Wohnung, ihre Ausstattung und verschiedene Ansichten anhand der Originalfotos des Inserats.", "es": "Descubra el apartamento, sus equipamientos y sus diferentes vistas con las fotografías reales del anuncio."},
-    "Photographies réelles du logement.": {"en": "Genuine apartment photographs.", "de": "Originalfotos der Unterkunft.", "es": "Fotografías reales del alojamiento."},
-    "Cliquez sur une image pour l’agrandir.": {"en": "Click an image to enlarge it.", "de": "Klicken Sie auf ein Bild, um es zu vergrößern.", "es": "Haga clic en una imagen para ampliarla."},
-    "Photos sur Airbnb": {"en": "Photos on Airbnb", "de": "Fotos auf Airbnb", "es": "Fotos en Airbnb"},
-    "Photos sur Booking.com": {"en": "Photos on Booking.com", "de": "Fotos auf Booking.com", "es": "Fotos en Booking.com"},
-    "Salon lumineux avec canapé et grande fenêtre": {"en": "Bright living room with sofa and large window", "de": "Helles Wohnzimmer mit Sofa und großem Fenster", "es": "Salón luminoso con sofá y gran ventana"},
-    "Immeuble du 18 boulevard Vincent Auriol": {"en": "Building at 18 Boulevard Vincent Auriol", "de": "Gebäude am Boulevard Vincent Auriol 18", "es": "Edificio del 18 Boulevard Vincent Auriol"},
-    "Espace repas intégré au séjour": {"en": "Dining area adjoining the living room", "de": "Essbereich neben dem Wohnzimmer", "es": "Zona de comedor junto al salón"},
-    "Chambre avec grand lit et fenêtre": {"en": "Bedroom with a large bed and window", "de": "Schlafzimmer mit großem Bett und Fenster", "es": "Dormitorio con cama grande y ventana"},
-    "Cuisine équipée et coin repas": {"en": "Fully equipped kitchen and dining corner", "de": "Ausgestattete Küche mit Essplatz", "es": "Cocina equipada y rincón comedor"},
-    "Salon, canapé et grand miroir": {"en": "Living room with sofa and large mirror", "de": "Wohnzimmer mit Sofa und großem Spiegel", "es": "Salón con sofá y espejo grande"},
-    "Salle de bains avec douche, lavabo et toilettes": {"en": "Bathroom with shower, washbasin and toilet", "de": "Bad mit Dusche, Waschbecken und WC", "es": "Baño con ducha, lavabo e inodoro"},
-    "Vue urbaine vers la Seine et Bercy": {"en": "City view towards the Seine and Bercy", "de": "Stadtblick in Richtung Seine und Bercy", "es": "Vista urbana hacia el Sena y Bercy"},
-    "Fermer la galerie": {"en": "Close gallery", "de": "Galerie schließen", "es": "Cerrar la galería"},
-    "Photo précédente": {"en": "Previous photo", "de": "Vorheriges Foto", "es": "Foto anterior"},
-    "Photo suivante": {"en": "Next photo", "de": "Nächstes Foto", "es": "Foto siguiente"},
-
-    "Appartement entier · Paris 13e": {"en": "Entire apartment · Paris 13th arrondissement", "de": "Ganze Wohnung · Paris 13. Arrondissement", "es": "Apartamento entero · París distrito 13"},
-    "Trois voyageurs · une chambre · deux lits · une salle de bain.": {"en": "Three guests · one bedroom · two beds · one bathroom.", "de": "Drei Gäste · ein Schlafzimmer · zwei Betten · ein Bad.", "es": "Tres huéspedes · un dormitorio · dos camas · un baño."},
-    "Confort": {"en": "Comfort", "de": "Komfort", "es": "Confort"},
-    "Un pied-à-terre fonctionnel pour séjourner à Paris": {"en": "A practical base for a stay in Paris", "de": "Ein praktischer Ausgangspunkt für Ihren Paris-Aufenthalt", "es": "Una base práctica para alojarse en París"},
-    "Les informations ci-dessous reprennent les caractéristiques publiées sur l’annonce Airbnb et les règles visibles sur Booking.com.": {"en": "The information below reflects the features published on Airbnb and the rules shown on Booking.com.", "de": "Die folgenden Angaben entsprechen den auf Airbnb veröffentlichten Merkmalen und den auf Booking.com sichtbaren Regeln.", "es": "La información siguiente recoge las características publicadas en Airbnb y las normas visibles en Booking.com."},
-    "Appartement rénové": {"en": "Renovated apartment", "de": "Renovierte Wohnung", "es": "Apartamento renovado"},
-    "Entièrement rénové en 2022, avec vue dégagée, environnement calme et résidence sécurisée.": {"en": "Fully renovated in 2022, with an open view, quiet surroundings and a secure building.", "de": "2022 vollständig renoviert, mit freiem Blick, ruhiger Umgebung und sicherem Gebäude.", "es": "Totalmente renovado en 2022, con vistas despejadas, entorno tranquilo y edificio seguro."},
-    "Un espace prévu pour préparer les repas, complété par une machine à café et les équipements essentiels indiqués sur les plateformes.": {"en": "A space for preparing meals, with a coffee machine and the essential equipment listed on the platforms.", "de": "Ein Bereich zur Zubereitung von Mahlzeiten, ergänzt durch eine Kaffeemaschine und die auf den Plattformen angegebenen Grundausstattungen.", "es": "Un espacio para preparar comidas, con cafetera y los equipamientos esenciales indicados en las plataformas."},
-    "Wi‑Fi & travail": {"en": "Wi-Fi & work", "de": "WLAN & Arbeiten", "es": "Wi-Fi y trabajo"},
-    "Connexion Wi‑Fi, télévision et espace de travail dédié pour les séjours professionnels ou prolongés.": {"en": "Wi-Fi, television and a dedicated workspace for business or longer stays.", "de": "WLAN, Fernseher und ein eigener Arbeitsplatz für Geschäfts- oder längere Aufenthalte.", "es": "Wi-Fi, televisión y una zona de trabajo dedicada para estancias profesionales o prolongadas."},
-    "Accès sécurisé et arrivée autonome. Les instructions détaillées sont communiquées avant le séjour.": {"en": "Secure access and self check-in. Detailed instructions are sent before the stay.", "de": "Sicherer Zugang und eigenständiger Check-in. Detaillierte Anweisungen werden vor dem Aufenthalt mitgeteilt.", "es": "Acceso seguro y llegada autónoma. Las instrucciones detalladas se envían antes de la estancia."},
-    "Ascenseur": {"en": "Lift", "de": "Aufzug", "es": "Ascensor"},
-    "La résidence dispose d’un ascenseur, un vrai avantage avec des bagages.": {"en": "The building has a lift, a real advantage when travelling with luggage.", "de": "Das Gebäude verfügt über einen Aufzug – ein echter Vorteil mit Gepäck.", "es": "El edificio dispone de ascensor, una gran ventaja con equipaje."},
-    "Les animaux sont admis ; un supplément peut s’appliquer selon les conditions de la réservation.": {"en": "Pets are allowed; an extra charge may apply depending on the booking conditions.", "de": "Haustiere sind erlaubt; je nach Buchungsbedingungen kann ein Aufpreis anfallen.", "es": "Se admiten mascotas; puede aplicarse un suplemento según las condiciones de la reserva."},
-    "À retenir": {"en": "Key points", "de": "Wichtige Hinweise", "es": "A tener en cuenta"},
-    "Des règles simples pour préserver le calme": {"en": "Simple rules to preserve a quiet environment", "de": "Einfache Regeln für eine ruhige Umgebung", "es": "Normas sencillas para preservar la tranquilidad"},
-    "Arrivée à partir de 15 h": {"en": "Check-in from 3 pm", "de": "Check-in ab 15 Uhr", "es": "Llegada a partir de las 15:00"},
-    "Départ avant 11 h": {"en": "Check-out before 11 am", "de": "Check-out vor 11 Uhr", "es": "Salida antes de las 11:00"},
-    "Logement non-fumeur": {"en": "Non-smoking apartment", "de": "Nichtraucherunterkunft", "es": "Alojamiento para no fumadores"},
-    "Fêtes et événements interdits": {"en": "No parties or events", "de": "Partys und Veranstaltungen nicht gestattet", "es": "Fiestas y eventos no permitidos"},
-    "Calme demandé de 22 h à 9 h": {"en": "Quiet hours from 10 pm to 9 am", "de": "Ruhezeit von 22 bis 9 Uhr", "es": "Silencio de 22:00 a 9:00"},
-    "Trois voyageurs maximum": {"en": "Maximum three guests", "de": "Maximal drei Gäste", "es": "Máximo tres huéspedes"},
-    "Lire les règles complètes": {"en": "Read all house rules", "de": "Alle Hausregeln lesen", "es": "Leer todas las normas"},
-    "Réservation et conditions": {"en": "Booking and conditions", "de": "Buchung und Bedingungen", "es": "Reserva y condiciones"},
-    "Les tarifs, conditions d’annulation, éventuels frais et dépôt de garantie sont ceux affichés au moment de réserver sur Airbnb ou Booking.com.": {"en": "Rates, cancellation conditions, possible charges and security deposit are those shown when booking on Airbnb or Booking.com.", "de": "Preise, Stornobedingungen, mögliche Gebühren und Kaution entsprechen den Angaben zum Buchungszeitpunkt bei Airbnb oder Booking.com.", "es": "Las tarifas, condiciones de cancelación, posibles cargos y depósito son los mostrados al reservar en Airbnb o Booking.com."},
-    "Voir Airbnb": {"en": "View Airbnb", "de": "Airbnb ansehen", "es": "Ver Airbnb"},
-    "Voir Booking": {"en": "View Booking", "de": "Booking ansehen", "es": "Ver Booking"},
-
-    "Un calendrier consolidé Airbnb + Booking, prévu pour une actualisation automatique toutes les quinze minutes.": {"en": "A combined Airbnb + Booking calendar, scheduled to update automatically every fifteen minutes.", "de": "Ein zusammengeführter Airbnb- und Booking-Kalender mit automatischer Aktualisierung alle fünfzehn Minuten.", "es": "Un calendario combinado de Airbnb y Booking, programado para actualizarse automáticamente cada quince minutos."},
-    "Chargement de l’état de synchronisation…": {"en": "Loading synchronisation status…", "de": "Synchronisierungsstatus wird geladen…", "es": "Cargando el estado de sincronización…"},
-    "Disponible": {"en": "Available", "de": "Verfügbar", "es": "Disponible"},
-    "Occupé": {"en": "Occupied", "de": "Belegt", "es": "Ocupado"},
-    "Date passée": {"en": "Past date", "de": "Vergangen", "es": "Fecha pasada"},
-    "Finaliser la réservation": {"en": "Complete your booking", "de": "Buchung abschließen", "es": "Finalizar la reserva"},
-    "Le calendrier est indicatif. Le prix final et la confirmation immédiate restent ceux de la plateforme choisie.": {"en": "The calendar is indicative. The final price and instant confirmation are provided by the selected platform.", "de": "Der Kalender dient zur Orientierung. Endpreis und sofortige Bestätigung werden von der gewählten Plattform bereitgestellt.", "es": "El calendario es orientativo. El precio final y la confirmación inmediata corresponden a la plataforma elegida."},
-    "Réserver sur Airbnb": {"en": "Book on Airbnb", "de": "Auf Airbnb buchen", "es": "Reservar en Airbnb"},
-    "Réserver sur Booking": {"en": "Book on Booking", "de": "Auf Booking buchen", "es": "Reservar en Booking"},
-    "Calendrier indisponible.": {"en": "Calendar unavailable.", "de": "Kalender nicht verfügbar.", "es": "Calendario no disponible."},
-    "Vérifiez directement les dates sur Airbnb ou Booking.com.": {"en": "Check the dates directly on Airbnb or Booking.com.", "de": "Prüfen Sie die Daten direkt auf Airbnb oder Booking.com.", "es": "Compruebe las fechas directamente en Airbnb o Booking.com."},
-    "Synchronisation Airbnb + Booking active.": {"en": "Airbnb + Booking synchronisation active.", "de": "Airbnb- und Booking-Synchronisierung aktiv.", "es": "Sincronización Airbnb + Booking activa."},
-    "Dernière modification des périodes :": {"en": "Last availability change:", "de": "Letzte Änderung der Zeiträume:", "es": "Última modificación de los periodos:"},
-    "Synchronisation en attente d’activation.": {"en": "Synchronisation pending activation.", "de": "Synchronisierung wartet auf Aktivierung.", "es": "Sincronización pendiente de activación."},
-    "Les disponibilités affichées sont indicatives : vérifiez les dates sur Airbnb ou Booking.com.": {"en": "Displayed availability is indicative: check the dates on Airbnb or Booking.com.", "de": "Die angezeigte Verfügbarkeit dient zur Orientierung: Prüfen Sie die Daten auf Airbnb oder Booking.com.", "es": "La disponibilidad mostrada es orientativa: compruebe las fechas en Airbnb o Booking.com."},
-    "Passé": {"en": "Past", "de": "Vergangen", "es": "Pasado"},
-    "Libre": {"en": "Free", "de": "Frei", "es": "Libre"},
-
-    "Quartier & accès": {"en": "Area & access", "de": "Umgebung & Anreise", "es": "Barrio y acceso"},
-    "Au pied du métro Quai de la Gare, entre Austerlitz, la Seine, Bercy et Paris Rive Gauche.": {"en": "By Quai de la Gare metro, between Austerlitz, the Seine, Bercy and Paris Rive Gauche.", "de": "Direkt an der Metro Quai de la Gare, zwischen Austerlitz, der Seine, Bercy und Paris Rive Gauche.", "es": "Junto al metro Quai de la Gare, entre Austerlitz, el Sena, Bercy y Paris Rive Gauche."},
-    "Transports": {"en": "Transport", "de": "Verkehr", "es": "Transportes"},
-    "Arriver facilement, repartir partout": {"en": "Easy arrival, easy access across Paris", "de": "Einfach ankommen und ganz Paris erreichen", "es": "Llegar fácilmente y desplazarse por todo París"},
-    "La station Quai de la Gare (ligne 6) se trouve à environ 50 mètres. La gare d’Austerlitz et l’Accor Arena sont accessibles en quelques minutes à pied.": {"en": "Quai de la Gare station (line 6) is about 50 metres away. Austerlitz station and the Accor Arena are within a few minutes’ walk.", "de": "Die Station Quai de la Gare (Linie 6) ist etwa 50 Meter entfernt. Bahnhof Austerlitz und Accor Arena sind in wenigen Gehminuten erreichbar.", "es": "La estación Quai de la Gare (línea 6) está a unos 50 metros. La estación de Austerlitz y el Accor Arena se encuentran a pocos minutos a pie."},
-    "Métro ligne 6": {"en": "Metro line 6", "de": "Metrolinie 6", "es": "Metro línea 6"},
-    "Quai de la Gare, au pied du boulevard.": {"en": "Quai de la Gare, at the foot of the boulevard.", "de": "Quai de la Gare, direkt am Boulevard.", "es": "Quai de la Gare, al pie del bulevar."},
-    "Gare d’Austerlitz": {"en": "Austerlitz station", "de": "Bahnhof Austerlitz", "es": "Estación de Austerlitz"},
-    "Trains, RER C et métros 5 et 10.": {"en": "Trains, RER C and metro lines 5 and 10.", "de": "Züge, RER C und Metrolinien 5 und 10.", "es": "Trenes, RER C y líneas de metro 5 y 10."},
-    "Environ 500 mètres, de l’autre côté de la Seine.": {"en": "About 500 metres away, across the Seine.", "de": "Etwa 500 Meter entfernt, auf der anderen Seite der Seine.", "es": "A unos 500 metros, al otro lado del Sena."},
-    "Gare de Lyon": {"en": "Gare de Lyon", "de": "Bahnhof Gare de Lyon", "es": "Estación Gare de Lyon"},
-    "Accès rapide via Bercy ou à pied selon les bagages.": {"en": "Quick access via Bercy or on foot, depending on your luggage.", "de": "Schnell über Bercy oder je nach Gepäck zu Fuß erreichbar.", "es": "Acceso rápido por Bercy o a pie, según el equipaje."},
-    "Itinéraire Google Maps": {"en": "Google Maps directions", "de": "Route mit Google Maps", "es": "Ruta en Google Maps"},
-    "Ouvrir la carte": {"en": "Open map", "de": "Karte öffnen", "es": "Abrir el mapa"},
-    "Carte du 18 boulevard Vincent Auriol": {"en": "Map of 18 Boulevard Vincent Auriol", "de": "Karte Boulevard Vincent Auriol 18", "es": "Mapa de 18 Boulevard Vincent Auriol"},
-    "Repères": {"en": "Useful places", "de": "Orientierung", "es": "Puntos de referencia"},
-    "Les lieux utiles autour de l’appartement": {"en": "Useful places around the apartment", "de": "Nützliche Orte rund um die Wohnung", "es": "Lugares útiles alrededor del apartamento"},
-    "Courses": {"en": "Groceries", "de": "Einkaufen", "es": "Compras"},
-    "Commerces de proximité sur le boulevard et autour de l’avenue de France.": {"en": "Local shops on the boulevard and around Avenue de France.", "de": "Geschäfte am Boulevard und rund um die Avenue de France.", "es": "Comercios de proximidad en el bulevar y alrededor de la Avenue de France."},
-    "Promenade": {"en": "Walks", "de": "Spaziergänge", "es": "Paseos"},
-    "Les quais de Seine se trouvent au bout de la rue, avec Bercy sur l’autre rive.": {"en": "The Seine quays are at the end of the street, with Bercy on the opposite bank.", "de": "Die Seine-Ufer liegen am Ende der Straße, Bercy befindet sich am gegenüberliegenden Ufer.", "es": "Los muelles del Sena están al final de la calle, con Bercy en la orilla opuesta."},
-    "Santé": {"en": "Healthcare", "de": "Gesundheit", "es": "Salud"},
-    "Le groupe hospitalier Pitié‑Salpêtrière est situé à proximité d’Austerlitz.": {"en": "The Pitié-Salpêtrière hospital group is located near Austerlitz.", "de": "Die Universitätsklinik Pitié-Salpêtrière liegt in der Nähe von Austerlitz.", "es": "El hospital Pitié-Salpêtrière se encuentra cerca de Austerlitz."},
-
-    "Guide local": {"en": "Local guide", "de": "Reiseführer", "es": "Guía local"},
-    "Découvrir autour d’Auriol": {"en": "Explore the Auriol area", "de": "Die Umgebung von Auriol entdecken", "es": "Descubrir los alrededores de Auriol"},
-    "Une sélection pour profiter du 13ᵉ, de Bercy et de la Seine sans voiture.": {"en": "A selection for enjoying the 13th arrondissement, Bercy and the Seine without a car.", "de": "Eine Auswahl, um das 13. Arrondissement, Bercy und die Seine ohne Auto zu entdecken.", "es": "Una selección para disfrutar del distrito 13, Bercy y el Sena sin coche."},
-    "À voir": {"en": "Things to see", "de": "Sehenswert", "es": "Qué ver"},
-    "Six idées à proximité": {"en": "Six nearby ideas", "de": "Sechs Ideen in der Nähe", "es": "Seis ideas cercanas"},
-    "Jardin des Plantes": {"en": "Jardin des Plantes", "de": "Jardin des Plantes", "es": "Jardin des Plantes"},
-    "Jardins, Muséum national d’Histoire naturelle, ménagerie et Grandes Serres.": {"en": "Gardens, the National Museum of Natural History, the zoo and the great greenhouses.", "de": "Gärten, Nationalmuseum für Naturgeschichte, Menagerie und große Gewächshäuser.", "es": "Jardines, Museo Nacional de Historia Natural, zoológico y grandes invernaderos."},
-    "Site officiel →": {"en": "Official website →", "de": "Offizielle Website →", "es": "Sitio oficial →"},
-    "BnF François‑Mitterrand": {"en": "BnF François-Mitterrand", "de": "BnF François-Mitterrand", "es": "BnF François-Mitterrand"},
-    "Architecture contemporaine, expositions et promenade sur l’avenue de France.": {"en": "Contemporary architecture, exhibitions and a walk along Avenue de France.", "de": "Zeitgenössische Architektur, Ausstellungen und ein Spaziergang entlang der Avenue de France.", "es": "Arquitectura contemporánea, exposiciones y paseo por la Avenue de France."},
-    "Concerts, spectacles et grands rendez-vous sportifs à Bercy.": {"en": "Concerts, shows and major sporting events in Bercy.", "de": "Konzerte, Shows und große Sportveranstaltungen in Bercy.", "es": "Conciertos, espectáculos y grandes eventos deportivos en Bercy."},
-    "Programmation →": {"en": "Programme →", "de": "Programm →", "es": "Programación →"},
-    "MK2 Bibliothèque": {"en": "MK2 Bibliothèque", "de": "MK2 Bibliothèque", "es": "MK2 Bibliothèque"},
-    "Cinéma et restaurants face à la Bibliothèque nationale de France.": {"en": "Cinema and restaurants opposite the National Library of France.", "de": "Kino und Restaurants gegenüber der Französischen Nationalbibliothek.", "es": "Cine y restaurantes frente a la Biblioteca Nacional de Francia."},
-    "Voir les séances →": {"en": "View screenings →", "de": "Vorstellungen ansehen →", "es": "Ver sesiones →"},
-    "Quais de Seine": {"en": "Seine quays", "de": "Seine-Ufer", "es": "Muelles del Sena"},
-    "Balade vers la passerelle Simone-de-Beauvoir, le parc de Bercy ou l’île Saint‑Louis.": {"en": "Walk towards the Simone-de-Beauvoir footbridge, Parc de Bercy or Île Saint-Louis.", "de": "Spaziergang zum Simone-de-Beauvoir-Steg, zum Parc de Bercy oder zur Île Saint-Louis.", "es": "Paseo hacia la pasarela Simone-de-Beauvoir, el parque de Bercy o la Île Saint-Louis."},
-    "Préparer la balade →": {"en": "Plan the walk →", "de": "Spaziergang planen →", "es": "Preparar el paseo →"},
-    "Street art du 13ᵉ": {"en": "13th arrondissement street art", "de": "Street Art im 13. Arrondissement", "es": "Arte urbano del distrito 13"},
-    "Grandes fresques murales autour du boulevard Vincent-Auriol et de la Butte‑aux‑Cailles.": {"en": "Large murals around Boulevard Vincent Auriol and Butte-aux-Cailles.", "de": "Große Wandgemälde rund um den Boulevard Vincent Auriol und die Butte-aux-Cailles.", "es": "Grandes murales alrededor del Boulevard Vincent Auriol y la Butte-aux-Cailles."},
-    "Parcours paris.fr →": {"en": "Paris.fr route →", "de": "Route auf paris.fr →", "es": "Ruta en paris.fr →"},
-    "Manger & sortir": {"en": "Food & nightlife", "de": "Essen & Ausgehen", "es": "Comer y salir"},
-    "Quelques repères du quartier": {"en": "A few local recommendations", "de": "Einige Empfehlungen in der Umgebung", "es": "Algunas recomendaciones del barrio"},
-    "Les horaires et cartes peuvent évoluer : vérifiez avant de vous déplacer.": {"en": "Opening hours and menus may change: check before visiting.", "de": "Öffnungszeiten und Speisekarten können sich ändern: Bitte vor dem Besuch prüfen.", "es": "Los horarios y las cartas pueden cambiar: compruébelos antes de desplazarse."},
-    "Restaurant, terrasse et programmation culturelle au 14 port de la Gare, au bord de la Seine.": {"en": "Restaurant, terrace and cultural programme at 14 Port de la Gare, by the Seine.", "de": "Restaurant, Terrasse und Kulturprogramm am Port de la Gare 14, direkt an der Seine.", "es": "Restaurante, terraza y programación cultural en 14 Port de la Gare, junto al Sena."},
-    "Infos pratiques →": {"en": "Practical information →", "de": "Praktische Informationen →", "es": "Información práctica →"},
-    "Brasserie avec terrasse entre Austerlitz et la BnF, avenue de France.": {"en": "Brasserie with a terrace between Austerlitz and the BnF, on Avenue de France.", "de": "Brasserie mit Terrasse zwischen Austerlitz und der BnF an der Avenue de France.", "es": "Brasserie con terraza entre Austerlitz y la BnF, en Avenue de France."},
-    "Voir la carte →": {"en": "View menu →", "de": "Speisekarte ansehen →", "es": "Ver la carta →"},
-    "Pizzeria de proximité au 16 boulevard Vincent Auriol, pratiquement à côté du logement.": {"en": "A neighbourhood pizzeria at 16 Boulevard Vincent Auriol, almost next door to the apartment.", "de": "Pizzeria in der Nachbarschaft am Boulevard Vincent Auriol 16, fast direkt neben der Wohnung.", "es": "Pizzería de proximidad en 16 Boulevard Vincent Auriol, prácticamente al lado del apartamento."},
-    "Voir sur la carte →": {"en": "View on map →", "de": "Auf der Karte ansehen →", "es": "Ver en el mapa →"},
-
-    "Sortir à Paris": {"en": "Going out in Paris", "de": "Ausgehen in Paris", "es": "Salir en París"},
-    "Agenda du 13ᵉ": {"en": "13th arrondissement events", "de": "Veranstaltungen im 13. Arrondissement", "es": "Agenda del distrito 13"},
-    "Les événements à venir sont chargés depuis l’Open Data officiel « Que faire à Paris ? ».": {"en": "Upcoming events are loaded from the official “Que faire à Paris?” Open Data service.", "de": "Kommende Veranstaltungen werden aus dem offiziellen Open-Data-Angebot „Que faire à Paris?“ geladen.", "es": "Los próximos eventos se cargan desde el servicio oficial de datos abiertos «Que faire à Paris?»."},
-    "L’agenda est fourni à titre pratique. Les horaires, tarifs et disponibilités sont à confirmer sur la fiche officielle de chaque événement.": {"en": "The events list is provided for convenience. Confirm times, prices and availability on each event’s official page.", "de": "Der Veranstaltungskalender dient zur Orientierung. Zeiten, Preise und Verfügbarkeit sind auf der offiziellen Veranstaltungsseite zu prüfen.", "es": "La agenda se ofrece como información práctica. Confirme horarios, precios y disponibilidad en la ficha oficial de cada evento."},
-    "Chargement de l’agenda…": {"en": "Loading events…", "de": "Veranstaltungen werden geladen…", "es": "Cargando la agenda…"},
-    "Agenda complet de Paris": {"en": "Full Paris events guide", "de": "Vollständiger Pariser Veranstaltungskalender", "es": "Agenda completa de París"},
-    "À venir": {"en": "Coming up", "de": "Demnächst", "es": "Próximamente"},
-    "Événement à Paris 13e": {"en": "Event in Paris’s 13th arrondissement", "de": "Veranstaltung im 13. Arrondissement von Paris", "es": "Evento en el distrito 13 de París"},
-    "Voir l’événement": {"en": "View event", "de": "Veranstaltung ansehen", "es": "Ver el evento"},
-    "Agenda momentanément indisponible.": {"en": "Events temporarily unavailable.", "de": "Veranstaltungen vorübergehend nicht verfügbar.", "es": "Agenda temporalmente no disponible."},
-    "Consultez l’agenda officiel de la Ville de Paris grâce au bouton ci-dessous.": {"en": "Use the button below to view the official City of Paris events guide.", "de": "Über die Schaltfläche unten gelangen Sie zum offiziellen Veranstaltungskalender der Stadt Paris.", "es": "Consulte la agenda oficial de la Ciudad de París con el botón siguiente."},
-
-    "Informations voyageurs": {"en": "Guest information", "de": "Gästeinformationen", "es": "Información para huéspedes"},
-    "Les règles doivent être respectées par tous les voyageurs afin de préserver l’appartement et la tranquillité de l’immeuble.": {"en": "All guests must follow the rules to protect the apartment and preserve the building’s quiet environment.", "de": "Alle Gäste müssen die Regeln einhalten, um die Wohnung und die Ruhe im Gebäude zu schützen.", "es": "Todos los huéspedes deben respetar las normas para proteger el apartamento y la tranquilidad del edificio."},
-    "Horaires et occupation": {"en": "Times and occupancy", "de": "Zeiten und Belegung", "es": "Horarios y ocupación"},
-    "Enfants de tous âges acceptés": {"en": "Children of all ages welcome", "de": "Kinder jeden Alters willkommen", "es": "Se admiten niños de todas las edades"},
-    "Pas de lit bébé ni de lit d’appoint annoncé": {"en": "No cot or extra bed is advertised", "de": "Kein Babybett oder Zustellbett angegeben", "es": "No se anuncia cuna ni cama supletoria"},
-    "Respect des lieux": {"en": "Respect for the property", "de": "Rücksicht auf die Unterkunft", "es": "Respeto del alojamiento"},
-    "Logement entièrement non-fumeur": {"en": "Entirely non-smoking apartment", "de": "Vollständige Nichtraucherunterkunft", "es": "Alojamiento totalmente para no fumadores"},
-    "Calme obligatoire entre 22 h et 9 h": {"en": "Quiet hours are mandatory from 10 pm to 9 am", "de": "Verbindliche Ruhezeit von 22 bis 9 Uhr", "es": "Silencio obligatorio de 22:00 a 9:00"},
-    "Enterrements de vie de célibataire et groupes similaires interdits": {"en": "Stag, hen and similar parties are not allowed", "de": "Junggesellenabschiede und ähnliche Gruppen sind nicht gestattet", "es": "No se permiten despedidas de soltero/a ni grupos similares"},
-    "Animaux admis, avec supplément possible": {"en": "Pets allowed; an extra charge may apply", "de": "Haustiere erlaubt; möglicher Aufpreis", "es": "Se admiten mascotas; puede aplicarse un suplemento"},
-    "Conditions de réservation": {"en": "Booking conditions", "de": "Buchungsbedingungen", "es": "Condiciones de reserva"},
-    "Les conditions d’annulation, de prépaiement et de dommage dépendent de la plateforme et du tarif choisi. Booking.com indique qu’une indemnisation pouvant atteindre 300 € peut être demandée après le départ en cas de dommages, selon sa politique applicable à l’hébergement.": {"en": "Cancellation, prepayment and damage conditions depend on the platform and rate selected. Booking.com states that compensation of up to €300 may be requested after departure in the event of damage, under the policy applicable to the property.", "de": "Stornierungs-, Vorauszahlungs- und Schadensbedingungen hängen von der gewählten Plattform und Rate ab. Booking.com weist darauf hin, dass bei Schäden nach der Abreise gemäß der für die Unterkunft geltenden Richtlinie eine Entschädigung von bis zu 300 € verlangt werden kann.", "es": "Las condiciones de cancelación, prepago y daños dependen de la plataforma y la tarifa elegidas. Booking.com indica que, en caso de daños, puede solicitarse tras la salida una compensación de hasta 300 €, según la política aplicable al alojamiento."},
-    "La version affichée sur la plateforme au moment de la réservation prévaut toujours.": {"en": "The version shown on the platform at the time of booking always takes precedence.", "de": "Maßgeblich ist stets die zum Buchungszeitpunkt auf der Plattform angezeigte Fassung.", "es": "Siempre prevalece la versión mostrada en la plataforma en el momento de reservar."},
-    "Conditions Airbnb": {"en": "Airbnb conditions", "de": "Airbnb-Bedingungen", "es": "Condiciones de Airbnb"},
-    "Conditions Booking": {"en": "Booking conditions", "de": "Booking-Bedingungen", "es": "Condiciones de Booking"},
-
-    "Informations légales": {"en": "Legal information", "de": "Rechtliche Informationen", "es": "Información legal"},
-    "Édition": {"en": "Publisher", "de": "Herausgeber", "es": "Editor"},
-    "Site de présentation du meublé de tourisme « Paris Auriol Austerlitz Arena », situé au 18 boulevard Vincent Auriol, 75013 Paris.": {"en": "Presentation website for the furnished tourist accommodation “Paris Auriol Austerlitz Arena”, located at 18 Boulevard Vincent Auriol, 75013 Paris.", "de": "Informationswebsite für die möblierte Ferienunterkunft „Paris Auriol Austerlitz Arena“ am Boulevard Vincent Auriol 18, 75013 Paris.", "es": "Sitio de presentación del alojamiento turístico amueblado «Paris Auriol Austerlitz Arena», situado en 18 Boulevard Vincent Auriol, 75013 París."},
-    "Numéro d’enregistrement du meublé de tourisme :": {"en": "Furnished tourist accommodation registration number:", "de": "Registrierungsnummer der möblierten Ferienunterkunft:", "es": "Número de registro del alojamiento turístico:"},
-    "Contact avec l’éditeur et le propriétaire : via les messageries sécurisées des annonces Airbnb et Booking.com accessibles depuis ce site.": {"en": "Contact the publisher and owner through the secure messaging systems of the Airbnb and Booking.com listings linked from this website.", "de": "Kontakt zum Herausgeber und Eigentümer über die sicheren Nachrichtensysteme der von dieser Website verlinkten Airbnb- und Booking.com-Inserate.", "es": "Contacto con el editor y el propietario mediante las mensajerías seguras de los anuncios de Airbnb y Booking.com enlazados desde este sitio."},
-    "Hébergement": {"en": "Hosting", "de": "Hosting", "es": "Alojamiento web"},
-    "Le site est hébergé par GitHub Pages, un service de GitHub, Inc., 88 Colin P Kelly Jr Street, San Francisco, CA 94107, États-Unis.": {"en": "The website is hosted by GitHub Pages, a service of GitHub, Inc., 88 Colin P Kelly Jr Street, San Francisco, CA 94107, United States.", "de": "Die Website wird über GitHub Pages gehostet, einen Dienst von GitHub, Inc., 88 Colin P Kelly Jr Street, San Francisco, CA 94107, USA.", "es": "El sitio está alojado en GitHub Pages, un servicio de GitHub, Inc., 88 Colin P Kelly Jr Street, San Francisco, CA 94107, Estados Unidos."},
-    "Responsabilité": {"en": "Liability", "de": "Haftung", "es": "Responsabilidad"},
-    "Les prix, disponibilités et conditions contractuelles sont fournis par les plateformes de réservation et peuvent évoluer. Seules les informations affichées lors de la réservation sur la plateforme choisie ont une valeur contractuelle.": {"en": "Prices, availability and contractual conditions are provided by the booking platforms and may change. Only the information shown when booking on the selected platform is contractually binding.", "de": "Preise, Verfügbarkeit und Vertragsbedingungen werden von den Buchungsplattformen bereitgestellt und können sich ändern. Vertragsverbindlich sind ausschließlich die Angaben, die bei der Buchung auf der gewählten Plattform angezeigt werden.", "es": "Los precios, la disponibilidad y las condiciones contractuales los proporcionan las plataformas de reserva y pueden cambiar. Solo tiene valor contractual la información mostrada al reservar en la plataforma elegida."},
-    "Propriété intellectuelle": {"en": "Intellectual property", "de": "Urheberrecht", "es": "Propiedad intelectual"},
-    "Les textes, la présentation et les éléments graphiques propres au site ne peuvent pas être reproduits sans autorisation. Les marques Airbnb et Booking.com appartiennent à leurs titulaires respectifs.": {"en": "The website’s original text, presentation and graphic elements may not be reproduced without permission. Airbnb and Booking.com trademarks belong to their respective owners.", "de": "Die eigenen Texte, die Gestaltung und die grafischen Elemente der Website dürfen ohne Genehmigung nicht vervielfältigt werden. Die Marken Airbnb und Booking.com gehören ihren jeweiligen Inhabern.", "es": "Los textos, la presentación y los elementos gráficos propios del sitio no pueden reproducirse sin autorización. Las marcas Airbnb y Booking.com pertenecen a sus respectivos titulares."},
-    "À compléter avant diffusion commerciale élargie :": {"en": "To be completed before wider commercial distribution:", "de": "Vor einer breiteren kommerziellen Veröffentlichung zu ergänzen:", "es": "Debe completarse antes de una difusión comercial más amplia:"},
-    "identité postale complète de l’éditeur et adresse électronique directe dédiée au site.": {"en": "the publisher’s full postal identity and a direct email address dedicated to the website.", "de": "vollständige Postanschrift des Herausgebers und eine direkte, der Website zugeordnete E-Mail-Adresse.", "es": "la identidad postal completa del editor y una dirección de correo electrónico directa dedicada al sitio."},
-
-    "Données personnelles": {"en": "Personal data", "de": "Personenbezogene Daten", "es": "Datos personales"},
-    "Données collectées": {"en": "Data collected", "de": "Erhobene Daten", "es": "Datos recogidos"},
-    "Le site statique ne contient aucun formulaire, aucun compte utilisateur et ne dépose pas de cookie publicitaire par défaut. Il ne collecte directement ni nom, ni adresse électronique, ni numéro de téléphone.": {"en": "The static website has no form or user account and does not set advertising cookies by default. It directly collects no name, email address or telephone number.", "de": "Die statische Website enthält weder Formulare noch Benutzerkonten und setzt standardmäßig keine Werbe-Cookies. Sie erhebt direkt weder Namen noch E-Mail-Adressen oder Telefonnummern.", "es": "El sitio estático no contiene formularios ni cuentas de usuario y no instala cookies publicitarias por defecto. No recoge directamente nombres, direcciones de correo electrónico ni números de teléfono."},
-    "Services externes": {"en": "External services", "de": "Externe Dienste", "es": "Servicios externos"},
-    "La carte OpenStreetMap, les images d’ambiance hébergées par Unsplash et les liens vers Airbnb, Booking.com et les sites touristiques peuvent entraîner des échanges techniques avec ces services. Leurs propres politiques de confidentialité s’appliquent.": {"en": "The OpenStreetMap map and links to Airbnb, Booking.com and tourism websites may lead to technical exchanges with those services. Their own privacy policies apply.", "de": "Die OpenStreetMap-Karte sowie Links zu Airbnb, Booking.com und touristischen Websites können technische Datenübertragungen an diese Dienste auslösen. Es gelten deren eigene Datenschutzrichtlinien.", "es": "El mapa de OpenStreetMap y los enlaces a Airbnb, Booking.com y sitios turísticos pueden generar intercambios técnicos con esos servicios. Se aplican sus propias políticas de privacidad."},
-    "Calendriers": {"en": "Calendars", "de": "Kalender", "es": "Calendarios"},
-    "Les flux iCal privés sont traités par GitHub Actions. Le site public ne reçoit que des périodes anonymisées « occupé / disponible » ; aucune URL privée de calendrier et aucun nom de voyageur ne sont publiés.": {"en": "Private iCal feeds are processed by GitHub Actions. The public website receives only anonymised “occupied / available” periods; no private calendar URL or guest name is published.", "de": "Private iCal-Feeds werden über GitHub Actions verarbeitet. Die öffentliche Website erhält ausschließlich anonymisierte Zeiträume „belegt / verfügbar“; weder private Kalender-URLs noch Gästenamen werden veröffentlicht.", "es": "Los calendarios iCal privados se procesan mediante GitHub Actions. El sitio público solo recibe periodos anonimizados «ocupado / disponible»; no se publica ninguna URL privada ni ningún nombre de huésped."},
-    "Mesure d’audience": {"en": "Audience measurement", "de": "Reichweitenmessung", "es": "Medición de audiencia"},
-    "Aucun outil de mesure d’audience n’est installé dans cette version du site.": {"en": "No audience measurement tool is installed in this version of the website.", "de": "In dieser Version der Website ist kein Reichweitenmessungs-Tool installiert.", "es": "No hay ninguna herramienta de medición de audiencia instalada en esta versión del sitio."},
-
-    "Erreur 404": {"en": "Error 404", "de": "Fehler 404", "es": "Error 404"},
-    "Cette page n’existe pas.": {"en": "This page does not exist.", "de": "Diese Seite existiert nicht.", "es": "Esta página no existe."},
-    "Le lien a peut-être changé. Revenez à l’accueil ou consultez les disponibilités.": {"en": "The link may have changed. Return to the home page or check availability.", "de": "Der Link hat sich möglicherweise geändert. Kehren Sie zur Startseite zurück oder prüfen Sie die Verfügbarkeit.", "es": "Es posible que el enlace haya cambiado. Vuelva al inicio o consulte la disponibilidad."},
-    "Retour à l’accueil": {"en": "Back to home", "de": "Zur Startseite", "es": "Volver al inicio"}
+    "Langue": {
+      "en": "Language",
+      "de": "Sprache",
+      "es": "Idioma"
+    },
+    "Appartement entier · 3 voyageurs · métro Quai de la Gare · arrivée autonome": {
+      "en": "Entire apartment · 3 guests · Quai de la Gare metro · self check-in",
+      "de": "Ganze Wohnung · 3 Gäste · Metro Quai de la Gare · eigenständiger Check-in",
+      "es": "Apartamento entero · 3 huéspedes · metro Quai de la Gare · llegada autónoma"
+    },
+    "Le logement": {
+      "en": "The apartment",
+      "de": "Die Unterkunft",
+      "es": "El alojamiento"
+    },
+    "Photos": {
+      "en": "Photos",
+      "de": "Fotos",
+      "es": "Fotos"
+    },
+    "Disponibilités": {
+      "en": "Availability",
+      "de": "Verfügbarkeit",
+      "es": "Disponibilidad"
+    },
+    "Quartier": {
+      "en": "Area",
+      "de": "Umgebung",
+      "es": "Barrio"
+    },
+    "Découvrir": {
+      "en": "Explore",
+      "de": "Entdecken",
+      "es": "Descubrir"
+    },
+    "Agenda": {
+      "en": "Events",
+      "de": "Veranstaltungen",
+      "es": "Agenda"
+    },
+    "Réserver": {
+      "en": "Book",
+      "de": "Buchen",
+      "es": "Reservar"
+    },
+    "Ouvrir le menu": {
+      "en": "Open menu",
+      "de": "Menü öffnen",
+      "es": "Abrir el menú"
+    },
+    "Fermer le menu": {
+      "en": "Close menu",
+      "de": "Menü schließen",
+      "es": "Cerrar el menú"
+    },
+    "Navigation principale": {
+      "en": "Main navigation",
+      "de": "Hauptnavigation",
+      "es": "Navegación principal"
+    },
+    "Paris Auriol, accueil": {
+      "en": "Paris Auriol, home",
+      "de": "Paris Auriol, Startseite",
+      "es": "Paris Auriol, inicio"
+    },
+    "Appartement de séjour au 18 boulevard Vincent Auriol, 75013 Paris.": {
+      "en": "Holiday apartment at 18 Boulevard Vincent Auriol, 75013 Paris.",
+      "de": "Ferienwohnung am Boulevard Vincent Auriol 18, 75013 Paris.",
+      "es": "Apartamento turístico en 18 Boulevard Vincent Auriol, 75013 París."
+    },
+    "Enregistrement meublé de tourisme : 7511306769833.": {
+      "en": "Furnished tourist accommodation registration: 7511306769833.",
+      "de": "Registrierung als möblierte Ferienunterkunft: 7511306769833.",
+      "es": "Número de registro de alojamiento turístico: 7511306769833."
+    },
+    "Explorer": {
+      "en": "Explore",
+      "de": "Entdecken",
+      "es": "Explorar"
+    },
+    "Quartier & accès": {
+      "en": "Area & access",
+      "de": "Umgebung & Anreise",
+      "es": "Barrio y acceso"
+    },
+    "Guide local": {
+      "en": "Local guide",
+      "de": "Reiseführer",
+      "es": "Guía local"
+    },
+    "Agenda du 13ᵉ": {
+      "en": "13th arrondissement events",
+      "de": "Veranstaltungen im 13. Arrondissement",
+      "es": "Agenda del distrito 13"
+    },
+    "Informations": {
+      "en": "Information",
+      "de": "Informationen",
+      "es": "Información"
+    },
+    "Règles du séjour": {
+      "en": "House rules",
+      "de": "Hausregeln",
+      "es": "Normas de la estancia"
+    },
+    "Mentions légales": {
+      "en": "Legal notice",
+      "de": "Impressum",
+      "es": "Aviso legal"
+    },
+    "Confidentialité": {
+      "en": "Privacy",
+      "de": "Datenschutz",
+      "es": "Privacidad"
+    },
+    "Plan du site XML": {
+      "en": "XML sitemap",
+      "de": "XML-Sitemap",
+      "es": "Mapa XML del sitio"
+    },
+    "Réservation sécurisée sur Airbnb ou Booking.com": {
+      "en": "Secure booking on Airbnb or Booking.com",
+      "de": "Sichere Buchung über Airbnb oder Booking.com",
+      "es": "Reserva segura en Airbnb o Booking.com"
+    },
+    "Caractéristiques principales": {
+      "en": "Main features",
+      "de": "Wichtigste Merkmale",
+      "es": "Características principales"
+    },
+    "Un appartement parisien, au pied du métro.": {
+      "en": "A Paris apartment right by the metro.",
+      "de": "Eine Pariser Wohnung direkt an der Metro.",
+      "es": "Un apartamento parisino junto al metro."
+    },
+    "À quelques pas de Quai de la Gare, un pied-à-terre rénové pour trois voyageurs, proche de la Seine, de la gare d’Austerlitz et de l’Accor Arena.": {
+      "en": "A renovated base for three guests, a few steps from Quai de la Gare and close to the Seine, Austerlitz station and the Accor Arena.",
+      "de": "Eine renovierte Unterkunft für drei Gäste, nur wenige Schritte von Quai de la Gare und nahe der Seine, dem Bahnhof Austerlitz und der Accor Arena.",
+      "es": "Un alojamiento renovado para tres huéspedes, a pocos pasos de Quai de la Gare y cerca del Sena, de la estación de Austerlitz y del Accor Arena."
+    },
+    "Voir les disponibilités": {
+      "en": "View availability",
+      "de": "Verfügbarkeit prüfen",
+      "es": "Ver disponibilidad"
+    },
+    "Découvrir le logement": {
+      "en": "Explore the apartment",
+      "de": "Unterkunft entdecken",
+      "es": "Descubrir el alojamiento"
+    },
+    "3 voyageurs": {
+      "en": "3 guests",
+      "de": "3 Gäste",
+      "es": "3 huéspedes"
+    },
+    "capacité maximale": {
+      "en": "maximum occupancy",
+      "de": "maximale Belegung",
+      "es": "capacidad máxima"
+    },
+    "1 chambre": {
+      "en": "1 bedroom",
+      "de": "1 Schlafzimmer",
+      "es": "1 dormitorio"
+    },
+    "2 lits · 1 salle de bain": {
+      "en": "2 beds · 1 bathroom",
+      "de": "2 Betten · 1 Bad",
+      "es": "2 camas · 1 baño"
+    },
+    "Airbnb · relevé août 2026": {
+      "en": "Airbnb · recorded August 2026",
+      "de": "Airbnb · Stand August 2026",
+      "es": "Airbnb · dato de agosto de 2026"
+    },
+    "50 m env.": {
+      "en": "about 50 m",
+      "de": "ca. 50 m",
+      "es": "unos 50 m"
+    },
+    "métro Quai de la Gare": {
+      "en": "Quai de la Gare metro",
+      "de": "Metro Quai de la Gare",
+      "es": "metro Quai de la Gare"
+    },
+    "Rénové en 2022, pratique et connecté": {
+      "en": "Renovated in 2022, practical and connected",
+      "de": "2022 renoviert, praktisch und gut ausgestattet",
+      "es": "Renovado en 2022, práctico y conectado"
+    },
+    "Appartement entier dans une résidence sécurisée avec ascenseur, vue dégagée, cuisine équipée, Wi‑Fi et espace de travail.": {
+      "en": "Entire apartment in a secure building with a lift, open view, equipped kitchen, Wi-Fi and workspace.",
+      "de": "Ganze Wohnung in einem sicheren Gebäude mit Aufzug, freiem Blick, ausgestatteter Küche, WLAN und Arbeitsplatz.",
+      "es": "Apartamento entero en un edificio seguro con ascensor, vistas despejadas, cocina equipada, Wi-Fi y zona de trabajo."
+    },
+    "Arrivée autonome": {
+      "en": "Self check-in",
+      "de": "Eigenständiger Check-in",
+      "es": "Llegada autónoma"
+    },
+    "Cuisine équipée": {
+      "en": "Equipped kitchen",
+      "de": "Ausgestattete Küche",
+      "es": "Cocina equipada"
+    },
+    "Espace de travail": {
+      "en": "Workspace",
+      "de": "Arbeitsplatz",
+      "es": "Zona de trabajo"
+    },
+    "Animaux acceptés": {
+      "en": "Pets welcome",
+      "de": "Haustiere erlaubt",
+      "es": "Se admiten mascotas"
+    },
+    "Tous les détails": {
+      "en": "Full details",
+      "de": "Alle Details",
+      "es": "Todos los detalles"
+    },
+    "Vue réelle du logement Paris Auriol Austerlitz Arena.": {
+      "en": "Real view of the Paris Auriol Austerlitz Arena apartment.",
+      "de": "Originalaufnahme der Wohnung Paris Auriol Austerlitz Arena.",
+      "es": "Vista real del apartamento Paris Auriol Austerlitz Arena."
+    },
+    "Emplacement": {
+      "en": "Location",
+      "de": "Lage",
+      "es": "Ubicación"
+    },
+    "La ligne 6, la Seine et Bercy à proximité": {
+      "en": "Metro line 6, the Seine and Bercy nearby",
+      "de": "Metrolinie 6, Seine und Bercy ganz in der Nähe",
+      "es": "La línea 6, el Sena y Bercy muy cerca"
+    },
+    "Le métro Quai de la Gare est au pied du boulevard. Austerlitz, la BnF, le Jardin des Plantes et l’Accor Arena se rejoignent facilement à pied ou en métro.": {
+      "en": "Quai de la Gare metro is at the foot of the boulevard. Austerlitz, the BnF, the Jardin des Plantes and the Accor Arena are easy to reach on foot or by metro.",
+      "de": "Die Metrostation Quai de la Gare liegt direkt am Boulevard. Austerlitz, die BnF, der Jardin des Plantes und die Accor Arena sind bequem zu Fuß oder mit der Metro erreichbar.",
+      "es": "El metro Quai de la Gare está al pie del bulevar. Austerlitz, la BnF, el Jardin des Plantes y el Accor Arena se alcanzan fácilmente a pie o en metro."
+    },
+    "Transports faciles": {
+      "en": "Easy transport links",
+      "de": "Gute Verkehrsanbindung",
+      "es": "Transporte fácil"
+    },
+    "Ligne 6, bus et gare d’Austerlitz pour rejoindre rapidement les principaux quartiers de Paris.": {
+      "en": "Line 6, buses and Austerlitz station provide quick access to Paris’s main districts.",
+      "de": "Mit Linie 6, Bussen und dem Bahnhof Austerlitz erreichen Sie die wichtigsten Viertel von Paris schnell.",
+      "es": "La línea 6, los autobuses y la estación de Austerlitz permiten llegar rápidamente a los principales barrios de París."
+    },
+    "Préparer l’arrivée →": {
+      "en": "Plan your arrival →",
+      "de": "Anreise planen →",
+      "es": "Preparar la llegada →"
+    },
+    "Paris au bord de l’eau": {
+      "en": "Paris by the water",
+      "de": "Paris am Wasser",
+      "es": "París junto al agua"
+    },
+    "Quais de Seine, passerelle Simone-de-Beauvoir, Bercy et promenades de Paris Rive Gauche.": {
+      "en": "The Seine quays, Simone-de-Beauvoir footbridge, Bercy and Paris Rive Gauche walks.",
+      "de": "Seine-Ufer, Simone-de-Beauvoir-Steg, Bercy und Spazierwege in Paris Rive Gauche.",
+      "es": "Los muelles del Sena, la pasarela Simone-de-Beauvoir, Bercy y los paseos de Paris Rive Gauche."
+    },
+    "Voir le guide →": {
+      "en": "View the guide →",
+      "de": "Reiseführer ansehen →",
+      "es": "Ver la guía →"
+    },
+    "Concerts et grands événements à Bercy, à environ 500 mètres de l’adresse.": {
+      "en": "Concerts and major events in Bercy, about 500 metres from the apartment.",
+      "de": "Konzerte und Großveranstaltungen in Bercy, etwa 500 Meter von der Wohnung entfernt.",
+      "es": "Conciertos y grandes eventos en Bercy, a unos 500 metros del apartamento."
+    },
+    "Consulter l’agenda →": {
+      "en": "View events →",
+      "de": "Veranstaltungen ansehen →",
+      "es": "Consultar la agenda →"
+    },
+    "Réservation": {
+      "en": "Booking",
+      "de": "Buchung",
+      "es": "Reserva"
+    },
+    "Comparez les dates sur vos plateformes habituelles": {
+      "en": "Compare dates on your usual booking platforms",
+      "de": "Vergleichen Sie die Daten auf Ihren gewohnten Buchungsplattformen",
+      "es": "Compare las fechas en sus plataformas habituales"
+    },
+    "Le calendrier du site consolide les périodes occupées Airbnb et Booking dès que les deux flux iCal sont activés.": {
+      "en": "The website calendar combines occupied periods from Airbnb and Booking once both iCal feeds are active.",
+      "de": "Der Website-Kalender fasst belegte Zeiträume von Airbnb und Booking zusammen, sobald beide iCal-Feeds aktiv sind.",
+      "es": "El calendario del sitio reúne los periodos ocupados de Airbnb y Booking cuando ambos calendarios iCal están activos."
+    },
+    "Calendrier": {
+      "en": "Calendar",
+      "de": "Kalender",
+      "es": "Calendario"
+    },
+    "Galerie": {
+      "en": "Gallery",
+      "de": "Galerie",
+      "es": "Galería"
+    },
+    "Photos du logement": {
+      "en": "Apartment photos",
+      "de": "Fotos der Unterkunft",
+      "es": "Fotos del alojamiento"
+    },
+    "Découvrez l’appartement, ses équipements et ses différentes vues grâce aux photographies réelles de l’annonce.": {
+      "en": "Discover the apartment, its facilities and different views through the genuine listing photos.",
+      "de": "Entdecken Sie die Wohnung, ihre Ausstattung und verschiedene Ansichten anhand der Originalfotos des Inserats.",
+      "es": "Descubra el apartamento, sus equipamientos y sus diferentes vistas con las fotografías reales del anuncio."
+    },
+    "Photographies réelles du logement.": {
+      "en": "Genuine apartment photographs.",
+      "de": "Originalfotos der Unterkunft.",
+      "es": "Fotografías reales del alojamiento."
+    },
+    "Cliquez sur une image pour l’agrandir.": {
+      "en": "Click an image to enlarge it.",
+      "de": "Klicken Sie auf ein Bild, um es zu vergrößern.",
+      "es": "Haga clic en una imagen para ampliarla."
+    },
+    "Photos sur Airbnb": {
+      "en": "Photos on Airbnb",
+      "de": "Fotos auf Airbnb",
+      "es": "Fotos en Airbnb"
+    },
+    "Photos sur Booking.com": {
+      "en": "Photos on Booking.com",
+      "de": "Fotos auf Booking.com",
+      "es": "Fotos en Booking.com"
+    },
+    "Salon lumineux avec canapé et grande fenêtre": {
+      "en": "Bright living room with sofa and large window",
+      "de": "Helles Wohnzimmer mit Sofa und großem Fenster",
+      "es": "Salón luminoso con sofá y gran ventana"
+    },
+    "Immeuble du 18 boulevard Vincent Auriol": {
+      "en": "Building at 18 Boulevard Vincent Auriol",
+      "de": "Gebäude am Boulevard Vincent Auriol 18",
+      "es": "Edificio del 18 Boulevard Vincent Auriol"
+    },
+    "Espace repas intégré au séjour": {
+      "en": "Dining area adjoining the living room",
+      "de": "Essbereich neben dem Wohnzimmer",
+      "es": "Zona de comedor junto al salón"
+    },
+    "Chambre avec grand lit et fenêtre": {
+      "en": "Bedroom with a large bed and window",
+      "de": "Schlafzimmer mit großem Bett und Fenster",
+      "es": "Dormitorio con cama grande y ventana"
+    },
+    "Cuisine équipée et coin repas": {
+      "en": "Fully equipped kitchen and dining corner",
+      "de": "Ausgestattete Küche mit Essplatz",
+      "es": "Cocina equipada y rincón comedor"
+    },
+    "Salon, canapé et grand miroir": {
+      "en": "Living room with sofa and large mirror",
+      "de": "Wohnzimmer mit Sofa und großem Spiegel",
+      "es": "Salón con sofá y espejo grande"
+    },
+    "Salle de bains avec douche, lavabo et toilettes": {
+      "en": "Bathroom with shower, washbasin and toilet",
+      "de": "Bad mit Dusche, Waschbecken und WC",
+      "es": "Baño con ducha, lavabo e inodoro"
+    },
+    "Vue urbaine vers la Seine et Bercy": {
+      "en": "City view towards the Seine and Bercy",
+      "de": "Stadtblick in Richtung Seine und Bercy",
+      "es": "Vista urbana hacia el Sena y Bercy"
+    },
+    "Fermer la galerie": {
+      "en": "Close gallery",
+      "de": "Galerie schließen",
+      "es": "Cerrar la galería"
+    },
+    "Photo précédente": {
+      "en": "Previous photo",
+      "de": "Vorheriges Foto",
+      "es": "Foto anterior"
+    },
+    "Photo suivante": {
+      "en": "Next photo",
+      "de": "Nächstes Foto",
+      "es": "Foto siguiente"
+    },
+    "Appartement entier · Paris 13e": {
+      "en": "Entire apartment · Paris 13th arrondissement",
+      "de": "Ganze Wohnung · Paris 13. Arrondissement",
+      "es": "Apartamento entero · París distrito 13"
+    },
+    "Trois voyageurs · une chambre · deux lits · une salle de bain.": {
+      "en": "Three guests · one bedroom · two beds · one bathroom.",
+      "de": "Drei Gäste · ein Schlafzimmer · zwei Betten · ein Bad.",
+      "es": "Tres huéspedes · un dormitorio · dos camas · un baño."
+    },
+    "Confort": {
+      "en": "Comfort",
+      "de": "Komfort",
+      "es": "Confort"
+    },
+    "Un pied-à-terre fonctionnel pour séjourner à Paris": {
+      "en": "A practical base for a stay in Paris",
+      "de": "Ein praktischer Ausgangspunkt für Ihren Paris-Aufenthalt",
+      "es": "Una base práctica para alojarse en París"
+    },
+    "Les informations ci-dessous reprennent les caractéristiques publiées sur l’annonce Airbnb et les règles visibles sur Booking.com.": {
+      "en": "The information below reflects the features published on Airbnb and the rules shown on Booking.com.",
+      "de": "Die folgenden Angaben entsprechen den auf Airbnb veröffentlichten Merkmalen und den auf Booking.com sichtbaren Regeln.",
+      "es": "La información siguiente recoge las características publicadas en Airbnb y las normas visibles en Booking.com."
+    },
+    "Appartement rénové": {
+      "en": "Renovated apartment",
+      "de": "Renovierte Wohnung",
+      "es": "Apartamento renovado"
+    },
+    "Entièrement rénové en 2022, avec vue dégagée, environnement calme et résidence sécurisée.": {
+      "en": "Fully renovated in 2022, with an open view, quiet surroundings and a secure building.",
+      "de": "2022 vollständig renoviert, mit freiem Blick, ruhiger Umgebung und sicherem Gebäude.",
+      "es": "Totalmente renovado en 2022, con vistas despejadas, entorno tranquilo y edificio seguro."
+    },
+    "Un espace prévu pour préparer les repas, complété par une machine à café et les équipements essentiels indiqués sur les plateformes.": {
+      "en": "A space for preparing meals, with a coffee machine and the essential equipment listed on the platforms.",
+      "de": "Ein Bereich zur Zubereitung von Mahlzeiten, ergänzt durch eine Kaffeemaschine und die auf den Plattformen angegebenen Grundausstattungen.",
+      "es": "Un espacio para preparar comidas, con cafetera y los equipamientos esenciales indicados en las plataformas."
+    },
+    "Accès sécurisé et arrivée autonome. Les instructions détaillées sont communiquées avant le séjour.": {
+      "en": "Secure access and self check-in. Detailed instructions are sent before the stay.",
+      "de": "Sicherer Zugang und eigenständiger Check-in. Detaillierte Anweisungen werden vor dem Aufenthalt mitgeteilt.",
+      "es": "Acceso seguro y llegada autónoma. Las instrucciones detalladas se envían antes de la estancia."
+    },
+    "Ascenseur": {
+      "en": "Lift",
+      "de": "Aufzug",
+      "es": "Ascensor"
+    },
+    "La résidence dispose d’un ascenseur, un vrai avantage avec des bagages.": {
+      "en": "The building has a lift, a real advantage when travelling with luggage.",
+      "de": "Das Gebäude verfügt über einen Aufzug – ein echter Vorteil mit Gepäck.",
+      "es": "El edificio dispone de ascensor, una gran ventaja con equipaje."
+    },
+    "Les animaux sont admis ; un supplément peut s’appliquer selon les conditions de la réservation.": {
+      "en": "Pets are allowed; an extra charge may apply depending on the booking conditions.",
+      "de": "Haustiere sind erlaubt; je nach Buchungsbedingungen kann ein Aufpreis anfallen.",
+      "es": "Se admiten mascotas; puede aplicarse un suplemento según las condiciones de la reserva."
+    },
+    "À retenir": {
+      "en": "Key points",
+      "de": "Wichtige Hinweise",
+      "es": "A tener en cuenta"
+    },
+    "Des règles simples pour préserver le calme": {
+      "en": "Simple rules to preserve a quiet environment",
+      "de": "Einfache Regeln für eine ruhige Umgebung",
+      "es": "Normas sencillas para preservar la tranquilidad"
+    },
+    "Arrivée à partir de 15 h": {
+      "en": "Check-in from 3 pm",
+      "de": "Check-in ab 15 Uhr",
+      "es": "Llegada a partir de las 15:00"
+    },
+    "Départ avant 11 h": {
+      "en": "Check-out before 11 am",
+      "de": "Check-out vor 11 Uhr",
+      "es": "Salida antes de las 11:00"
+    },
+    "Logement non-fumeur": {
+      "en": "Non-smoking apartment",
+      "de": "Nichtraucherunterkunft",
+      "es": "Alojamiento para no fumadores"
+    },
+    "Fêtes et événements interdits": {
+      "en": "No parties or events",
+      "de": "Partys und Veranstaltungen nicht gestattet",
+      "es": "Fiestas y eventos no permitidos"
+    },
+    "Calme demandé de 22 h à 9 h": {
+      "en": "Quiet hours from 10 pm to 9 am",
+      "de": "Ruhezeit von 22 bis 9 Uhr",
+      "es": "Silencio de 22:00 a 9:00"
+    },
+    "Trois voyageurs maximum": {
+      "en": "Maximum three guests",
+      "de": "Maximal drei Gäste",
+      "es": "Máximo tres huéspedes"
+    },
+    "Lire les règles complètes": {
+      "en": "Read all house rules",
+      "de": "Alle Hausregeln lesen",
+      "es": "Leer todas las normas"
+    },
+    "Réservation et conditions": {
+      "en": "Booking and conditions",
+      "de": "Buchung und Bedingungen",
+      "es": "Reserva y condiciones"
+    },
+    "Les tarifs, conditions d’annulation, éventuels frais et dépôt de garantie sont ceux affichés au moment de réserver sur Airbnb ou Booking.com.": {
+      "en": "Rates, cancellation conditions, possible charges and security deposit are those shown when booking on Airbnb or Booking.com.",
+      "de": "Preise, Stornobedingungen, mögliche Gebühren und Kaution entsprechen den Angaben zum Buchungszeitpunkt bei Airbnb oder Booking.com.",
+      "es": "Las tarifas, condiciones de cancelación, posibles cargos y depósito son los mostrados al reservar en Airbnb o Booking.com."
+    },
+    "Voir Airbnb": {
+      "en": "View Airbnb",
+      "de": "Airbnb ansehen",
+      "es": "Ver Airbnb"
+    },
+    "Voir Booking": {
+      "en": "View Booking",
+      "de": "Booking ansehen",
+      "es": "Ver Booking"
+    },
+    "Un calendrier consolidé Airbnb + Booking, prévu pour une actualisation automatique toutes les quinze minutes.": {
+      "en": "A combined Airbnb + Booking calendar, scheduled to update automatically every fifteen minutes.",
+      "de": "Ein zusammengeführter Airbnb- und Booking-Kalender mit automatischer Aktualisierung alle fünfzehn Minuten.",
+      "es": "Un calendario combinado de Airbnb y Booking, programado para actualizarse automáticamente cada quince minutos."
+    },
+    "Chargement de l’état de synchronisation…": {
+      "en": "Loading synchronisation status…",
+      "de": "Synchronisierungsstatus wird geladen…",
+      "es": "Cargando el estado de sincronización…"
+    },
+    "Disponible": {
+      "en": "Available",
+      "de": "Verfügbar",
+      "es": "Disponible"
+    },
+    "Occupé": {
+      "en": "Occupied",
+      "de": "Belegt",
+      "es": "Ocupado"
+    },
+    "Date passée": {
+      "en": "Past date",
+      "de": "Vergangen",
+      "es": "Fecha pasada"
+    },
+    "Finaliser la réservation": {
+      "en": "Complete your booking",
+      "de": "Buchung abschließen",
+      "es": "Finalizar la reserva"
+    },
+    "Le calendrier est indicatif. Le prix final et la confirmation immédiate restent ceux de la plateforme choisie.": {
+      "en": "The calendar is indicative. The final price and instant confirmation are provided by the selected platform.",
+      "de": "Der Kalender dient zur Orientierung. Endpreis und sofortige Bestätigung werden von der gewählten Plattform bereitgestellt.",
+      "es": "El calendario es orientativo. El precio final y la confirmación inmediata corresponden a la plataforma elegida."
+    },
+    "Réserver sur Airbnb": {
+      "en": "Book on Airbnb",
+      "de": "Auf Airbnb buchen",
+      "es": "Reservar en Airbnb"
+    },
+    "Réserver sur Booking": {
+      "en": "Book on Booking",
+      "de": "Auf Booking buchen",
+      "es": "Reservar en Booking"
+    },
+    "Calendrier indisponible.": {
+      "en": "Calendar unavailable.",
+      "de": "Kalender nicht verfügbar.",
+      "es": "Calendario no disponible."
+    },
+    "Vérifiez directement les dates sur Airbnb ou Booking.com.": {
+      "en": "Check the dates directly on Airbnb or Booking.com.",
+      "de": "Prüfen Sie die Daten direkt auf Airbnb oder Booking.com.",
+      "es": "Compruebe las fechas directamente en Airbnb o Booking.com."
+    },
+    "Synchronisation Airbnb + Booking active.": {
+      "en": "Airbnb + Booking synchronisation active.",
+      "de": "Airbnb- und Booking-Synchronisierung aktiv.",
+      "es": "Sincronización Airbnb + Booking activa."
+    },
+    "Dernière modification des périodes :": {
+      "en": "Last availability change:",
+      "de": "Letzte Änderung der Zeiträume:",
+      "es": "Última modificación de los periodos:"
+    },
+    "Synchronisation en attente d’activation.": {
+      "en": "Synchronisation pending activation.",
+      "de": "Synchronisierung wartet auf Aktivierung.",
+      "es": "Sincronización pendiente de activación."
+    },
+    "Les disponibilités affichées sont indicatives : vérifiez les dates sur Airbnb ou Booking.com.": {
+      "en": "Displayed availability is indicative: check the dates on Airbnb or Booking.com.",
+      "de": "Die angezeigte Verfügbarkeit dient zur Orientierung: Prüfen Sie die Daten auf Airbnb oder Booking.com.",
+      "es": "La disponibilidad mostrada es orientativa: compruebe las fechas en Airbnb o Booking.com."
+    },
+    "Passé": {
+      "en": "Past",
+      "de": "Vergangen",
+      "es": "Pasado"
+    },
+    "Libre": {
+      "en": "Free",
+      "de": "Frei",
+      "es": "Libre"
+    },
+    "Au pied du métro Quai de la Gare, entre Austerlitz, la Seine, Bercy et Paris Rive Gauche.": {
+      "en": "By Quai de la Gare metro, between Austerlitz, the Seine, Bercy and Paris Rive Gauche.",
+      "de": "Direkt an der Metro Quai de la Gare, zwischen Austerlitz, der Seine, Bercy und Paris Rive Gauche.",
+      "es": "Junto al metro Quai de la Gare, entre Austerlitz, el Sena, Bercy y Paris Rive Gauche."
+    },
+    "Transports": {
+      "en": "Transport",
+      "de": "Verkehr",
+      "es": "Transportes"
+    },
+    "Arriver facilement, repartir partout": {
+      "en": "Easy arrival, easy access across Paris",
+      "de": "Einfach ankommen und ganz Paris erreichen",
+      "es": "Llegar fácilmente y desplazarse por todo París"
+    },
+    "La station Quai de la Gare (ligne 6) se trouve à environ 50 mètres. La gare d’Austerlitz et l’Accor Arena sont accessibles en quelques minutes à pied.": {
+      "en": "Quai de la Gare station (line 6) is about 50 metres away. Austerlitz station and the Accor Arena are within a few minutes’ walk.",
+      "de": "Die Station Quai de la Gare (Linie 6) ist etwa 50 Meter entfernt. Bahnhof Austerlitz und Accor Arena sind in wenigen Gehminuten erreichbar.",
+      "es": "La estación Quai de la Gare (línea 6) está a unos 50 metros. La estación de Austerlitz y el Accor Arena se encuentran a pocos minutos a pie."
+    },
+    "Métro ligne 6": {
+      "en": "Metro line 6",
+      "de": "Metrolinie 6",
+      "es": "Metro línea 6"
+    },
+    "Quai de la Gare, au pied du boulevard.": {
+      "en": "Quai de la Gare, at the foot of the boulevard.",
+      "de": "Quai de la Gare, direkt am Boulevard.",
+      "es": "Quai de la Gare, al pie del bulevar."
+    },
+    "Gare d’Austerlitz": {
+      "en": "Austerlitz station",
+      "de": "Bahnhof Austerlitz",
+      "es": "Estación de Austerlitz"
+    },
+    "Trains, RER C et métros 5 et 10.": {
+      "en": "Trains, RER C and metro lines 5 and 10.",
+      "de": "Züge, RER C und Metrolinien 5 und 10.",
+      "es": "Trenes, RER C y líneas de metro 5 y 10."
+    },
+    "Environ 500 mètres, de l’autre côté de la Seine.": {
+      "en": "About 500 metres away, across the Seine.",
+      "de": "Etwa 500 Meter entfernt, auf der anderen Seite der Seine.",
+      "es": "A unos 500 metros, al otro lado del Sena."
+    },
+    "Gare de Lyon": {
+      "en": "Gare de Lyon",
+      "de": "Bahnhof Gare de Lyon",
+      "es": "Estación Gare de Lyon"
+    },
+    "Accès rapide via Bercy ou à pied selon les bagages.": {
+      "en": "Quick access via Bercy or on foot, depending on your luggage.",
+      "de": "Schnell über Bercy oder je nach Gepäck zu Fuß erreichbar.",
+      "es": "Acceso rápido por Bercy o a pie, según el equipaje."
+    },
+    "Itinéraire Google Maps": {
+      "en": "Google Maps directions",
+      "de": "Route mit Google Maps",
+      "es": "Ruta en Google Maps"
+    },
+    "Ouvrir la carte": {
+      "en": "Open map",
+      "de": "Karte öffnen",
+      "es": "Abrir el mapa"
+    },
+    "Carte du 18 boulevard Vincent Auriol": {
+      "en": "Map of 18 Boulevard Vincent Auriol",
+      "de": "Karte Boulevard Vincent Auriol 18",
+      "es": "Mapa de 18 Boulevard Vincent Auriol"
+    },
+    "Repères": {
+      "en": "Useful places",
+      "de": "Orientierung",
+      "es": "Puntos de referencia"
+    },
+    "Les lieux utiles autour de l’appartement": {
+      "en": "Useful places around the apartment",
+      "de": "Nützliche Orte rund um die Wohnung",
+      "es": "Lugares útiles alrededor del apartamento"
+    },
+    "Courses": {
+      "en": "Groceries",
+      "de": "Einkaufen",
+      "es": "Compras"
+    },
+    "Commerces de proximité sur le boulevard et autour de l’avenue de France.": {
+      "en": "Local shops on the boulevard and around Avenue de France.",
+      "de": "Geschäfte am Boulevard und rund um die Avenue de France.",
+      "es": "Comercios de proximidad en el bulevar y alrededor de la Avenue de France."
+    },
+    "Promenade": {
+      "en": "Walks",
+      "de": "Spaziergänge",
+      "es": "Paseos"
+    },
+    "Les quais de Seine se trouvent au bout de la rue, avec Bercy sur l’autre rive.": {
+      "en": "The Seine quays are at the end of the street, with Bercy on the opposite bank.",
+      "de": "Die Seine-Ufer liegen am Ende der Straße, Bercy befindet sich am gegenüberliegenden Ufer.",
+      "es": "Los muelles del Sena están al final de la calle, con Bercy en la orilla opuesta."
+    },
+    "Santé": {
+      "en": "Healthcare",
+      "de": "Gesundheit",
+      "es": "Salud"
+    },
+    "Le groupe hospitalier Pitié‑Salpêtrière est situé à proximité d’Austerlitz.": {
+      "en": "The Pitié-Salpêtrière hospital group is located near Austerlitz.",
+      "de": "Die Universitätsklinik Pitié-Salpêtrière liegt in der Nähe von Austerlitz.",
+      "es": "El hospital Pitié-Salpêtrière se encuentra cerca de Austerlitz."
+    },
+    "Découvrir autour d’Auriol": {
+      "en": "Explore the Auriol area",
+      "de": "Die Umgebung von Auriol entdecken",
+      "es": "Descubrir los alrededores de Auriol"
+    },
+    "Une sélection pour profiter du 13ᵉ, de Bercy et de la Seine sans voiture.": {
+      "en": "A selection for enjoying the 13th arrondissement, Bercy and the Seine without a car.",
+      "de": "Eine Auswahl, um das 13. Arrondissement, Bercy und die Seine ohne Auto zu entdecken.",
+      "es": "Una selección para disfrutar del distrito 13, Bercy y el Sena sin coche."
+    },
+    "À voir": {
+      "en": "Things to see",
+      "de": "Sehenswert",
+      "es": "Qué ver"
+    },
+    "Six idées à proximité": {
+      "en": "Six nearby ideas",
+      "de": "Sechs Ideen in der Nähe",
+      "es": "Seis ideas cercanas"
+    },
+    "Jardin des Plantes": {
+      "en": "Jardin des Plantes",
+      "de": "Jardin des Plantes",
+      "es": "Jardin des Plantes"
+    },
+    "Jardins, Muséum national d’Histoire naturelle, ménagerie et Grandes Serres.": {
+      "en": "Gardens, the National Museum of Natural History, the zoo and the great greenhouses.",
+      "de": "Gärten, Nationalmuseum für Naturgeschichte, Menagerie und große Gewächshäuser.",
+      "es": "Jardines, Museo Nacional de Historia Natural, zoológico y grandes invernaderos."
+    },
+    "Site officiel →": {
+      "en": "Official website →",
+      "de": "Offizielle Website →",
+      "es": "Sitio oficial →"
+    },
+    "BnF François‑Mitterrand": {
+      "en": "BnF François-Mitterrand",
+      "de": "BnF François-Mitterrand",
+      "es": "BnF François-Mitterrand"
+    },
+    "Architecture contemporaine, expositions et promenade sur l’avenue de France.": {
+      "en": "Contemporary architecture, exhibitions and a walk along Avenue de France.",
+      "de": "Zeitgenössische Architektur, Ausstellungen und ein Spaziergang entlang der Avenue de France.",
+      "es": "Arquitectura contemporánea, exposiciones y paseo por la Avenue de France."
+    },
+    "Concerts, spectacles et grands rendez-vous sportifs à Bercy.": {
+      "en": "Concerts, shows and major sporting events in Bercy.",
+      "de": "Konzerte, Shows und große Sportveranstaltungen in Bercy.",
+      "es": "Conciertos, espectáculos y grandes eventos deportivos en Bercy."
+    },
+    "Programmation →": {
+      "en": "Programme →",
+      "de": "Programm →",
+      "es": "Programación →"
+    },
+    "MK2 Bibliothèque": {
+      "en": "MK2 Bibliothèque",
+      "de": "MK2 Bibliothèque",
+      "es": "MK2 Bibliothèque"
+    },
+    "Cinéma et restaurants face à la Bibliothèque nationale de France.": {
+      "en": "Cinema and restaurants opposite the National Library of France.",
+      "de": "Kino und Restaurants gegenüber der Französischen Nationalbibliothek.",
+      "es": "Cine y restaurantes frente a la Biblioteca Nacional de Francia."
+    },
+    "Voir les séances →": {
+      "en": "View screenings →",
+      "de": "Vorstellungen ansehen →",
+      "es": "Ver sesiones →"
+    },
+    "Quais de Seine": {
+      "en": "Seine quays",
+      "de": "Seine-Ufer",
+      "es": "Muelles del Sena"
+    },
+    "Balade vers la passerelle Simone-de-Beauvoir, le parc de Bercy ou l’île Saint‑Louis.": {
+      "en": "Walk towards the Simone-de-Beauvoir footbridge, Parc de Bercy or Île Saint-Louis.",
+      "de": "Spaziergang zum Simone-de-Beauvoir-Steg, zum Parc de Bercy oder zur Île Saint-Louis.",
+      "es": "Paseo hacia la pasarela Simone-de-Beauvoir, el parque de Bercy o la Île Saint-Louis."
+    },
+    "Préparer la balade →": {
+      "en": "Plan the walk →",
+      "de": "Spaziergang planen →",
+      "es": "Preparar el paseo →"
+    },
+    "Street art du 13ᵉ": {
+      "en": "13th arrondissement street art",
+      "de": "Street Art im 13. Arrondissement",
+      "es": "Arte urbano del distrito 13"
+    },
+    "Grandes fresques murales autour du boulevard Vincent-Auriol et de la Butte‑aux‑Cailles.": {
+      "en": "Large murals around Boulevard Vincent Auriol and Butte-aux-Cailles.",
+      "de": "Große Wandgemälde rund um den Boulevard Vincent Auriol und die Butte-aux-Cailles.",
+      "es": "Grandes murales alrededor del Boulevard Vincent Auriol y la Butte-aux-Cailles."
+    },
+    "Parcours paris.fr →": {
+      "en": "Paris.fr route →",
+      "de": "Route auf paris.fr →",
+      "es": "Ruta en paris.fr →"
+    },
+    "Manger & sortir": {
+      "en": "Food & nightlife",
+      "de": "Essen & Ausgehen",
+      "es": "Comer y salir"
+    },
+    "Quelques repères du quartier": {
+      "en": "A few local recommendations",
+      "de": "Einige Empfehlungen in der Umgebung",
+      "es": "Algunas recomendaciones del barrio"
+    },
+    "Les horaires et cartes peuvent évoluer : vérifiez avant de vous déplacer.": {
+      "en": "Opening hours and menus may change: check before visiting.",
+      "de": "Öffnungszeiten und Speisekarten können sich ändern: Bitte vor dem Besuch prüfen.",
+      "es": "Los horarios y las cartas pueden cambiar: compruébelos antes de desplazarse."
+    },
+    "Restaurant, terrasse et programmation culturelle au 14 port de la Gare, au bord de la Seine.": {
+      "en": "Restaurant, terrace and cultural programme at 14 Port de la Gare, by the Seine.",
+      "de": "Restaurant, Terrasse und Kulturprogramm am Port de la Gare 14, direkt an der Seine.",
+      "es": "Restaurante, terraza y programación cultural en 14 Port de la Gare, junto al Sena."
+    },
+    "Infos pratiques →": {
+      "en": "Practical information →",
+      "de": "Praktische Informationen →",
+      "es": "Información práctica →"
+    },
+    "Brasserie avec terrasse entre Austerlitz et la BnF, avenue de France.": {
+      "en": "Brasserie with a terrace between Austerlitz and the BnF, on Avenue de France.",
+      "de": "Brasserie mit Terrasse zwischen Austerlitz und der BnF an der Avenue de France.",
+      "es": "Brasserie con terraza entre Austerlitz y la BnF, en Avenue de France."
+    },
+    "Voir la carte →": {
+      "en": "View menu →",
+      "de": "Speisekarte ansehen →",
+      "es": "Ver la carta →"
+    },
+    "Pizzeria de proximité au 16 boulevard Vincent Auriol, pratiquement à côté du logement.": {
+      "en": "A neighbourhood pizzeria at 16 Boulevard Vincent Auriol, almost next door to the apartment.",
+      "de": "Pizzeria in der Nachbarschaft am Boulevard Vincent Auriol 16, fast direkt neben der Wohnung.",
+      "es": "Pizzería de proximidad en 16 Boulevard Vincent Auriol, prácticamente al lado del apartamento."
+    },
+    "Voir sur la carte →": {
+      "en": "View on map →",
+      "de": "Auf der Karte ansehen →",
+      "es": "Ver en el mapa →"
+    },
+    "Sortir à Paris": {
+      "en": "Going out in Paris",
+      "de": "Ausgehen in Paris",
+      "es": "Salir en París"
+    },
+    "Les événements à venir sont chargés depuis l’Open Data officiel « Que faire à Paris ? ».": {
+      "en": "Upcoming events are loaded from the official “Que faire à Paris?” Open Data service.",
+      "de": "Kommende Veranstaltungen werden aus dem offiziellen Open-Data-Angebot „Que faire à Paris?“ geladen.",
+      "es": "Los próximos eventos se cargan desde el servicio oficial de datos abiertos «Que faire à Paris?»."
+    },
+    "L’agenda est fourni à titre pratique. Les horaires, tarifs et disponibilités sont à confirmer sur la fiche officielle de chaque événement.": {
+      "en": "The events list is provided for convenience. Confirm times, prices and availability on each event’s official page.",
+      "de": "Der Veranstaltungskalender dient zur Orientierung. Zeiten, Preise und Verfügbarkeit sind auf der offiziellen Veranstaltungsseite zu prüfen.",
+      "es": "La agenda se ofrece como información práctica. Confirme horarios, precios y disponibilidad en la ficha oficial de cada evento."
+    },
+    "Chargement de l’agenda…": {
+      "en": "Loading events…",
+      "de": "Veranstaltungen werden geladen…",
+      "es": "Cargando la agenda…"
+    },
+    "Agenda complet de Paris": {
+      "en": "Full Paris events guide",
+      "de": "Vollständiger Pariser Veranstaltungskalender",
+      "es": "Agenda completa de París"
+    },
+    "À venir": {
+      "en": "Coming up",
+      "de": "Demnächst",
+      "es": "Próximamente"
+    },
+    "Événement à Paris 13e": {
+      "en": "Event in Paris’s 13th arrondissement",
+      "de": "Veranstaltung im 13. Arrondissement von Paris",
+      "es": "Evento en el distrito 13 de París"
+    },
+    "Voir l’événement": {
+      "en": "View event",
+      "de": "Veranstaltung ansehen",
+      "es": "Ver el evento"
+    },
+    "Agenda momentanément indisponible.": {
+      "en": "Events temporarily unavailable.",
+      "de": "Veranstaltungen vorübergehend nicht verfügbar.",
+      "es": "Agenda temporalmente no disponible."
+    },
+    "Consultez l’agenda officiel de la Ville de Paris grâce au bouton ci-dessous.": {
+      "en": "Use the button below to view the official City of Paris events guide.",
+      "de": "Über die Schaltfläche unten gelangen Sie zum offiziellen Veranstaltungskalender der Stadt Paris.",
+      "es": "Consulte la agenda oficial de la Ciudad de París con el botón siguiente."
+    },
+    "Informations voyageurs": {
+      "en": "Guest information",
+      "de": "Gästeinformationen",
+      "es": "Información para huéspedes"
+    },
+    "Les règles doivent être respectées par tous les voyageurs afin de préserver l’appartement et la tranquillité de l’immeuble.": {
+      "en": "All guests must follow the rules to protect the apartment and preserve the building’s quiet environment.",
+      "de": "Alle Gäste müssen die Regeln einhalten, um die Wohnung und die Ruhe im Gebäude zu schützen.",
+      "es": "Todos los huéspedes deben respetar las normas para proteger el apartamento y la tranquilidad del edificio."
+    },
+    "Horaires et occupation": {
+      "en": "Times and occupancy",
+      "de": "Zeiten und Belegung",
+      "es": "Horarios y ocupación"
+    },
+    "Enfants de tous âges acceptés": {
+      "en": "Children of all ages welcome",
+      "de": "Kinder jeden Alters willkommen",
+      "es": "Se admiten niños de todas las edades"
+    },
+    "Pas de lit bébé ni de lit d’appoint annoncé": {
+      "en": "No cot or extra bed is advertised",
+      "de": "Kein Babybett oder Zustellbett angegeben",
+      "es": "No se anuncia cuna ni cama supletoria"
+    },
+    "Respect des lieux": {
+      "en": "Respect for the property",
+      "de": "Rücksicht auf die Unterkunft",
+      "es": "Respeto del alojamiento"
+    },
+    "Logement entièrement non-fumeur": {
+      "en": "Entirely non-smoking apartment",
+      "de": "Vollständige Nichtraucherunterkunft",
+      "es": "Alojamiento totalmente para no fumadores"
+    },
+    "Calme obligatoire entre 22 h et 9 h": {
+      "en": "Quiet hours are mandatory from 10 pm to 9 am",
+      "de": "Verbindliche Ruhezeit von 22 bis 9 Uhr",
+      "es": "Silencio obligatorio de 22:00 a 9:00"
+    },
+    "Enterrements de vie de célibataire et groupes similaires interdits": {
+      "en": "Stag, hen and similar parties are not allowed",
+      "de": "Junggesellenabschiede und ähnliche Gruppen sind nicht gestattet",
+      "es": "No se permiten despedidas de soltero/a ni grupos similares"
+    },
+    "Animaux admis, avec supplément possible": {
+      "en": "Pets allowed; an extra charge may apply",
+      "de": "Haustiere erlaubt; möglicher Aufpreis",
+      "es": "Se admiten mascotas; puede aplicarse un suplemento"
+    },
+    "Conditions de réservation": {
+      "en": "Booking conditions",
+      "de": "Buchungsbedingungen",
+      "es": "Condiciones de reserva"
+    },
+    "Les conditions d’annulation, de prépaiement et de dommage dépendent de la plateforme et du tarif choisi. Booking.com indique qu’une indemnisation pouvant atteindre 300 € peut être demandée après le départ en cas de dommages, selon sa politique applicable à l’hébergement.": {
+      "en": "Cancellation, prepayment and damage conditions depend on the platform and rate selected. Booking.com states that compensation of up to €300 may be requested after departure in the event of damage, under the policy applicable to the property.",
+      "de": "Stornierungs-, Vorauszahlungs- und Schadensbedingungen hängen von der gewählten Plattform und Rate ab. Booking.com weist darauf hin, dass bei Schäden nach der Abreise gemäß der für die Unterkunft geltenden Richtlinie eine Entschädigung von bis zu 300 € verlangt werden kann.",
+      "es": "Las condiciones de cancelación, prepago y daños dependen de la plataforma y la tarifa elegidas. Booking.com indica que, en caso de daños, puede solicitarse tras la salida una compensación de hasta 300 €, según la política aplicable al alojamiento."
+    },
+    "La version affichée sur la plateforme au moment de la réservation prévaut toujours.": {
+      "en": "The version shown on the platform at the time of booking always takes precedence.",
+      "de": "Maßgeblich ist stets die zum Buchungszeitpunkt auf der Plattform angezeigte Fassung.",
+      "es": "Siempre prevalece la versión mostrada en la plataforma en el momento de reservar."
+    },
+    "Conditions Airbnb": {
+      "en": "Airbnb conditions",
+      "de": "Airbnb-Bedingungen",
+      "es": "Condiciones de Airbnb"
+    },
+    "Conditions Booking": {
+      "en": "Booking conditions",
+      "de": "Booking-Bedingungen",
+      "es": "Condiciones de Booking"
+    },
+    "Informations légales": {
+      "en": "Legal information",
+      "de": "Rechtliche Informationen",
+      "es": "Información legal"
+    },
+    "Édition": {
+      "en": "Publisher",
+      "de": "Herausgeber",
+      "es": "Editor"
+    },
+    "Site de présentation du meublé de tourisme « Paris Auriol Austerlitz Arena », situé au 18 boulevard Vincent Auriol, 75013 Paris.": {
+      "en": "Presentation website for the furnished tourist accommodation “Paris Auriol Austerlitz Arena”, located at 18 Boulevard Vincent Auriol, 75013 Paris.",
+      "de": "Informationswebsite für die möblierte Ferienunterkunft „Paris Auriol Austerlitz Arena“ am Boulevard Vincent Auriol 18, 75013 Paris.",
+      "es": "Sitio de presentación del alojamiento turístico amueblado «Paris Auriol Austerlitz Arena», situado en 18 Boulevard Vincent Auriol, 75013 París."
+    },
+    "Numéro d’enregistrement du meublé de tourisme :": {
+      "en": "Furnished tourist accommodation registration number:",
+      "de": "Registrierungsnummer der möblierten Ferienunterkunft:",
+      "es": "Número de registro del alojamiento turístico:"
+    },
+    "Contact avec l’éditeur et le propriétaire : via les messageries sécurisées des annonces Airbnb et Booking.com accessibles depuis ce site.": {
+      "en": "Contact the publisher and owner through the secure messaging systems of the Airbnb and Booking.com listings linked from this website.",
+      "de": "Kontakt zum Herausgeber und Eigentümer über die sicheren Nachrichtensysteme der von dieser Website verlinkten Airbnb- und Booking.com-Inserate.",
+      "es": "Contacto con el editor y el propietario mediante las mensajerías seguras de los anuncios de Airbnb y Booking.com enlazados desde este sitio."
+    },
+    "Hébergement": {
+      "en": "Hosting",
+      "de": "Hosting",
+      "es": "Alojamiento web"
+    },
+    "Le site est hébergé par GitHub Pages, un service de GitHub, Inc., 88 Colin P Kelly Jr Street, San Francisco, CA 94107, États-Unis.": {
+      "en": "The website is hosted by GitHub Pages, a service of GitHub, Inc., 88 Colin P Kelly Jr Street, San Francisco, CA 94107, United States.",
+      "de": "Die Website wird über GitHub Pages gehostet, einen Dienst von GitHub, Inc., 88 Colin P Kelly Jr Street, San Francisco, CA 94107, USA.",
+      "es": "El sitio está alojado en GitHub Pages, un servicio de GitHub, Inc., 88 Colin P Kelly Jr Street, San Francisco, CA 94107, Estados Unidos."
+    },
+    "Responsabilité": {
+      "en": "Liability",
+      "de": "Haftung",
+      "es": "Responsabilidad"
+    },
+    "Les prix, disponibilités et conditions contractuelles sont fournis par les plateformes de réservation et peuvent évoluer. Seules les informations affichées lors de la réservation sur la plateforme choisie ont une valeur contractuelle.": {
+      "en": "Prices, availability and contractual conditions are provided by the booking platforms and may change. Only the information shown when booking on the selected platform is contractually binding.",
+      "de": "Preise, Verfügbarkeit und Vertragsbedingungen werden von den Buchungsplattformen bereitgestellt und können sich ändern. Vertragsverbindlich sind ausschließlich die Angaben, die bei der Buchung auf der gewählten Plattform angezeigt werden.",
+      "es": "Los precios, la disponibilidad y las condiciones contractuales los proporcionan las plataformas de reserva y pueden cambiar. Solo tiene valor contractual la información mostrada al reservar en la plataforma elegida."
+    },
+    "Propriété intellectuelle": {
+      "en": "Intellectual property",
+      "de": "Urheberrecht",
+      "es": "Propiedad intelectual"
+    },
+    "Les textes, la présentation et les éléments graphiques propres au site ne peuvent pas être reproduits sans autorisation. Les marques Airbnb et Booking.com appartiennent à leurs titulaires respectifs.": {
+      "en": "The website’s original text, presentation and graphic elements may not be reproduced without permission. Airbnb and Booking.com trademarks belong to their respective owners.",
+      "de": "Die eigenen Texte, die Gestaltung und die grafischen Elemente der Website dürfen ohne Genehmigung nicht vervielfältigt werden. Die Marken Airbnb und Booking.com gehören ihren jeweiligen Inhabern.",
+      "es": "Los textos, la presentación y los elementos gráficos propios del sitio no pueden reproducirse sin autorización. Las marcas Airbnb y Booking.com pertenecen a sus respectivos titulares."
+    },
+    "À compléter avant diffusion commerciale élargie :": {
+      "en": "To be completed before wider commercial distribution:",
+      "de": "Vor einer breiteren kommerziellen Veröffentlichung zu ergänzen:",
+      "es": "Debe completarse antes de una difusión comercial más amplia:"
+    },
+    "identité postale complète de l’éditeur et adresse électronique directe dédiée au site.": {
+      "en": "the publisher’s full postal identity and a direct email address dedicated to the website.",
+      "de": "vollständige Postanschrift des Herausgebers und eine direkte, der Website zugeordnete E-Mail-Adresse.",
+      "es": "la identidad postal completa del editor y una dirección de correo electrónico directa dedicada al sitio."
+    },
+    "Données personnelles": {
+      "en": "Personal data",
+      "de": "Personenbezogene Daten",
+      "es": "Datos personales"
+    },
+    "Données collectées": {
+      "en": "Data collected",
+      "de": "Erhobene Daten",
+      "es": "Datos recogidos"
+    },
+    "Le site statique ne contient aucun formulaire, aucun compte utilisateur et ne dépose pas de cookie publicitaire par défaut. Il ne collecte directement ni nom, ni adresse électronique, ni numéro de téléphone.": {
+      "en": "The static website has no form or user account and does not set advertising cookies by default. It directly collects no name, email address or telephone number.",
+      "de": "Die statische Website enthält weder Formulare noch Benutzerkonten und setzt standardmäßig keine Werbe-Cookies. Sie erhebt direkt weder Namen noch E-Mail-Adressen oder Telefonnummern.",
+      "es": "El sitio estático no contiene formularios ni cuentas de usuario y no instala cookies publicitarias por defecto. No recoge directamente nombres, direcciones de correo electrónico ni números de teléfono."
+    },
+    "Services externes": {
+      "en": "External services",
+      "de": "Externe Dienste",
+      "es": "Servicios externos"
+    },
+    "La carte OpenStreetMap, les images d’ambiance hébergées par Unsplash et les liens vers Airbnb, Booking.com et les sites touristiques peuvent entraîner des échanges techniques avec ces services. Leurs propres politiques de confidentialité s’appliquent.": {
+      "en": "The OpenStreetMap map and links to Airbnb, Booking.com and tourism websites may lead to technical exchanges with those services. Their own privacy policies apply.",
+      "de": "Die OpenStreetMap-Karte sowie Links zu Airbnb, Booking.com und touristischen Websites können technische Datenübertragungen an diese Dienste auslösen. Es gelten deren eigene Datenschutzrichtlinien.",
+      "es": "El mapa de OpenStreetMap y los enlaces a Airbnb, Booking.com y sitios turísticos pueden generar intercambios técnicos con esos servicios. Se aplican sus propias políticas de privacidad."
+    },
+    "Calendriers": {
+      "en": "Calendars",
+      "de": "Kalender",
+      "es": "Calendarios"
+    },
+    "Les flux iCal privés sont traités par GitHub Actions. Le site public ne reçoit que des périodes anonymisées « occupé / disponible » ; aucune URL privée de calendrier et aucun nom de voyageur ne sont publiés.": {
+      "en": "Private iCal feeds are processed by GitHub Actions. The public website receives only anonymised “occupied / available” periods; no private calendar URL or guest name is published.",
+      "de": "Private iCal-Feeds werden über GitHub Actions verarbeitet. Die öffentliche Website erhält ausschließlich anonymisierte Zeiträume „belegt / verfügbar“; weder private Kalender-URLs noch Gästenamen werden veröffentlicht.",
+      "es": "Los calendarios iCal privados se procesan mediante GitHub Actions. El sitio público solo recibe periodos anonimizados «ocupado / disponible»; no se publica ninguna URL privada ni ningún nombre de huésped."
+    },
+    "Mesure d’audience": {
+      "en": "Audience measurement",
+      "de": "Reichweitenmessung",
+      "es": "Medición de audiencia"
+    },
+    "Aucun outil de mesure d’audience n’est installé dans cette version du site.": {
+      "en": "No audience measurement tool is installed in this version of the website.",
+      "de": "In dieser Version der Website ist kein Reichweitenmessungs-Tool installiert.",
+      "es": "No hay ninguna herramienta de medición de audiencia instalada en esta versión del sitio."
+    },
+    "Erreur 404": {
+      "en": "Error 404",
+      "de": "Fehler 404",
+      "es": "Error 404"
+    },
+    "Cette page n’existe pas.": {
+      "en": "This page does not exist.",
+      "de": "Diese Seite existiert nicht.",
+      "es": "Esta página no existe."
+    },
+    "Le lien a peut-être changé. Revenez à l’accueil ou consultez les disponibilités.": {
+      "en": "The link may have changed. Return to the home page or check availability.",
+      "de": "Der Link hat sich möglicherweise geändert. Kehren Sie zur Startseite zurück oder prüfen Sie die Verfügbarkeit.",
+      "es": "Es posible que el enlace haya cambiado. Vuelva al inicio o consulte la disponibilidad."
+    },
+    "Retour à l’accueil": {
+      "en": "Back to home",
+      "de": "Zur Startseite",
+      "es": "Volver al inicio"
+    },
+    "Vidéoprojecteur connecté à Internet": {
+      "en": "Internet-connected video projector",
+      "de": "Videoprojektor mit Internetzugang",
+      "es": "Proyector de vídeo conectado a Internet"
+    },
+    "Déshumidificateur": {
+      "en": "Dehumidifier",
+      "de": "Luftentfeuchter",
+      "es": "Deshumidificador"
+    },
+    "Ventilateur sur pied": {
+      "en": "Pedestal fan",
+      "de": "Standventilator",
+      "es": "Ventilador de pie"
+    },
+    "Lave-linge séchant": {
+      "en": "Washer-dryer",
+      "de": "Waschtrockner",
+      "es": "Lavadora-secadora"
+    },
+    "Wi‑Fi & équipements": {
+      "en": "Wi-Fi & amenities",
+      "de": "WLAN & Ausstattung",
+      "es": "Wi-Fi y equipamiento"
+    },
+    "Connexion Wi‑Fi, vidéoprojecteur connecté à Internet, espace de travail dédié, déshumidificateur, ventilateur sur pied et lave-linge séchant.": {
+      "en": "Wi-Fi, an Internet-connected video projector, a dedicated workspace, a dehumidifier, a pedestal fan and a washer-dryer.",
+      "de": "WLAN, Videoprojektor mit Internetzugang, eigener Arbeitsplatz, Luftentfeuchter, Standventilator und Waschtrockner.",
+      "es": "Wi-Fi, proyector de vídeo conectado a Internet, zona de trabajo dedicada, deshumidificador, ventilador de pie y lavadora-secadora."
+    }
   },
   "meta": {
     "index.html": {
-      "en": {"title": "Paris Auriol Austerlitz Arena | Apartment in Paris 13", "description": "Renovated apartment for 3 guests at 18 Boulevard Vincent Auriol, Paris 13, near Austerlitz, the Seine and the Accor Arena."},
-      "de": {"title": "Paris Auriol Austerlitz Arena | Wohnung in Paris 13", "description": "Renovierte Wohnung für 3 Gäste am Boulevard Vincent Auriol 18 im 13. Arrondissement von Paris, nahe Austerlitz, Seine und Accor Arena."},
-      "es": {"title": "Paris Auriol Austerlitz Arena | Apartamento en París 13", "description": "Apartamento renovado para 3 huéspedes en 18 Boulevard Vincent Auriol, París 13, cerca de Austerlitz, el Sena y el Accor Arena."}
+      "en": {
+        "title": "Paris Auriol Austerlitz Arena | Apartment in Paris 13",
+        "description": "Renovated apartment for 3 guests at 18 Boulevard Vincent Auriol, Paris 13, near Austerlitz, the Seine and the Accor Arena."
+      },
+      "de": {
+        "title": "Paris Auriol Austerlitz Arena | Wohnung in Paris 13",
+        "description": "Renovierte Wohnung für 3 Gäste am Boulevard Vincent Auriol 18 im 13. Arrondissement von Paris, nahe Austerlitz, Seine und Accor Arena."
+      },
+      "es": {
+        "title": "Paris Auriol Austerlitz Arena | Apartamento en París 13",
+        "description": "Apartamento renovado para 3 huéspedes en 18 Boulevard Vincent Auriol, París 13, cerca de Austerlitz, el Sena y el Accor Arena."
+      }
     },
     "logement.html": {
-      "en": {"title": "The apartment | Paris Auriol Austerlitz Arena", "description": "Discover the facilities, comfort and house rules of the Paris Auriol Austerlitz Arena apartment for 3 guests."},
-      "de": {"title": "Die Unterkunft | Paris Auriol Austerlitz Arena", "description": "Entdecken Sie Ausstattung, Komfort und Hausregeln der Wohnung Paris Auriol Austerlitz Arena für 3 Gäste."},
-      "es": {"title": "El alojamiento | Paris Auriol Austerlitz Arena", "description": "Descubra los equipamientos, el confort y las normas del apartamento Paris Auriol Austerlitz Arena para 3 huéspedes."}
+      "en": {
+        "title": "The apartment | Paris Auriol Austerlitz Arena",
+        "description": "Discover the facilities, comfort and house rules of the Paris Auriol Austerlitz Arena apartment for 3 guests."
+      },
+      "de": {
+        "title": "Die Unterkunft | Paris Auriol Austerlitz Arena",
+        "description": "Entdecken Sie Ausstattung, Komfort und Hausregeln der Wohnung Paris Auriol Austerlitz Arena für 3 Gäste."
+      },
+      "es": {
+        "title": "El alojamiento | Paris Auriol Austerlitz Arena",
+        "description": "Descubra los equipamientos, el confort y las normas del apartamento Paris Auriol Austerlitz Arena para 3 huéspedes."
+      }
     },
     "photos.html": {
-      "en": {"title": "Photos | Paris Auriol Austerlitz Arena", "description": "Genuine photos of the Paris Auriol Austerlitz Arena apartment in Paris’s 13th arrondissement."},
-      "de": {"title": "Fotos | Paris Auriol Austerlitz Arena", "description": "Originalfotos der Wohnung Paris Auriol Austerlitz Arena im 13. Arrondissement von Paris."},
-      "es": {"title": "Fotos | Paris Auriol Austerlitz Arena", "description": "Fotografías reales del apartamento Paris Auriol Austerlitz Arena en el distrito 13 de París."}
+      "en": {
+        "title": "Photos | Paris Auriol Austerlitz Arena",
+        "description": "Genuine photos of the Paris Auriol Austerlitz Arena apartment in Paris’s 13th arrondissement."
+      },
+      "de": {
+        "title": "Fotos | Paris Auriol Austerlitz Arena",
+        "description": "Originalfotos der Wohnung Paris Auriol Austerlitz Arena im 13. Arrondissement von Paris."
+      },
+      "es": {
+        "title": "Fotos | Paris Auriol Austerlitz Arena",
+        "description": "Fotografías reales del apartamento Paris Auriol Austerlitz Arena en el distrito 13 de París."
+      }
     },
     "disponibilites.html": {
-      "en": {"title": "Availability | Paris Auriol Austerlitz Arena", "description": "View the combined occupied and available periods for Paris Auriol Austerlitz Arena."},
-      "de": {"title": "Verfügbarkeit | Paris Auriol Austerlitz Arena", "description": "Prüfen Sie die zusammengeführten belegten und verfügbaren Zeiträume für Paris Auriol Austerlitz Arena."},
-      "es": {"title": "Disponibilidad | Paris Auriol Austerlitz Arena", "description": "Consulte los periodos ocupados y disponibles combinados de Paris Auriol Austerlitz Arena."}
+      "en": {
+        "title": "Availability | Paris Auriol Austerlitz Arena",
+        "description": "View the combined occupied and available periods for Paris Auriol Austerlitz Arena."
+      },
+      "de": {
+        "title": "Verfügbarkeit | Paris Auriol Austerlitz Arena",
+        "description": "Prüfen Sie die zusammengeführten belegten und verfügbaren Zeiträume für Paris Auriol Austerlitz Arena."
+      },
+      "es": {
+        "title": "Disponibilidad | Paris Auriol Austerlitz Arena",
+        "description": "Consulte los periodos ocupados y disponibles combinados de Paris Auriol Austerlitz Arena."
+      }
     },
     "quartier.html": {
-      "en": {"title": "Area and access | Paris Auriol", "description": "Access to 18 Boulevard Vincent Auriol: Quai de la Gare metro, Austerlitz, Accor Arena, BnF and the Seine quays."},
-      "de": {"title": "Umgebung und Anreise | Paris Auriol", "description": "Anreise zum Boulevard Vincent Auriol 18: Metro Quai de la Gare, Austerlitz, Accor Arena, BnF und Seine-Ufer."},
-      "es": {"title": "Barrio y acceso | Paris Auriol", "description": "Acceso a 18 Boulevard Vincent Auriol: metro Quai de la Gare, Austerlitz, Accor Arena, BnF y muelles del Sena."}
+      "en": {
+        "title": "Area and access | Paris Auriol",
+        "description": "Access to 18 Boulevard Vincent Auriol: Quai de la Gare metro, Austerlitz, Accor Arena, BnF and the Seine quays."
+      },
+      "de": {
+        "title": "Umgebung und Anreise | Paris Auriol",
+        "description": "Anreise zum Boulevard Vincent Auriol 18: Metro Quai de la Gare, Austerlitz, Accor Arena, BnF und Seine-Ufer."
+      },
+      "es": {
+        "title": "Barrio y acceso | Paris Auriol",
+        "description": "Acceso a 18 Boulevard Vincent Auriol: metro Quai de la Gare, Austerlitz, Accor Arena, BnF y muelles del Sena."
+      }
     },
     "decouvrir.html": {
-      "en": {"title": "Explore Paris 13 | Paris Auriol", "description": "Guide to activities, visits, restaurants and walks around Paris Auriol, Austerlitz, Bercy and the BnF."},
-      "de": {"title": "Paris 13 entdecken | Paris Auriol", "description": "Reiseführer mit Aktivitäten, Sehenswürdigkeiten, Restaurants und Spaziergängen rund um Paris Auriol, Austerlitz, Bercy und die BnF."},
-      "es": {"title": "Descubrir París 13 | Paris Auriol", "description": "Guía de actividades, visitas, restaurantes y paseos alrededor de Paris Auriol, Austerlitz, Bercy y la BnF."}
+      "en": {
+        "title": "Explore Paris 13 | Paris Auriol",
+        "description": "Guide to activities, visits, restaurants and walks around Paris Auriol, Austerlitz, Bercy and the BnF."
+      },
+      "de": {
+        "title": "Paris 13 entdecken | Paris Auriol",
+        "description": "Reiseführer mit Aktivitäten, Sehenswürdigkeiten, Restaurants und Spaziergängen rund um Paris Auriol, Austerlitz, Bercy und die BnF."
+      },
+      "es": {
+        "title": "Descubrir París 13 | Paris Auriol",
+        "description": "Guía de actividades, visitas, restaurantes y paseos alrededor de Paris Auriol, Austerlitz, Bercy y la BnF."
+      }
     },
     "agenda.html": {
-      "en": {"title": "Paris 13 events | Paris Auriol Austerlitz Arena", "description": "Upcoming events, exhibitions, concerts and activities in Paris’s 13th arrondissement."},
-      "de": {"title": "Veranstaltungen in Paris 13 | Paris Auriol", "description": "Kommende Veranstaltungen, Ausstellungen, Konzerte und Aktivitäten im 13. Arrondissement von Paris."},
-      "es": {"title": "Agenda París 13 | Paris Auriol", "description": "Próximos eventos, exposiciones, conciertos y actividades en el distrito 13 de París."}
+      "en": {
+        "title": "Paris 13 events | Paris Auriol Austerlitz Arena",
+        "description": "Upcoming events, exhibitions, concerts and activities in Paris’s 13th arrondissement."
+      },
+      "de": {
+        "title": "Veranstaltungen in Paris 13 | Paris Auriol",
+        "description": "Kommende Veranstaltungen, Ausstellungen, Konzerte und Aktivitäten im 13. Arrondissement von Paris."
+      },
+      "es": {
+        "title": "Agenda París 13 | Paris Auriol",
+        "description": "Próximos eventos, exposiciones, conciertos y actividades en el distrito 13 de París."
+      }
     },
     "sejour.html": {
-      "en": {"title": "House rules | Paris Auriol", "description": "Check-in, check-out, quiet hours, pets and house rules at Paris Auriol Austerlitz Arena."},
-      "de": {"title": "Hausregeln | Paris Auriol", "description": "Check-in, Check-out, Ruhezeiten, Haustiere und Hausregeln bei Paris Auriol Austerlitz Arena."},
-      "es": {"title": "Normas de la estancia | Paris Auriol", "description": "Horarios de llegada y salida, silencio, mascotas y normas de Paris Auriol Austerlitz Arena."}
+      "en": {
+        "title": "House rules | Paris Auriol",
+        "description": "Check-in, check-out, quiet hours, pets and house rules at Paris Auriol Austerlitz Arena."
+      },
+      "de": {
+        "title": "Hausregeln | Paris Auriol",
+        "description": "Check-in, Check-out, Ruhezeiten, Haustiere und Hausregeln bei Paris Auriol Austerlitz Arena."
+      },
+      "es": {
+        "title": "Normas de la estancia | Paris Auriol",
+        "description": "Horarios de llegada y salida, silencio, mascotas y normas de Paris Auriol Austerlitz Arena."
+      }
     },
     "mentions-legales.html": {
-      "en": {"title": "Legal notice | Paris Auriol", "description": "Legal notice for the Paris Auriol Austerlitz Arena website."},
-      "de": {"title": "Impressum | Paris Auriol", "description": "Impressum der Website Paris Auriol Austerlitz Arena."},
-      "es": {"title": "Aviso legal | Paris Auriol", "description": "Aviso legal del sitio Paris Auriol Austerlitz Arena."}
+      "en": {
+        "title": "Legal notice | Paris Auriol",
+        "description": "Legal notice for the Paris Auriol Austerlitz Arena website."
+      },
+      "de": {
+        "title": "Impressum | Paris Auriol",
+        "description": "Impressum der Website Paris Auriol Austerlitz Arena."
+      },
+      "es": {
+        "title": "Aviso legal | Paris Auriol",
+        "description": "Aviso legal del sitio Paris Auriol Austerlitz Arena."
+      }
     },
     "confidentialite.html": {
-      "en": {"title": "Privacy | Paris Auriol", "description": "Privacy policy and data management for the Paris Auriol website."},
-      "de": {"title": "Datenschutz | Paris Auriol", "description": "Datenschutzrichtlinie und Datenverarbeitung der Website Paris Auriol."},
-      "es": {"title": "Privacidad | Paris Auriol", "description": "Política de privacidad y gestión de datos del sitio Paris Auriol."}
+      "en": {
+        "title": "Privacy | Paris Auriol",
+        "description": "Privacy policy and data management for the Paris Auriol website."
+      },
+      "de": {
+        "title": "Datenschutz | Paris Auriol",
+        "description": "Datenschutzrichtlinie und Datenverarbeitung der Website Paris Auriol."
+      },
+      "es": {
+        "title": "Privacidad | Paris Auriol",
+        "description": "Política de privacidad y gestión de datos del sitio Paris Auriol."
+      }
     },
     "404.html": {
-      "en": {"title": "Page not found | Paris Auriol", "description": "Page not found."},
-      "de": {"title": "Seite nicht gefunden | Paris Auriol", "description": "Seite nicht gefunden."},
-      "es": {"title": "Página no encontrada | Paris Auriol", "description": "Página no encontrada."}
+      "en": {
+        "title": "Page not found | Paris Auriol",
+        "description": "Page not found."
+      },
+      "de": {
+        "title": "Seite nicht gefunden | Paris Auriol",
+        "description": "Seite nicht gefunden."
+      },
+      "es": {
+        "title": "Página no encontrada | Paris Auriol",
+        "description": "Página no encontrada."
+      }
     }
   }
 }
