@@ -1,6 +1,6 @@
 {
   "status": "active",
-  "updated_at": "2026-09-13T01:04:03.279688+00:00",
+  "updated_at": "2026-09-13T11:38:39.630166+00:00",
   "busy": [
     {
       "start": "2026-09-13",
@@ -96,7 +96,7 @@
     }
   ],
   "sources": {
-    "airbnb": 46,
-    "booking": 14
+    "airbnb": 47,
+    "booking": 13
   }
 }
