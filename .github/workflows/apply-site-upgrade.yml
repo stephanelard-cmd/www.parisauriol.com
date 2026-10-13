@@ -44,7 +44,13 @@ jobs:
           python -m json.tool assets/photos/manifest.json >/dev/null
           python - <<'PY'
           from pathlib import Path
-          pages = list(Path('.').glob('*.html'))
+          import re
+
+          # Les fichiers de vérification Google ne sont pas des pages du site.
+          pages = sorted(
+              page for page in Path('.').glob('*.html')
+              if not re.fullmatch(r'google[0-9a-f]+\.html', page.name)
+          )
           assert len(pages) >= 10
           for page in pages:
               text = page.read_text(encoding='utf-8')
