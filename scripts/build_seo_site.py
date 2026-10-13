@@ -130,13 +130,13 @@ PAGES: dict[str, dict[str, Any]] = {
         "changefreq": "monthly",
         "label": {"fr": "Guide local", "en": "Local guide", "de": "Reiseführer", "es": "Guía local"},
         "title": {
-            "fr": "Que faire autour d’Austerlitz et Bercy | Guide Paris 13",
+            "fr": "Que faire autour de la gare d’Austerlitz ? | Paris Auriol",
             "en": "Things to Do around Austerlitz and Bercy | Paris 13 Guide",
             "de": "Aktivitäten rund um Austerlitz und Bercy | Paris-13-Guide",
             "es": "Qué hacer cerca de Austerlitz y Bercy | Guía París 13",
         },
         "description": {
-            "fr": "Guide pratique autour de Paris Auriol : Jardin des Plantes, BnF, Accor Arena, quais de Seine, street art du 13e, cinéma, restaurants et promenades.",
+            "fr": "Découvrez les sorties autour d’Austerlitz et de Bercy : Jardin des Plantes, BnF, quais de Seine et street art du 13e. Préparez votre séjour à Paris.",
             "en": "Practical guide around Paris Auriol: Jardin des Plantes, BnF, Accor Arena, Seine walks, 13th-arrondissement street art, cinema and restaurants.",
             "de": "Praktischer Guide rund um Paris Auriol: Jardin des Plantes, BnF, Accor Arena, Seine-Ufer, Street Art, Kino, Restaurants und Spaziergänge.",
             "es": "Guía práctica cerca de Paris Auriol: Jardin des Plantes, BnF, Accor Arena, paseos por el Sena, arte urbano, cine y restaurantes.",
