@@ -834,6 +834,10 @@ def process_page(
     set_current_navigation(soup, page)
     add_faq_footer_link(soup, language)
     if page == "index.html":
+        # Keep the location and purpose explicit in every translated main heading.
+        home_headings = {'fr': 'Appartement de vacances à Paris 13, près d’Austerlitz et de l’Accor Arena', 'en': 'Holiday apartment in Paris 13 near Austerlitz and Accor Arena', 'de': 'Ferienwohnung in Paris 13 nahe Austerlitz und Accor Arena', 'es': 'Apartamento vacacional en París 13 cerca de Austerlitz y Accor Arena'}
+        if soup.h1:
+            soup.h1.string = home_headings[language]
         add_home_seo_section(soup, language)
     add_breadcrumbs(soup, page, language)
     add_related_links(soup, page, language)
