@@ -35,7 +35,7 @@ PAGES: dict[str, dict[str, Any]] = {
         "changefreq": "weekly",
         "label": {"fr": "Accueil", "en": "Home", "de": "Startseite", "es": "Inicio"},
         "title": {
-            "fr": "Appartement Paris 13 près Accor Arena et Austerlitz | Paris Auriol",
+            "fr": "Location Paris 13 – Accor Arena & Austerlitz | Paris Auriol",
             "en": "Paris 13 Apartment near Accor Arena & Austerlitz | Paris Auriol",
             "de": "Wohnung Paris 13 nahe Accor Arena & Austerlitz | Paris Auriol",
             "es": "Apartamento París 13 cerca de Accor Arena y Austerlitz | Paris Auriol",
