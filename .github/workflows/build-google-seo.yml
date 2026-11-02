@@ -123,6 +123,14 @@ jobs:
           node --check assets/app.js
           python -m json.tool data/seo-manifest.json
           python -m json.tool data/seo-translation-report.json >/dev/null
+          python - <<'PY'
+          from pathlib import Path
+          from bs4 import BeautifulSoup
+          soup = BeautifulSoup(Path('index.html').read_text(encoding='utf-8'), 'html.parser')
+          title = soup.title.get_text(strip=True)
+          assert len(title) <= 60, f"Titre accueil trop long: {len(title)} caractères — {title}"
+          assert title.startswith('Location Paris 13'), title
+          PY
           grep -q 'VacationRental' index.html
           grep -q 'containsPlace' index.html
           grep -q 'identifier' index.html
