@@ -116,6 +116,36 @@ jobs:
               assert page.locator('#language-select').input_value() == 'es'
               page.screenshot(path='browser-report/home-es.png', full_page=True)
 
+              # Vérifier que le calendrier réellement affiché récupère bien le flux JSON public.
+              page.goto(
+                  'https://parisauriol.com/disponibilites.html?lang=fr&check=calendar',
+                  wait_until='domcontentloaded',
+                  timeout=90000,
+              )
+              page.wait_for_selector('#calendar-status', timeout=30000)
+              page.wait_for_function(
+                  "document.querySelectorAll('#calendar .calendar-month').length === 3",
+                  timeout=30000,
+              )
+              calendar_status = page.locator('#calendar-status').inner_text()
+              assert 'Synchronisation Airbnb + Booking active.' in calendar_status, (
+                  f'Statut de synchronisation inattendu : {calendar_status}'
+              )
+              calendar_response = page.request.get(
+                  'https://parisauriol.com/data/calendar.json?check=calendar'
+              )
+              assert calendar_response.ok, (
+                  f'Flux calendrier inaccessible : HTTP {calendar_response.status}'
+              )
+              calendar_payload = calendar_response.json()
+              assert calendar_payload.get('status') == 'active', calendar_payload
+              assert calendar_payload.get('sources', {}).get('airbnb', 0) > 0
+              assert calendar_payload.get('sources', {}).get('booking', 0) > 0
+              busy_days = page.locator('#calendar .day.busy').count()
+              assert busy_days > 0, 'Aucune période occupée n’est affichée dans les trois mois'
+              calendar_months = page.locator('#calendar .calendar-month').count()
+              page.screenshot(path='browser-report/availability-calendar.png', full_page=True)
+
               report = {
                   'photos_loaded': len(dimensions),
                   'webp_variants_checked': len(variant_paths),
@@ -125,6 +155,11 @@ jobs:
                   'spanish_home_heading': page.locator('h1').inner_text().strip(),
                   'hero_background': hero_background,
                   'frame_background': frame_background,
+                  'calendar_status': calendar_status,
+                  'calendar_updated_at': calendar_payload.get('updated_at'),
+                  'calendar_periods': len(calendar_payload.get('busy', [])),
+                  'calendar_busy_days_visible': busy_days,
+                  'calendar_months_visible': calendar_months,
                   'status': 'success',
               }
               browser.close()
