@@ -57,6 +57,19 @@ jobs:
               assert page.locator('.placeholder-gallery').count() == 0
               dimensions = page.locator('[data-lightbox] img').evaluate_all("imgs => imgs.map(i => [i.naturalWidth, i.naturalHeight])")
               assert all(width > 0 and height > 0 for width, height in dimensions)
+
+              # Vérifier aussi les variantes WebP réellement annoncées par les srcset.
+              from urllib.parse import urljoin
+              variant_paths = page.locator('picture source').evaluate_all(
+                  "sources => sources.flatMap(source => source.srcset.split(',').map(candidate => candidate.trim().split(/\\s+/)[0]))"
+              )
+              assert len(variant_paths) == 24, f'Nombre inattendu de variantes WebP : {len(variant_paths)}'
+              for variant_path in variant_paths:
+                  response = page.request.get(urljoin('https://parisauriol.com', variant_path))
+                  content_type = response.headers.get('content-type', '').lower()
+                  assert response.ok, f'Variante image inaccessible : {variant_path} (HTTP {response.status})'
+                  assert 'image/webp' in content_type, f'MIME incorrect pour {variant_path} : {content_type}'
+
               page.screenshot(path='browser-report/photos-en.png', full_page=True)
 
               page.locator('[data-lightbox]').first.click()
@@ -76,7 +89,7 @@ jobs:
               for attempt in range(30):
                   page.goto(f'https://parisauriol.com/?lang=es&check={attempt}', wait_until='domcontentloaded', timeout=90000)
                   page.wait_for_selector('#language-select', timeout=30000)
-                  page.wait_for_function("document.querySelector('h1').textContent.includes('apartamento parisino')")
+                  page.wait_for_function("document.querySelector('h1').textContent.trim().startsWith('Apartamento vacacional')")
                   hero_background = page.locator('.hero').evaluate("el => getComputedStyle(el).backgroundImage")
                   frame_background = page.locator('.photo-frame').evaluate("el => getComputedStyle(el).backgroundImage")
                   if (
@@ -101,6 +114,7 @@ jobs:
 
               report = {
                   'photos_loaded': len(dimensions),
+                  'webp_variants_checked': len(variant_paths),
                   'dimensions': dimensions,
                   'english_lightbox_caption': caption_en,
                   'german_heading': 'Fotos der Unterkunft',
