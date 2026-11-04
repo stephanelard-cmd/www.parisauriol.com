@@ -82,6 +82,13 @@ jobs:
               page.wait_for_selector('dialog.photo-lightbox[open]')
               caption_en = page.locator('.photo-lightbox figcaption').inner_text()
               assert 'Bright living room with sofa and large window' in caption_en
+              page.wait_for_function("""() => {
+                  const image = document.querySelector('dialog.photo-lightbox[open] img');
+                  return image && image.complete && image.naturalWidth > 0 && image.naturalHeight > 0;
+              }""", timeout=60000)
+              lightbox_image = page.locator('.photo-lightbox img').evaluate(
+                  "image => ({url: image.currentSrc, width: image.naturalWidth, height: image.naturalHeight})"
+              )
               page.screenshot(path='browser-report/lightbox-en.png')
               page.locator('.lightbox-close').click()
 
@@ -206,6 +213,7 @@ jobs:
                   'webp_variants_checked': len(variant_paths),
                   'dimensions': dimensions,
                   'english_lightbox_caption': caption_en,
+                  'english_lightbox_image': lightbox_image,
                   'german_heading': 'Fotos der Unterkunft',
                   'spanish_home_heading': spanish_home['heading'],
                   'spanish_home_url': spanish_home['url'],
