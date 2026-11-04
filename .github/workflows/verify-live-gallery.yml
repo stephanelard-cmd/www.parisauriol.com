@@ -40,7 +40,7 @@ jobs:
           from datetime import date, timedelta
           from pathlib import Path
           from urllib.parse import urlsplit
-          from playwright.sync_api import sync_playwright
+          from playwright.sync_api import sync_playwright, expect
 
           report = {}
           with sync_playwright() as p:
@@ -95,7 +95,19 @@ jobs:
               for attempt in range(30):
                   page.goto(f'https://parisauriol.com/?lang=es&check={attempt}', wait_until='domcontentloaded', timeout=90000)
                   page.wait_for_selector('#language-select', timeout=30000)
-                  page.wait_for_function("document.querySelector('h1').textContent.trim().startsWith('Apartamento vacacional')")
+                  try:
+                      expect(page.locator('h1')).to_have_text(
+                          'Apartamento vacacional en París 13 cerca de Austerlitz y Accor Arena',
+                          timeout=30000,
+                      )
+                  except Exception:
+                      print(json.dumps({
+                          'spanish_home_url': page.url,
+                          'spanish_home_heading': page.locator('h1').all_text_contents(),
+                          'spanish_home_language': page.locator('html').get_attribute('lang'),
+                      }, ensure_ascii=False))
+                      page.screenshot(path='browser-report/home-es-failure.png', full_page=True)
+                      raise
                   hero_background = page.locator('.hero').evaluate("el => getComputedStyle(el).backgroundImage")
                   frame_background = page.locator('.photo-frame').evaluate("el => getComputedStyle(el).backgroundImage")
                   if (
@@ -115,7 +127,16 @@ jobs:
               frame_response = page.request.get('https://parisauriol.com/assets/photos/cuisine-equipee.jpg')
               assert hero_response.ok
               assert frame_response.ok
-              assert page.locator('#language-select').input_value() == 'es'
+              # Figer les preuves espagnoles avant toute navigation vers le calendrier.
+              spanish_home = {
+                  'heading': page.locator('h1').inner_text().strip(),
+                  'url': page.url,
+                  'language': page.locator('html').get_attribute('lang'),
+                  'selected_language': page.locator('#language-select').input_value(),
+              }
+              assert spanish_home['selected_language'] == 'es', spanish_home
+              assert spanish_home['language'] == 'es', spanish_home
+              assert urlsplit(spanish_home['url']).path == '/es/', spanish_home
               page.screenshot(path='browser-report/home-es.png', full_page=True)
 
               # Vérifier que le calendrier réellement affiché récupère bien le flux JSON public.
@@ -186,7 +207,10 @@ jobs:
                   'dimensions': dimensions,
                   'english_lightbox_caption': caption_en,
                   'german_heading': 'Fotos der Unterkunft',
-                  'spanish_home_heading': page.locator('h1').inner_text().strip(),
+                  'spanish_home_heading': spanish_home['heading'],
+                  'spanish_home_url': spanish_home['url'],
+                  'spanish_home_language': spanish_home['language'],
+                  'spanish_home_selected_language': spanish_home['selected_language'],
                   'hero_background': hero_background,
                   'frame_background': frame_background,
                   'calendar_status': calendar_status,
