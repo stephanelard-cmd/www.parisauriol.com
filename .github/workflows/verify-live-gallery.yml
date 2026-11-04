@@ -2,6 +2,10 @@ name: Vérifier la galerie et les langues en ligne
 
 on:
   workflow_dispatch:
+  pull_request:
+    paths:
+      - ".github/workflows/verify-live-gallery.yml"
+      - "data/verify-gallery-trigger.txt"
   push:
     branches: [main]
     paths:
