@@ -37,7 +37,9 @@ jobs:
           mkdir -p browser-report
           python - <<'PY'
           import json
+          from datetime import date, timedelta
           from pathlib import Path
+          from urllib.parse import urlsplit
           from playwright.sync_api import sync_playwright
 
           report = {}
@@ -117,11 +119,24 @@ jobs:
               page.screenshot(path='browser-report/home-es.png', full_page=True)
 
               # Vérifier que le calendrier réellement affiché récupère bien le flux JSON public.
-              page.goto(
-                  'https://parisauriol.com/disponibilites.html?lang=fr&check=calendar',
-                  wait_until='domcontentloaded',
+              with page.expect_response(
+                  lambda response: urlsplit(response.url).path == '/data/calendar.json',
                   timeout=90000,
+              ) as calendar_download:
+                  page.goto(
+                      'https://parisauriol.com/disponibilites.html?lang=fr&check=calendar',
+                      wait_until='domcontentloaded',
+                      timeout=90000,
+                  )
+              # Comparer au flux consommé par la page, sans seconde requête concurrente.
+              calendar_response = calendar_download.value
+              assert calendar_response.ok, (
+                  f'Flux calendrier inaccessible : HTTP {calendar_response.status}'
               )
+              calendar_payload = calendar_response.json()
+              assert calendar_payload.get('status') == 'active', calendar_payload
+              assert calendar_payload.get('sources', {}).get('airbnb', 0) > 0
+              assert calendar_payload.get('sources', {}).get('booking', 0) > 0
               page.wait_for_selector('#calendar-status', timeout=30000)
               page.wait_for_function(
                   "document.querySelectorAll('#calendar .calendar-month').length === 3",
@@ -131,18 +146,37 @@ jobs:
               assert 'Synchronisation Airbnb + Booking active.' in calendar_status, (
                   f'Statut de synchronisation inattendu : {calendar_status}'
               )
-              calendar_response = page.request.get(
-                  'https://parisauriol.com/data/calendar.json?check=calendar'
+              calendar_window = page.locator('#calendar .calendar-month').evaluate_all("""
+                  months => {
+                      const today = new Date();
+                      const iso = d => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+                      return {
+                          start: iso(today),
+                          end: iso(new Date(today.getFullYear(), today.getMonth() + 3, 1)),
+                          busy_dates: months.flatMap((month, offset) =>
+                              [...month.querySelectorAll('.day.busy')].map(day => iso(new Date(
+                                  today.getFullYear(), today.getMonth() + offset,
+                                  Number(day.querySelector('b').textContent),
+                              )))
+                          ).sort(),
+                      };
+                  }
+              """)
+              # Même fenêtre que renderCalendar : aujourd’hui inclus, 4e mois exclu.
+              # Les départs sont exclusifs ; une date couverte plusieurs fois ne compte qu’une fois.
+              cursor = date.fromisoformat(calendar_window['start'])
+              window_end = date.fromisoformat(calendar_window['end'])
+              expected_busy_dates = []
+              while cursor < window_end:
+                  iso = cursor.isoformat()
+                  if any(period['start'] <= iso < period['end'] for period in calendar_payload.get('busy', [])):
+                      expected_busy_dates.append(iso)
+                  cursor += timedelta(days=1)
+              assert calendar_window['busy_dates'] == expected_busy_dates, (
+                  f"Jours occupés incohérents : attendus={expected_busy_dates}, "
+                  f"affichés={calendar_window['busy_dates']}"
               )
-              assert calendar_response.ok, (
-                  f'Flux calendrier inaccessible : HTTP {calendar_response.status}'
-              )
-              calendar_payload = calendar_response.json()
-              assert calendar_payload.get('status') == 'active', calendar_payload
-              assert calendar_payload.get('sources', {}).get('airbnb', 0) > 0
-              assert calendar_payload.get('sources', {}).get('booking', 0) > 0
-              busy_days = page.locator('#calendar .day.busy').count()
-              assert busy_days > 0, 'Aucune période occupée n’est affichée dans les trois mois'
+              busy_days = len(calendar_window['busy_dates'])
               calendar_months = page.locator('#calendar .calendar-month').count()
               page.screenshot(path='browser-report/availability-calendar.png', full_page=True)
 
@@ -159,6 +193,9 @@ jobs:
                   'calendar_updated_at': calendar_payload.get('updated_at'),
                   'calendar_periods': len(calendar_payload.get('busy', [])),
                   'calendar_busy_days_visible': busy_days,
+                  'calendar_busy_days_expected': len(expected_busy_dates),
+                  'calendar_window_start': calendar_window['start'],
+                  'calendar_window_end_exclusive': calendar_window['end'],
                   'calendar_months_visible': calendar_months,
                   'status': 'success',
               }
