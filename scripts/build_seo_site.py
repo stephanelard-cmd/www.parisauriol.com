@@ -38,7 +38,7 @@ PAGES: dict[str, dict[str, Any]] = {
             "fr": "Location Paris 13 – Accor Arena & Austerlitz | Paris Auriol",
             "en": "Paris 13 Apartment near Accor Arena & Austerlitz | Paris Auriol",
             "de": "Wohnung Paris 13 nahe Accor Arena & Austerlitz | Paris Auriol",
-            "es": "Apartamento París 13 cerca de Accor Arena y Austerlitz | Paris Auriol",
+            "es": "Apartamento París 13, Accor Arena y Austerlitz | Paris Auriol",
         },
         "description": {
             "fr": "Appartement rénové pour 3 voyageurs au 18 boulevard Vincent Auriol, à 50 m du métro Quai de la Gare, près d’Austerlitz, de la Seine et de l’Accor Arena.",
